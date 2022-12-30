@@ -7,7 +7,7 @@ const Product = () => {
             {/* Navbar */}
             <nav className='flex'>
                 <div className='flex'>
-                    <Image src={require('../assets/logo.png')} width="30" height="33" alt="desc" ></Image>
+                    <Image src={require('../images/logoOurCoffee.png')} width="30" height="33" alt="desc" ></Image>
                     <div>Our Coffee</div>
                 </div>
                 <div className='flex'>
