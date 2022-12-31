@@ -72,7 +72,7 @@ const SignUp = () => {
                   </div>
                   <div className='w-[25rem] border-b-2 md:border-b-0'>
                     <label>Email Adress :</label><br />
-                    <Field type='text' name='email' placeholder='Enter your email adress' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
+                    <Field type='email' name='email' placeholder='Enter your email adress' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
                     {errors.email && touched.email ? <div className='absolute text-red-500 text-sm'>{errors.email}</div> : null}
                   </div>
                   <div className='w-[25rem] relative border-b-2 md:border-b-0'>
