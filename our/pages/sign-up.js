@@ -120,7 +120,7 @@ const SignUp = () => {
               <p className='font-bold text-lg'>Our Coffee</p>
             </div>
             <div>
-              <p className='w-72'>Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
+              <p className='w-72'>Our coffee is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
             </div>
             <div className='flex gap-5'>
               <div className='bg-[#7D6E83] flex items-center justify-center rounded-full w-10 h-10'>
@@ -150,7 +150,7 @@ const SignUp = () => {
           <div className='flex flex-col gap-5'>
             <p className='font-bold text-lg'>Engage</p>
             <ul className='flex flex-col gap-3'>
-              <li className='cursor-pointer'>Coffe Shop ?  </li>
+              <li className='cursor-pointer'>Our Coffee ?  </li>
               <li className='cursor-pointer'>FAQ</li>
               <li className='cursor-pointer'>About Us</li>
               <li className='cursor-pointer'>Privacy Policy</li>
