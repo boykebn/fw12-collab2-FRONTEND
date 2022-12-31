@@ -155,6 +155,7 @@ const Product = () => {
         </div>
       </div>
 
+      {/* FOOTER */}
       <footer className='bg-[#F8EDE3]'>
         <div className='flex py-[5%] px-[10%]'>
           <div className='grow'>
