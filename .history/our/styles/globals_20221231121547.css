@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+.btn{
+  text-transform: none;
+  width: 100%;
+}
+.input {
+  width: 100%;
+}
+
+@media (min-width: 768px) { 
+  .bg-forgot-password {
+    background-image: url('../images/forgotPasswordBg.png');
+  }
+ }
+
+>>>>>>> b98dd9505d3cf1cac964de1e2f9bd61cfba41c00
