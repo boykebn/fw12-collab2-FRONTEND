@@ -6,12 +6,12 @@ const Product = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className='flex px-[7%] py-[5%] border-b-2 border-[#F8EDE3]'>
+      {/* <nav className='flex text-sm py-[5%] md:px-[7%] border-b-2 border-[#F8EDE3]'>
         <div className='flex gap-[15px]'>
           <Image src={require('../images/logoOurCoffee.png')} width="30" height="33" alt="desc" ></Image>
           <div>Our Coffee</div>
         </div>
-        <div className='flex flex-1 w-64 items-center justify-center gap-[41px]'>
+        <div className='flex flex-1 w-64 md:items-center md:justify-center gap-[41px]'>
           <Link href="/">Home</Link>
           <Link href="/">Product</Link>
           <Link href="">Your Cart</Link>
@@ -22,11 +22,48 @@ const Product = () => {
           <Image src={require('../images/chat.png')} width="30" height="30" alt="desc" ></Image>
           <Image src={require('../images/profile.png')} className="rounded-full" width="30" height="30" alt="desc" ></Image>
         </div>
-      </nav>
+      </nav> */}
+
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/">Product</Link></li>
+              <li><Link href="">Your Cart</Link></li>
+              <li><Link href="/">History</Link></li>
+            </ul>
+          </div>
+          {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
+          <div className='flex ml-[5%] gap-2'>
+          <Image src={require('../images/logoOurCoffee.png')} width="30" height="33" alt="desc" ></Image>
+          <div>Our Coffee</div>
+          </div>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal">
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/">Product</Link></li>
+            <li><Link href="">Your Cart</Link></li>
+            <li><Link href="/">History</Link></li>
+          </ul>
+        </div>
+        <div className="navbar-end px-8">
+          <div className='pr-4'>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </div>
+          <div className="w-10 rounded-full">
+            <img src="https://placeimg.com/80/80/people" className='rounded-full' />
+          </div>
+        </div>
+      </div>
 
       {/* Konten */}
       <div className='flex'>
-        <div className='px-[5%] flex flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]'>
+        <div className='hidden md:flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]'>
           <div className='pt-[29px] text-[#7D6E83] font-bold text-[25px]'>Promo for you</div>
           <div className='text-center font-sm'>
             <div>Coupons will be updated every weeks.</div>
@@ -65,8 +102,8 @@ const Product = () => {
           </div>
         </div>
 
-        <div className='grow pt-[29px]'>
-          <div className='flex gap-[68px] ml-[10%]'>
+        <div className='md:grow pt-[29px]'>
+          <div className='flex text-sm overflow-x-auto ml-[5%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base'>
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Favourite Products</Link>
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Coffee</Link>
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Non Coffee</Link>
@@ -75,7 +112,7 @@ const Product = () => {
           </div>
 
           <div className='flex flex-col gap-[30px] mt-[65px]'>
-            <div className='flex gap-[35px] ml-[10%] mr-[10%]'>
+            <div className='flex md:gap-[35px] md:ml-[10%] md:mr-[10%]'>
               <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
                 <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
                 <div>Veggie tomato mix</div>
