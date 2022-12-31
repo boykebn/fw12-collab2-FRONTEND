@@ -21,8 +21,8 @@ const Product = () => {
           </div>
           {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
           <div className='flex ml-[5%] gap-2'>
-          <Image src={require('../images/logoOurCoffee.png')} width="30" height="33" alt="desc" ></Image>
-          <div>Our Coffee</div>
+            <Image src={require('../images/logoOurCoffee.png')} width="30" height="33" alt="desc" ></Image>
+            <div>Our Coffee</div>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -35,7 +35,7 @@ const Product = () => {
         </div>
         <div className="navbar-end px-8">
           <div className='pr-4'>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
           <div className="w-10 rounded-full">
             <img src="https://placeimg.com/80/80/people" className='rounded-full' />
@@ -85,7 +85,7 @@ const Product = () => {
         </div>
 
         <div className='md:grow pt-[29px]'>
-          <div className='flex text-sm overflow-x-auto ml-[5%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base'>
+          <div className='flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base'>
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Favourite Products</Link>
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Coffee</Link>
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Non Coffee</Link>
@@ -93,83 +93,77 @@ const Product = () => {
             <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Add-on</Link>
           </div>
 
-          <div className='flex flex-col gap-[30px] mt-[65px]'>
-            <div className='flex md:gap-[35px] md:ml-[10%] md:mr-[10%]'>
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
-                <div>Veggie tomato mix</div>
-                <div>IDR 34.000</div>
-              </div>
-
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/hazelnut.png')} alt="desc" ></Image>
-                <div>Hazelnut Latte</div>
-                <div>IDR 25.000</div>
-              </div>
-
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
-                <div>Summer fried rice</div>
-                <div>IDR 32.000</div>
-              </div>
-
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
-                <div>Creamy Ice Latte</div>
-                <div>IDR 27.000</div>
-              </div>
+          <div className='grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4'>
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
+              <div>Veggie tomato mix</div>
+              <div>IDR 34.000</div>
             </div>
 
-            <div className='flex gap-[35px] ml-[10%] mr-[10%]'>
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/drum-sticks.png')} alt="desc" ></Image>
-                <div>Drum Sticks</div>
-                <div>IDR 30.000</div>
-              </div>
-
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/salty-rice.png')} alt="desc" ></Image>
-                <div>Salty Rice</div>
-                <div>IDR 20.000</div>
-              </div>
-
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
-                <div>Summer fried rice</div>
-                <div>IDR 32.000</div>
-              </div>
-
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
-                <div>Creamy Ice Latte</div>
-                <div>IDR 27.000</div>
-              </div>
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/hazelnut.png')} alt="desc" ></Image>
+              <div>Hazelnut Latte</div>
+              <div>IDR 25.000</div>
             </div>
 
-            <div className='flex gap-[35px] ml-[10%] mr-[10%]'>
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
-                <div>Veggie tomato mix</div>
-                <div>IDR 34.000</div>
-              </div>
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
+              <div>Summer fried rice</div>
+              <div>IDR 32.000</div>
+            </div>
 
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/hazelnut.png')} alt="desc" ></Image>
-                <div>Hazelnut Latte</div>
-                <div>IDR 25.000</div>
-              </div>
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
+              <div>Creamy Ice Latte</div>
+              <div>IDR 27.000</div>
+            </div>
 
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
-                <div>Summer fried rice</div>
-                <div>IDR 32.000</div>
-              </div>
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/drum-sticks.png')} alt="desc" ></Image>
+              <div>Drum Sticks</div>
+              <div>IDR 30.000</div>
+            </div>
 
-              <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
-                <div>Creamy Ice Latte</div>
-                <div>IDR 27.000</div>
-              </div>
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/salty-rice.png')} alt="desc" ></Image>
+              <div>Salty Rice</div>
+              <div>IDR 20.000</div>
+            </div>
+
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
+              <div>Summer fried rice</div>
+              <div>IDR 32.000</div>
+            </div>
+
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
+              <div>Creamy Ice Latte</div>
+              <div>IDR 27.000</div>
+            </div>
+
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
+              <div>Veggie tomato mix</div>
+              <div>IDR 34.000</div>
+            </div>
+
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/hazelnut.png')} alt="desc" ></Image>
+              <div>Hazelnut Latte</div>
+              <div>IDR 25.000</div>
+            </div>
+
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
+              <div>Summer fried rice</div>
+              <div>IDR 32.000</div>
+            </div>
+
+            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+              <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
+              <div>Creamy Ice Latte</div>
+              <div>IDR 27.000</div>
             </div>
           </div>
         </div>
