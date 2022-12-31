@@ -26,7 +26,10 @@ const PaymentAndDeliveryCust = () => {
                       <li><a>History</a></li>
                     </ul>
                   </div>
-                  <a className="normal-case text-xl pl-32">Our Coffe</a>
+                  <div className='pl-32 flex items-center'>
+                    <Image src={require('../images/logoOurCoffee.png')} width="40" height="40" alt="hazelnut"  className='rounded-lg'/>
+                    <a className="normal-case text-2xl font-bold">Our Coffe</a>
+                  </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                   <ul className="menu menu-horizontal px-1">
@@ -69,8 +72,8 @@ const PaymentAndDeliveryCust = () => {
               </div>
             </nav>
 
-            <div className='bg-order_bg bg-no-repeat bg-cover pb-44'>
-              <div className='grid grid-cols-[720px_minmax(720px,_1fr)] max-h-screen'>
+            <div className='bg-order_bg bg-no-repeat bg-cover pb-[300px]'>
+              <div className='grid grid-cols-[720px_minmax(720px,_1fr)] max-h-screen pb-32'>
                 {/* content-1 */}
                   <div className='pl-32 pt-[95px]'>
                     <div className='w-[316px]'>
