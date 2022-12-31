@@ -7,10 +7,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'order_bg' : "url('../images/bg-1.png')",
-        'history_bg' : "url('../images/bg-2.png')",
-      }
+        order_bg: "url('../images/bg-1.png')",
+        
+      },
     },
   },
-  plugins: [require('daisyui')],
-}
+  plugins: [require("daisyui")],
+};
+
