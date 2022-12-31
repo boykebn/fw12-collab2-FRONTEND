@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Logo from '../images/logoOurCoffee.png'
 import GoogleLogo from '../images/google.png'
 import FeatherIcon from 'feather-icons-react'
@@ -8,10 +9,7 @@ import * as Yup from 'yup'
 import YupPasword from 'yup-password'
 YupPasword(Yup)
 
-// const phoneRegExpID = /^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/
-const phoneRegExpID = /^(^08)(\d{8,10})$/
-
-const SignUpSchema = Yup.object().shape({
+const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
     .password()
@@ -19,13 +17,10 @@ const SignUpSchema = Yup.object().shape({
     .minLowercase(1, 'Min lowercase 1')
     .minUppercase(1, 'Min uppercase 1')
     .minSymbols(1, 'Min symbol 1')
-    .minNumbers(1, 'Min number 1'),
-  phoneNumber: Yup.string()
-    .matches(phoneRegExpID, 'Invalid phone number')
-    .required('Required')
+    .minNumbers(1, 'Min number 1')
 })
 
-const SignUp = () => {
+const Login = () => {
   const [eyeClicked, setEyeClicked] = React.useState(false)
   const showPassword = () => {
     if (eyeClicked === false) {
@@ -52,25 +47,24 @@ const SignUp = () => {
                 <p className='font-bold text-2xl'>Our Coffee</p>
               </div>
               <div className='flex w-24 items-center justify-center'>
-                <button className='btn btn-sm bg-[#7D6E83] rounded-3xl font-bold text-white'>Login</button>
+                <button className='btn btn-sm bg-[#7D6E83] rounded-3xl font-bold text-white'>Sign Up</button>
               </div>
             </div>
             <div className='flex justify-center'>
             <Formik initialValues={{
               email: '',
-              password: '',
-              phoneNumber: ''
+              password: ''
             }}
-            validationSchema={SignUpSchema}
+            validationSchema={LoginSchema}
             onSubmit={(value) => console.log(value)}>
               {({errors, touched}) => (
-                <Form className='px-5 flex flex-col items-center gap-8'>
-                  <div className='py-5 relative'>
-                    <Image src={require('../images/girlChilling.png')} className='md:hidden w-4/4' />
-                    <h1 className='md:hidden font-bold text-6xl absolute top-12 right-5'>Sign<br/>Up</h1>
-                    <h1 className='hidden md:block font-bold text-3xl text-[#7D6E83]'>Sign Up</h1>
+                <Form className='px-5 flex flex-col'>
+                  <div className='relative py-5 md:my-8'>
+                    <Image src={require('../images/ladyCoffee.png')} className='md:hidden pl-10 w-3/5' />
+                    <h1 className='md:hidden font-bold text-6xl absolute top-32 right-20'>Log<br/>In</h1>
+                    <h1 className='hidden md:block font-bold text-3xl text-[#7D6E83] text-center'>Login</h1>
                   </div>
-                  <div className='w-[25rem] border-b-2 md:border-b-0'>
+                  <div className='w-[25rem] border-b-2 md:border-b-0 mb-8'>
                     <label>Email Adress :</label><br />
                     <Field type='email' name='email' placeholder='Enter your email adress' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
                     {errors.email && touched.email ? <div className='absolute text-red-500 text-sm'>{errors.email}</div> : null}
@@ -81,13 +75,11 @@ const SignUp = () => {
                     <Field type={eyeClicked? 'text' : 'password'} name='password' placeholder='Enter your password' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
                     {errors.password && touched.password ? <div className='text-red-500 text-sm absolute'>{errors.password}</div> : null}
                   </div>
-                  <div className='w-[25rem] border-b-2 md:border-b-0'>
-                    <label>Phone Number :</label><br />
-                    <Field type='phoneNumber' name='phoneNumber' placeholder='Enter your phone number' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
-                    {errors.phoneNumber && touched.phoneNumber ? <div className='absolute text-red-500 text-sm'>{errors.phoneNumber}</div> : null}
+                  <div className='mb-8 text-end'>
+                    <Link href='' className='font-bold text-[#7D6E83] underline'>Forgot password?</Link>
                   </div>
                   <div className='w-[25rem] mt-3'>
-                    <button type='submit' className='btn bg-[#7D6E83] text-white font-bold text-lg rounded-2xl'>Sign Up</button>
+                    <button type='submit' className='btn bg-[#7D6E83] text-white font-bold text-lg rounded-2xl'>Login</button>
                   </div>
                 </Form>
               )}
@@ -97,7 +89,7 @@ const SignUp = () => {
               <div className='w-[25rem]'>
                 <button className='btn bg-white drop-shadow-xl text-[#7D6E83] border-none font-bold text-lg rounded-2xl flex items-center gap-5 hover:text-white'>
                   <Image src={GoogleLogo} alt='Google Logo' />
-                  <p>Sign up with Google</p>
+                  <p>Login with Google</p>
                 </button>
               </div>
             </div>
@@ -164,4 +156,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Login
