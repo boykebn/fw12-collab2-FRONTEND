@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         order_bg: "url('../images/bg-1.png')",
-        
+        history_bg: "url('../images/bg-2.png')"
+
       },
     },
   },
