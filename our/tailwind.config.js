@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        rubik: ["Rubik", "sans-serif"],
+        poppins: ["Poppins"],
+      },
       backgroundImage: {
         order_bg: "url('../images/bg-1.png')",
         history_bg: "url('../images/bg-2.png')",
@@ -15,4 +19,3 @@ module.exports = {
   },
   plugins: [require("daisyui")],
 };
-
