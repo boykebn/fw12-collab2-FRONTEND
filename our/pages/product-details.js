@@ -89,8 +89,8 @@ const ProductDetails = () => {
         </div>
       </main>
 
-      <div className='flex bg-red-300'>
-        <div className='flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px]'>
+      <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px]'>
+        <div className='flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px]'>
           <div>
             <Image src={require('../images/cold-brew.png')} className="rounded-full" width="50" height="50" alt="desc" ></Image>
           </div>
@@ -99,17 +99,19 @@ const ProductDetails = () => {
             <div>x1 (Large)</div>
             <div>x1 (Regular)</div>
           </div>
-          <div className='flex'>
+          <div className='flex gap-[27px]'>
             <div className='bg-[#7D6E83] h-10 w-10 rounded-full flex justify-center items-center'>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
             </div>
-            <div>2</div>
+            <div className='font-black text-[25px]'>2</div>
             <div className='bg-[#7D6E83] h-10 w-10 rounded-full flex justify-center items-center'>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
             </div>
           </div>
         </div>
-        <div>Konten 2</div>
+        <div>
+          <button className='bg-[#7D6E83] py-[50px] px-[57px] rounded-lg text-white font-bold text-[25px]'>Checkout</button>
+        </div>
       </div>
 
       <Footer></Footer>
