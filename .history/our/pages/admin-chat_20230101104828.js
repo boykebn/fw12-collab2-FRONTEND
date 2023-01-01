@@ -3,15 +3,13 @@ import Image from "next/image";
 import search from "../assets/search.png";
 import man from "../assets/man.png";
 import Footer from "../components/footer";
-import { RiCheckDoubleFill } from "react-icons/ri";
-import camera from "../assets/camera.png";
 import Navbar from "../components/navbar";
 
-const RoomChat = () => {
+const AdminChat = () => {
   return (
     <>
       <Navbar />
-      <div className=" font-poppins">
+      <div className="font-poppins">
         <div className="md:bg-[url('../assets/background-chat.png')] bg-cover bg-no-repeat pb-[89px]">
           <div className="md:pt-[84px] md:px-[200px] md:flex ">
             <div className=" py-[60px] px-3 md:px-[50px]  bg-[#d0b8a8] md:rounded-l-[20px]">
@@ -22,7 +20,7 @@ const RoomChat = () => {
                   className="focus:outline-none"
                 />
               </div>
-              <p className="text-[15px] font-bold mb-[43px] pl-[30px] text-white">
+              <p className="text-[15px] text-white font-bold mb-[43px] pl-[30px]">
                 Choose a staff you want to talk with
               </p>
               <div className="flex mb-[20px] text-white">
@@ -57,60 +55,41 @@ const RoomChat = () => {
               <hr />
             </div>
             <div className="bg-white px-[36px] py-[28px] md:w-[1133px] rounded-r-[20px] h-[1100px]">
-              <div className="mb-[100px]">
+              <div>
                 <p className="text-[#4F5665] text-[30px] font-bold leading-[45px] mb-[70px]">
-                  Staff
+                  Room Chat
                 </p>
-                <div className="flex mb-[20px] ">
-                  <div className="w-[50px] flex flex-col justify-between">
-                    <span className="text-[#9F9F9F] text-[10px]">02.14 PM</span>
-                    <RiCheckDoubleFill className="" />
-                  </div>
-                  <div className="pl-[12px] text-end mr-[29px]">
-                    <span className="text-[#4F5665] text-[20px] font-bold">
-                      Cust-1
-                    </span>
-                    <p className="text-[#4F5665] text-[15px]">
-                      Hey jason, I can’t find the promo section. Can u tell me
-                      where is it?
-                    </p>
-                    <div></div>
-                  </div>
-                  <Image
-                    src={man}
-                    alt="man"
-                    className="w-[55px] h-[67px] mr-[16px] rounded-[50%]"
-                  />
-                </div>
-                <hr className="mb-[34px]" />
                 <div className="flex mb-[20px] text-white">
                   <Image
                     src={man}
                     alt="man"
-                    className="w-[55px] h-[67px] mr-[29px] rounded-[50%]"
+                    className="w-[80px] h-[81px] mr-[16px] rounded-[50%]"
                   />
-                  <div>
-                    <p className="text-[#4F5665] text-[20px] font-bold">
-                      Staff-1
+                  <div className="mr-[5px]">
+                    <p className="text-[#4F5665] text-[20px] font-bold mb-[10px]">
+                      Cust-1
                     </p>
                     <p className="text-[#4F5665] text-[15px] leading-[22px]">
                       Hey jason, I can’t find the promo section. Can u tell me
                       where is it?
                     </p>
                   </div>
-                  <span className="text-[#9F9F9F] text-[10px] leading-[15px]">
-                    02.14 PM
-                  </span>
+                  <div className="flex flex-col justify-between">
+                    <span className="text-[#9F9F9F] text-[10px] leading-[15px]">
+                      02.14 PM
+                    </span>
+                    <span className="text-[#4F5665] text-[12px] border-1 bg-[#d0b8a8] rounded-[50%] text-center p-[20px]">
+                      1
+                    </span>
+                  </div>
                 </div>
+                <hr />
               </div>
-              <div className="pb-[-56px]">
-                <div className="border-1 bg-[#dfd3c3] py-[23px] px-[48px] flex rounded-[20px]">
-                  <input
-                    placeholder="Type a message..."
-                    className="focus:outline-none bg-[#dfd3c3] flex-1"
-                  />
-                  <Image src={camera} alt="camera" className="" />
-                </div>
+              <div className="pt-[196px] text-center">
+                <p className="text-[#9F9F9F] text-[15px]">
+                  You have no conversation, start chat other staff! Have a good
+                  day!
+                </p>
               </div>
             </div>
           </div>
@@ -121,4 +100,4 @@ const RoomChat = () => {
   );
 };
 
-export default RoomChat;
+export default AdminChat;

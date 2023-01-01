@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Navbar = () => {
+const Footer = () => {
   return (
-    <div className="navbar bg-base-100 pt-[30px] pb-[53px]">
+    <div className="navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,5 +94,3 @@ const Navbar = () => {
     </div>
   );
 };
-
-export default Navbar;

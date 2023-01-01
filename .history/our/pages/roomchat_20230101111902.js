@@ -90,9 +90,7 @@ const RoomChat = () => {
                     className="w-[55px] h-[67px] mr-[29px] rounded-[50%]"
                   />
                   <div>
-                    <p className="text-[#4F5665] text-[20px] font-bold">
-                      Staff-1
-                    </p>
+                    <p className="text-[#4F5665] text-[20px] font-bold">Man</p>
                     <p className="text-[#4F5665] text-[15px] leading-[22px]">
                       Hey jason, I can’t find the promo section. Can u tell me
                       where is it?
