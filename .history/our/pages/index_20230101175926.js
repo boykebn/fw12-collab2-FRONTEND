@@ -400,7 +400,7 @@ export default function Home() {
           <p className="text-[35px] leading-[30px] font-bold mb-[34px]">
             Our Partner
           </p>
-          <Image src={sponsored} alt="sponsored" className="" />
+          <Image src={sponsored} alt="sponsored" />
         </div>
         <div className="text-center mb-[60px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold px-[470px] mb-[20px]">
@@ -480,7 +480,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="px-[150px] flex mb-[150px]">
+        <div className="px-[150px] flex pb-[135px]">
           <div className="flex-1">
             <button className="border-1 bg-[#7d6e83] w-[30px] h-[15px] rounded-[10px] mr-[22px]"></button>
             <button
@@ -517,8 +517,8 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[82px] rounded-[10px]">
+              See Promo
             </button>
           </div>
         </div>

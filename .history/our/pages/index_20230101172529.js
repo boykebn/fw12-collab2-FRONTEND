@@ -77,7 +77,7 @@ export default function Home() {
             <Image
               src={search}
               alt="search"
-              className="absolute top-[40px] right-[420px]"
+              className="absolute top-[165px] right-[420px]"
             />
             <input
               placeholder="Search"
@@ -382,8 +382,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div className=" pt-[1045px] relative">
         <div className="mb-[155px] text-center pt-[130px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
             Visit Our Store in the Spot on the Map Below
@@ -400,7 +398,7 @@ export default function Home() {
           <p className="text-[35px] leading-[30px] font-bold mb-[34px]">
             Our Partner
           </p>
-          <Image src={sponsored} alt="sponsored" className="" />
+          <Image src={sponsored} alt="sponsored" />
         </div>
         <div className="text-center mb-[60px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold px-[470px] mb-[20px]">
@@ -411,7 +409,7 @@ export default function Home() {
             great pleasure.
           </p>
         </div>
-        <div className="pl-[40px] flex pb-[80px]">
+        <div className="pl-[40px] flex mb-[80px]">
           <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
             <div className="flex mb-[20px]">
               <Image src={person1} alt="person1" className="mr-[21px]" />
@@ -480,7 +478,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="px-[150px] flex mb-[150px]">
+        <div className="px-[150px] flex pb-[180px]">
           <div className="flex-1">
             <button className="border-1 bg-[#7d6e83] w-[30px] h-[15px] rounded-[10px] mr-[22px]"></button>
             <button
@@ -506,8 +504,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="px-[150px] absolute mt-[-100px]">
-        <div className="border-1 bg-white px-[70px] py-[58px] flex items-center rounded-[10px] shadow-2xl">
+      <div className="px-[150px] absolute top-[4500px]">
+        <div className="border-1 bg-white px-[70px] py-[58px] flex items-center rounded-[10px]">
           <div className="mr-[378px]">
             <p className="text-[#0B132A] text-[35px] font-bold leading-[40px] mb-[20px] w-[372px]">
               Check our promo today!
@@ -517,14 +515,14 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[82px] rounded-[10px]">
+              See Promo
             </button>
           </div>
         </div>
       </div>
-      <footer className=" w-full bg-[#dfd3c3] pt-[180px] ">
-        <div className="flex py-[5%] px-[10%]">
+      <footer className="pt-[1000px] bg-[#dfd3c3]">
+        <div className="flex py-[5%] px-[10%] pt-[180px]">
           <div className="grow">
             <div className="flex gap-[15px]">
               <Image

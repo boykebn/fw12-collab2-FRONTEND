@@ -172,7 +172,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] absolute h-[1250px] mb-[400px]">
+      <div className="bg-[#f8ede3] absolute h-[1250px]">
         <div className="pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
@@ -383,131 +383,127 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" pt-[1045px] relative">
-        <div className="mb-[155px] text-center pt-[130px]">
-          <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
-            Visit Our Store in the Spot on the Map Below
-          </p>
-          <p className="text-[#4F5665] text-[16px] leading-[30px]  px-[442px]">
-            See our store in every city on the spot and spen your good day
-            there. See you soon!
-          </p>
-        </div>
-        <div className="px-[190px] mb-[90px]">
-          <Image src={globe} alt="globe" />
-        </div>
-        <div className=" text-center px-[150px] mb-[50px]">
-          <p className="text-[35px] leading-[30px] font-bold mb-[34px]">
-            Our Partner
-          </p>
-          <Image src={sponsored} alt="sponsored" className="" />
-        </div>
-        <div className="text-center mb-[60px]">
-          <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold px-[470px] mb-[20px]">
-            Loved by Thousands of Happy Customer
-          </p>
-          <p className="text-[#4F5665] text-[16px] leading-[30px] px-[420px]">
-            These are the stories of our customers who have visited us with
-            great pleasure.
-          </p>
-        </div>
-        <div className="pl-[40px] flex pb-[80px]">
-          <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
-            <div className="flex mb-[20px]">
-              <Image src={person1} alt="person1" className="mr-[21px]" />
-              <div className="mr-[108px]">
-                <p className="text-[#0B132A] text-[18px] font-semibold">
-                  Viezh Robert
-                </p>
-                <p className="text-[14px] text-[#4F5665] ">Warsaw, Poland</p>
-              </div>
-              <div className="flex items-center ">
-                <p className="mr-[11px]">4.5</p>
-                <Image src={star} alt="start" />
-              </div>
-            </div>
-            <div>
-              <p className="text-[#0B132A] text-[16px] leading-[30px] w-[330px] font-semibold">
-                “Wow... I am very happy to spend my whole day here. the Wi-fi is
-                good, and the coffee and meals tho. I like it here!! Very
-                recommended!
+      <div className="mb-[155px] text-center pt-[130px]">
+        <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
+          Visit Our Store in the Spot on the Map Below
+        </p>
+        <p className="text-[#4F5665] text-[16px] leading-[30px]  px-[442px]">
+          See our store in every city on the spot and spen your good day there.
+          See you soon!
+        </p>
+      </div>
+      <div className="px-[190px] mb-[90px]">
+        <Image src={globe} alt="globe" />
+      </div>
+      <div className=" text-center px-[150px] mb-[50px]">
+        <p className="text-[35px] leading-[30px] font-bold mb-[34px]">
+          Our Partner
+        </p>
+        <Image src={sponsored} alt="sponsored" />
+      </div>
+      <div className="text-center mb-[60px]">
+        <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold px-[470px] mb-[20px]">
+          Loved by Thousands of Happy Customer
+        </p>
+        <p className="text-[#4F5665] text-[16px] leading-[30px] px-[420px]">
+          These are the stories of our customers who have visited us with great
+          pleasure.
+        </p>
+      </div>
+      <div className="pl-[40px] flex mb-[80px]">
+        <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
+          <div className="flex mb-[20px]">
+            <Image src={person1} alt="person1" className="mr-[21px]" />
+            <div className="mr-[108px]">
+              <p className="text-[#0B132A] text-[18px] font-semibold">
+                Viezh Robert
               </p>
+              <p className="text-[14px] text-[#4F5665] ">Warsaw, Poland</p>
             </div>
-          </div>
-          <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
-            <div className="flex mb-[20px]">
-              <Image src={person2} alt="person2" className="mr-[21px]" />
-              <div className="mr-[108px]">
-                <p className="text-[#0B132A] text-[18px] font-semibold">
-                  Yessica Christy
-                </p>
-                <p className="text-[14px] text-[#4F5665] ">Shanxi, China</p>
-              </div>
-              <div className="flex items-center ">
-                <p className="mr-[11px]">4.5</p>
-                <Image src={star} alt="start" />
-              </div>
+            <div className="flex items-center ">
+              <p className="mr-[11px]">4.5</p>
+              <Image src={star} alt="start" />
             </div>
-            <div>
-              <p className="text-[#0B132A] text-[16px] leading-[30px] w-[330px] font-semibold">
-                “I like it because I like to travel far and still can make my
-                day better just by drinking their Hazelnut Latte
-              </p>
-            </div>
-          </div>
-          <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center">
-            <div className="flex mb-[20px]">
-              <Image src={person3} alt="person3" className="mr-[21px]" />
-              <div className="mr-[108px]">
-                <p className="text-[#0B132A] text-[18px] font-semibold">
-                  Kim Young Jou
-                </p>
-                <p className="text-[14px] text-[#4F5665] ">
-                  Seoul, South Korea
-                </p>
-              </div>
-              <div className="flex items-center ">
-                <p className="mr-[11px]">4.5</p>
-                <Image src={star} alt="start" />
-              </div>
-            </div>
-            <div>
-              <p className="text-[#0B132A] text-[16px] leading-[30px] w-[330px] font-semibold">
-                “This is very unusual for my taste, I haven’t liked coffee
-                before but their coffee is the best! and yup, you have to order
-                the chicken wings, the best in town!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="px-[150px] flex mb-[150px]">
-          <div className="flex-1">
-            <button className="border-1 bg-[#7d6e83] w-[30px] h-[15px] rounded-[10px] mr-[22px]"></button>
-            <button
-              onClick="#"
-              className="border-1 bg-[#D0b8a8] w-[15px] h-[15px] rounded-[50%] mr-[22px]"
-            ></button>
-            <button
-              onClick="#"
-              className="border-1 bg-[#D0b8a8] w-[15px] h-[15px] rounded-[50%] mr-[22px]"
-            ></button>
-            <button
-              onClick="#"
-              className="border-1 bg-[#D0b8a8] w-[15px] h-[15px] rounded-[50%] "
-            ></button>
           </div>
           <div>
-            <button className="border-2 border-[#7d6e83] bg-white py-[10px] px-[10px] rounded-[50%] mr-[40px] hover:bg-[#7d6e83] hover:text-white hover:border-[#D0b8a8]">
-              <AiOutlineArrowLeft className="w-[20px] h-[17px] " />
-            </button>
-            <button className="border-2 border-[#7d6e83] bg-white py-[10px] px-[10px] rounded-[50%] hover:bg-[#7d6e83] hover:text-white hover:border-[#D0b8a8]">
-              <AiOutlineArrowRight className="w-[20px] h-[17px]" />
-            </button>
+            <p className="text-[#0B132A] text-[16px] leading-[30px] w-[330px] font-semibold">
+              “Wow... I am very happy to spend my whole day here. the Wi-fi is
+              good, and the coffee and meals tho. I like it here!! Very
+              recommended!
+            </p>
+          </div>
+        </div>
+        <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
+          <div className="flex mb-[20px]">
+            <Image src={person2} alt="person2" className="mr-[21px]" />
+            <div className="mr-[108px]">
+              <p className="text-[#0B132A] text-[18px] font-semibold">
+                Yessica Christy
+              </p>
+              <p className="text-[14px] text-[#4F5665] ">Shanxi, China</p>
+            </div>
+            <div className="flex items-center ">
+              <p className="mr-[11px]">4.5</p>
+              <Image src={star} alt="start" />
+            </div>
+          </div>
+          <div>
+            <p className="text-[#0B132A] text-[16px] leading-[30px] w-[330px] font-semibold">
+              “I like it because I like to travel far and still can make my day
+              better just by drinking their Hazelnut Latte
+            </p>
+          </div>
+        </div>
+        <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center">
+          <div className="flex mb-[20px]">
+            <Image src={person3} alt="person3" className="mr-[21px]" />
+            <div className="mr-[108px]">
+              <p className="text-[#0B132A] text-[18px] font-semibold">
+                Kim Young Jou
+              </p>
+              <p className="text-[14px] text-[#4F5665] ">Seoul, South Korea</p>
+            </div>
+            <div className="flex items-center ">
+              <p className="mr-[11px]">4.5</p>
+              <Image src={star} alt="start" />
+            </div>
+          </div>
+          <div>
+            <p className="text-[#0B132A] text-[16px] leading-[30px] w-[330px] font-semibold">
+              “This is very unusual for my taste, I haven’t liked coffee before
+              but their coffee is the best! and yup, you have to order the
+              chicken wings, the best in town!
+            </p>
           </div>
         </div>
       </div>
-      <div className="px-[150px] absolute mt-[-100px]">
-        <div className="border-1 bg-white px-[70px] py-[58px] flex items-center rounded-[10px] shadow-2xl">
+      <div className="px-[150px] flex pb-[180px]">
+        <div className="flex-1">
+          <button className="border-1 bg-[#7d6e83] w-[30px] h-[15px] rounded-[10px] mr-[22px]"></button>
+          <button
+            onClick="#"
+            className="border-1 bg-[#D0b8a8] w-[15px] h-[15px] rounded-[50%] mr-[22px]"
+          ></button>
+          <button
+            onClick="#"
+            className="border-1 bg-[#D0b8a8] w-[15px] h-[15px] rounded-[50%] mr-[22px]"
+          ></button>
+          <button
+            onClick="#"
+            className="border-1 bg-[#D0b8a8] w-[15px] h-[15px] rounded-[50%] "
+          ></button>
+        </div>
+        <div>
+          <button className="border-2 border-[#7d6e83] bg-white py-[10px] px-[10px] rounded-[50%] mr-[40px] hover:bg-[#7d6e83] hover:text-white hover:border-[#D0b8a8]">
+            <AiOutlineArrowLeft className="w-[20px] h-[17px] " />
+          </button>
+          <button className="border-2 border-[#7d6e83] bg-white py-[10px] px-[10px] rounded-[50%] hover:bg-[#7d6e83] hover:text-white hover:border-[#D0b8a8]">
+            <AiOutlineArrowRight className="w-[20px] h-[17px]" />
+          </button>
+        </div>
+      </div>
+      <div className="px-[150px] absolute top-[4500px]">
+        <div className="border-1 bg-white px-[70px] py-[58px] flex items-center rounded-[10px]">
           <div className="mr-[378px]">
             <p className="text-[#0B132A] text-[35px] font-bold leading-[40px] mb-[20px] w-[372px]">
               Check our promo today!
@@ -517,14 +513,14 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[82px] rounded-[10px]">
+              See Promo
             </button>
           </div>
         </div>
       </div>
-      <footer className=" w-full bg-[#dfd3c3] pt-[180px] ">
-        <div className="flex py-[5%] px-[10%]">
+      <footer className="relative bg-[#dfd3c3]">
+        <div className="flex py-[5%] px-[10%] pt-[180px]">
           <div className="grow">
             <div className="flex gap-[15px]">
               <Image

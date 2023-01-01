@@ -517,8 +517,8 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[50px] rounded-[10px] ">
+              See Promo
             </button>
           </div>
         </div>
