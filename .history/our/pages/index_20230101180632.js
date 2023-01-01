@@ -172,7 +172,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] absolute h-[1250px] mb-[400px] w-full">
+      <div className="bg-[#f8ede3] absolute h-[1250px] mb-[400px]">
         <div className="pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite

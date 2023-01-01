@@ -172,7 +172,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] absolute h-[1250px] mb-[400px] w-full">
+      <div className="bg-[#f8ede3] absolute h-[1250px] mb-[400px]">
         <div className="pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
@@ -517,8 +517,8 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[80px] rounded-[10px] ">
+              See Promo
             </button>
           </div>
         </div>
