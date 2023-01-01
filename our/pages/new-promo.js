@@ -105,9 +105,9 @@ const NewPromo = () => {
           </div>
           <div className='mt-8'>
             <label className='font-bold text-[#7D6E83]'>Expire date :</label>
-            <input type='date' onFocus={(e) => (e.target.type = "date")}
+            <input type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoStartDate' placeholder='Select start date' className='input input-bordered focus:outline-none mt-3 '/>
-            <input type='date' onFocus={(e) => (e.target.type = "date")}
+            <input type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoEndDate' placeholder='Select end date' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
           <div className='mt-8'>
