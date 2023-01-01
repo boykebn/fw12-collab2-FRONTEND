@@ -41,14 +41,14 @@ const Login = () => {
 
           {/* Right */}
           <div className='flex-[55%] py-10 md:py-0 bg-[#F8EDE3] md:bg-white'>
-            <div className='hidden md:flex items-center py-14 pl-12 pr-36'>
+            <div className='hidden md:flex items-center py-14 px-5'>
               <div className='flex-1 flex items-center gap-3'>
                 <Image src={Logo} alt='Logo' className='w-10 h-10' />
                 <p className='font-bold text-2xl'>Our Coffee</p>
               </div>
-              <div className='flex w-24 items-center justify-center'>
+              <Link href='/sign-up' className='flex w-24 items-center justify-center'>
                 <button className='btn btn-sm bg-[#7D6E83] rounded-3xl font-bold text-white'>Sign Up</button>
-              </div>
+              </Link>
             </div>
             <div className='flex justify-center'>
             <Formik initialValues={{
@@ -65,7 +65,7 @@ const Login = () => {
                     <h1 className='hidden md:block font-bold text-3xl text-[#7D6E83] text-center'>Login</h1>
                   </div>
                   <div className='w-[25rem] border-b-2 md:border-b-0 mb-8'>
-                    <label>Email Adress :</label><br />
+                    <label>Email Address :</label><br />
                     <Field type='email' name='email' placeholder='Enter your email adress' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
                     {errors.email && touched.email ? <div className='absolute text-red-500 text-sm'>{errors.email}</div> : null}
                   </div>
@@ -75,8 +75,8 @@ const Login = () => {
                     <Field type={eyeClicked? 'text' : 'password'} name='password' placeholder='Enter your password' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl'/>
                     {errors.password && touched.password ? <div className='text-red-500 text-sm absolute'>{errors.password}</div> : null}
                   </div>
-                  <div className='mb-8 text-end'>
-                    <Link href='' className='font-bold text-[#7D6E83] underline'>Forgot password?</Link>
+                  <div className='mb-8 text-end mt-3'>
+                    <Link href='/forgot-password' className='font-bold text-[#7D6E83] underline'>Forgot password?</Link>
                   </div>
                   <div className='w-[25rem] mt-3'>
                     <button type='submit' className='btn bg-[#7D6E83] text-white font-bold text-lg rounded-2xl'>Login</button>
@@ -97,7 +97,7 @@ const Login = () => {
         </div>
 
         <footer className='hidden md:flex gap-20 relative bg-[#F8EDE3] pt-36 pb-20 pl-28 px-52'>
-          <div className='absolute -top-24 inset-x-28 bg-white shadow-lg rounded-lg flex items-center p-10 w-3/4'>
+          <div className='absolute -top-24 inset-x-28 bg-white shadow-lg rounded-lg items-center p-10 w-3/4 hidden'>
             <div className='flex-1'>
               <p className='font-bold text-3xl w-2/4 mb-5'>Get your member card now!</p>
               <p>Let's join with our member and enjoy the deals.</p>

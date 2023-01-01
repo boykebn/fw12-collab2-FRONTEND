@@ -39,17 +39,17 @@ export default function Home() {
           </span>
         </div>
         <div className=" text-[#4F5665] text-[16px] mr-[153px]">
-          <span className="font-bold text-[##7d6e83] mr-[40px]">Home</span>
-          <span className="mr-[40px]">Product</span>
-          <span className="mr-[40px]">Your Char</span>
-          <span>History</span>
+          <Link href="/" className="font-bold text-[##7d6e83] mr-[40px]">Home</Link>
+          <Link href="/product" className="mr-[40px]">Product</Link>
+          <Link href="/payment-delivery-cust" className="mr-[40px]">Your Cart</Link>
+          <Link href="/history-cust">History</Link>
         </div>
         <div className="text-[16px] font-[600] leading-[19px]">
-          <Link href="#" className="mr-[40px] text-[#0B132A]">
+          <Link href="/login" className="mr-[40px] text-[#0B132A]">
             Login
           </Link>
           <Link
-            href="#"
+            href="/sign-up"
             className="text-white border-1 bg-[#7d6e83] py-[13px] px-[45px] rounded-[50px]"
           >
             Sign Up
