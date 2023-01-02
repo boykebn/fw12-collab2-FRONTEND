@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import logo from "../assets/logoOurCoffee.png";
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiTwotoneHeart } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
@@ -24,7 +25,35 @@ import Navbar from "../components/navbar";
 export default function Home() {
   return (
     <div className="font-rubik">
-      <Navbar />
+      <div className="px-5 lg:px-12 py-[45px] flex items-center">
+        <div className="flex flex-1 items-center">
+          <Image
+            src={logo}
+            alt="logo"
+            className="w-[30px] h-[33px] mr-[15px]"
+          />
+          <span className="text-[#0B132A] lg:text-[20px] font-bold leading-[23px]">
+            Our Coffee
+          </span>
+        </div>
+        <div className=" hidden text-[#4F5665] text-[16px] mr-52 lg:flex gap-10">
+          <Link href="/" className="font-bold text-[#7d6e83] mr-[40px]">Home</Link>
+          <Link href="/product" className="mr-[40px] hover:text-[#7d6e83]">Product</Link>
+          <Link href="/payment-delivery-cust" className="mr-[40px] hover:text-[#7d6e83]">Your Cart</Link>
+          <Link href="/history-cust" className="hover:text-[#7d6e83]">History</Link>
+        </div>
+        <div className="flex justify-center items-center gap-5 text-xs lg:text-[16px] font-[600] leading-[19px]">
+          <Link href="/login" className="lg:mr-[40px] text-[#0B132A]">
+            Login
+          </Link>
+          <Link
+            href="/sign-up"
+            className="text-white border-1 bg-[#7d6e83] py-[13px] px-5 lg:px-[45px] rounded-[50px] active:bg-[#544e56]"
+          >
+            Sign Up
+          </Link>
+        </div>
+      </div>
       <div className="lg:bg-[url('../assets/background-home.png')] lg:h-[645px] lg:absolute w-full ">
         <div className="flex flex-col px-5 w-full lg:px-[150px] lg:flex-row">
           <div className="lg:pt-[78px] mr-auto">
@@ -147,7 +176,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] lg:absolute lg:h-[1250px] lg:mb-[400px] w-full overflow-x-scroll flex flex-col">
+      <div className="bg-[#f8ede3] lg:absolute lg:h-[1250px] lg:mb-[400px] w-full flex flex-col items-center">
         <div className="hidden lg:block pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
@@ -157,10 +186,11 @@ export default function Home() {
             yours too!
           </p>
         </div>
-        <div className="flex lg:pl-[100px] overflow-x-scroll px-5 pt-10">
-          <div className=" flex mr-[50px] justify-center w-full">
-            <div className="w-96 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pl-[68px] lg:pr-[65px] lg:pb-[50px] mb-[30px]">
-              <div className="mb-[30px] lg:pl-[40px] leading-[30px]">
+        <div className="flex justify-center items-center px-5 pt-10 w-full">
+          <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 lg:justify-center">
+          <div className="carousel-item">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pl-[68px] lg:pr-[65px] lg:pb-[50px] mb-[30px]">
+              <div className="mb-[30px] leading-[30px]">
                 <Image
                   src={food1}
                   alt="food1"
@@ -216,9 +246,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" flex mr-[50px] justify-center w-full">
-            <div className="w-96 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pl-[68px] lg:pr-[65px] lg:pb-[50px] mb-[30px]">
-              <div className="mb-[30px] lg:pl-[40px] ">
+          <div className="carousel-item">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="mb-[30px]">
                 <Image
                   src={food2}
                   alt="food2"
@@ -234,7 +264,7 @@ export default function Home() {
                     <Image
                       src={ceklis2}
                       alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
+                      className="w-[14px] h-[9px] mr-[25px]"
                     />
                     <p className="">1 Shot of Coffee</p>
                   </div>
@@ -282,9 +312,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" flex lg:mr-[50px] justify-center w-full">
-            <div className="w-96 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pl-[68px] lg:pr-[65px] lg:pb-[50px] mb-[30px]">
-              <div className="mb-[30px] lg:pl-[40px]">
+          <div className="carousel-item">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="mb-[30px]">
                 <Image
                   src={food3}
                   alt="food3"
@@ -295,7 +325,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="hidden lg:flex items-center mb-[70px]">
-                <div className="">
+                <div className="ml-5">
                   <div className="flex items-center mb-[10px] leading-[30px]">
                     <Image
                       src={ceklis2}
@@ -355,10 +385,11 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </div>
+            </div>
+            </div>
         </div>
       </div>
-      <div className=" hidden lg:block pt-[1045px] relative">
+      <div className=" hidden lg:block pt-[80rem] relative">
         <div className="mb-[155px] text-center pt-[130px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
             Visit Our Store in the Spot on the Map Below
@@ -498,7 +529,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer className=" w-full bg-[#dfd3c3] pt-[180px] ">
+      <footer className=" w-full bg-[#dfd3c3] lg:pt-[180px] ">
         <div className="flex py-[5%] px-[10%]">
           <div className="grow">
             <div className="flex gap-[15px]">
@@ -533,7 +564,7 @@ export default function Home() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
-                  class="w-3 h-3 text-white"
+                  className="w-3 h-3 text-white"
                 >
                   <path
                     fill="currentColor"
