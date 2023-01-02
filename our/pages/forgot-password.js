@@ -2,8 +2,31 @@ import React from 'react'
 import Image from 'next/image'
 import Logo from '../images/logoOurCoffee.png'
 import FeatherIcon from 'feather-icons-react'
+import http from '../helpers/http'
+import {useRouter} from 'next/router'
 
 const ForgotPassword = () => {
+  const router = useRouter()
+  const [email, setEmail] = React.useState('')
+  const [successMessage, setSuccessMessage] = React.useState('')
+  const [alertSuccessMessage, setAlertSucceessMessage] = React.useState(false)
+
+  const cb = () => {
+    setTimeout(() => {
+      router.replace('/reset-password')
+    }, 3000)
+  }
+  const requestForgotPassword = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await http().post('/auth/forgotPassword', {email})
+      setSuccessMessage(response?.data?.message)
+      setAlertSucceessMessage(true)
+      cb()
+    } catch(error) {
+      console.log(error)
+    }
+  }
 
   return(
     <>
@@ -18,18 +41,27 @@ const ForgotPassword = () => {
           <div className='md:hidden'>
             <Image src={require('../images/boyWaiting.png')} alt='forgot password' className='py-5 w-4/4'/>
           </div>
-          <div className='flex items-center gap-5'>
-            <div className='w-96 text-black border-b-2 md:border-b-0'>
-              <input type='email' name='email' placeholder='Enter your email adress to get link' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white'/>
+          <form onSubmit={requestForgotPassword}>
+            <div className='flex items-center gap-5'>
+              <div className='w-96 text-black border-b-2 md:border-b-0'>
+                <input onChange={(e) => setEmail(e.target.value)} type='email' name='email' placeholder='Enter your email adress to get link' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white'/>
+              </div>
+              <div className='hidden md:block'>
+                <button type='submit' className='btn btn-lg bg-[#7D6E83]'>Send</button>
+              </div>
             </div>
-            <div className='hidden md:block'>
-              <button className='btn btn-lg bg-[#7D6E83]'>Send</button>
-            </div>
-          </div>
+            {alertSuccessMessage ?
+            <div class="alert alert-success shadow-lg my-10">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>{successMessage}</span>
+              </div>
+            </div> : false}
+          </form>
           <div className='md:hidden'>
             <p className='text-black'>Haven&apos;t received any link?</p>
           </div>
-          <div className='text-center text-xl font-bold w-96 flex flex-col gap-5'>
+          <div className='hidden text-center text-xl font-bold w-96 flex flex-col gap-5'>
             <p className='hidden md:block'>Click here if you didn&apos;t receive any link in 2 minutes</p>
             <div>
               <button className='btn md:btn-lg rounded-2xl'>Resend Link</button>
