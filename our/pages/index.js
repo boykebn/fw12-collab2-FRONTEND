@@ -69,7 +69,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="lg:bg-[url('../assets/background-home.png')] lg:h-[645px] lg:absolute w-full ">
+      <div className="lg:bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover lg:h-[645px] lg:absolute w-screen ">
         <div className="flex flex-col px-5 w-full lg:px-[150px] lg:flex-row">
           <div className="lg:pt-[78px] mr-auto">
             <p className="hidden lg:block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
