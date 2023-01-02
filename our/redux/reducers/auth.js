@@ -12,7 +12,7 @@ const authReducer = createSlice({
           state.token = payload.token
       },
       logout: (state, action) => {
-          return initialState
+          state.token = null
       }
     },
     extraReducers: (build) => {
