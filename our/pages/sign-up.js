@@ -7,8 +7,11 @@ import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
 import YupPasword from 'yup-password'
 YupPasword(Yup)
+import http from '../helpers/http'
+import {useDispatch} from 'react-redux'
+import { useRouter } from "next/router"
+import { login as loginAction } from '../redux/reducers/auth'
 
-// const phoneRegExpID = /^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/
 const phoneRegExpID = /^(^08)(\d{8,10})$/
 
 const SignUpSchema = Yup.object().shape({
@@ -26,12 +29,30 @@ const SignUpSchema = Yup.object().shape({
 })
 
 const SignUp = () => {
+  const dispatch = useDispatch()
+  const router = useRouter()
+
   const [eyeClicked, setEyeClicked] = React.useState(false)
   const showPassword = () => {
     if (eyeClicked === false) {
       setEyeClicked(true)
     } else {
       setEyeClicked(false)
+    }
+  }
+
+  // Sign Up
+  const cb = () => {
+    router.push('/product')
+  }
+  const login = async (value) => {
+    try{
+      const response = await http().post('/auth/register', value)
+      const token = response?.data?.results?.token
+      dispatch(loginAction({token}))
+      cb()
+    } catch(error) {
+      console.log(error)
     }
   }
 
@@ -62,7 +83,7 @@ const SignUp = () => {
               phoneNumber: ''
             }}
             validationSchema={SignUpSchema}
-            onSubmit={(value) => console.log(value)}>
+            onSubmit={(value) => login(value)}>
               {({errors, touched}) => (
                 <Form className='px-5 flex flex-col items-center gap-8'>
                   <div className='py-5 relative'>
