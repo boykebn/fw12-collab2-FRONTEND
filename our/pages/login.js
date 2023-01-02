@@ -7,6 +7,7 @@ import FeatherIcon from 'feather-icons-react'
 import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
 import YupPasword from 'yup-password'
+import { useSelector } from 'react-redux'
 YupPasword(Yup)
 
 const LoginSchema = Yup.object().shape({
@@ -21,6 +22,7 @@ const LoginSchema = Yup.object().shape({
 })
 
 const Login = () => {
+  const {error, loading } = useSelector((state) => state.auth)
   const [eyeClicked, setEyeClicked] = React.useState(false)
   const showPassword = () => {
     if (eyeClicked === false) {
