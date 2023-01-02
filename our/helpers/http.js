@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const http = (token) => {
     const headers = {}
@@ -12,4 +12,4 @@ const http = (token) => {
     return instance
 }
 
-export default http
+export default http;

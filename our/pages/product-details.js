@@ -75,7 +75,7 @@ const ProductDetails = () => {
       </main>
 
       <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px]'>
-        <div className='flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px]'>
+        <div className='absolute flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px] mr-[400px] shadow-lg shadow-gray-600'>
           <div>
             <Image src={require('../images/cold-brew.png')} className="rounded-full" width="50" height="50" alt="desc" ></Image>
           </div>
@@ -94,8 +94,8 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div>
-          <button className='bg-[#7D6E83] py-[50px] px-[57px] rounded-lg text-white font-bold text-[25px]'>Checkout</button>
+        <div className='absolute flex pl-[300px]'>
+          <button className=' bg-[#7D6E83] py-[50px] px-[57px] rounded-lg shadow-lg shadow-gray-600 text-white font-bold text-[25px]'>Checkout</button>
         </div>
       </div>
 
