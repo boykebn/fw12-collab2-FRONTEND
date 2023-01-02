@@ -1,91 +1,96 @@
-import React from "react";
 import Image from "next/image";
-import logo from "../assets/logoOurCoffee.png";
 import Link from "next/link";
-import search from "../assets/search.png";
-import profileIcon from "../assets/profile-icon.png";
+import React from "react";
+import logo from "../assets/logoOurCoffee.png";
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiTwotoneHeart } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { AiTwotoneHeart } from "react-icons/ai";
-import layer2 from "../assets/img-layer2.png";
 import ceklis from "../assets/ceklis.png";
+import ceklis2 from "../assets/ceklis2.png";
 import food1 from "../assets/food1.png";
 import food2 from "../assets/food2.png";
 import food3 from "../assets/food3.png";
-import ceklis2 from "../assets/ceklis2.png";
 import globe from "../assets/Huge Global.png";
-import sponsored from "../assets/Sponsored.png";
+import layer2 from "../assets/img-layer2.png";
 import person1 from "../assets/person1.png";
 import person2 from "../assets/person2.png";
 import person3 from "../assets/person3.png";
+import sponsored from "../assets/Sponsored.png";
 import star from "../assets/star.png";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
-import { ImInstagram } from "react-icons/im";
-import Footer from "../components/footer";
+// import Footer from "../components/footer";
+
+import { BiSearch } from "react-icons/bi";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   return (
     <div className="font-rubik">
-      <div className="px-[150px] py-[45px] flex items-center">
+      <div className="px-5 lg:px-12 py-[45px] flex items-center">
         <div className="flex flex-1 items-center">
           <Image
             src={logo}
             alt="logo"
             className="w-[30px] h-[33px] mr-[15px]"
           />
-          <span className="text-[#0B132A] text-[20px] font-bold leading-[23px]">
+          <span className="text-[#0B132A] lg:text-[20px] font-bold leading-[23px]">
             Our Coffee
           </span>
         </div>
-        <div className=" text-[#4F5665] text-[16px] mr-[153px]">
-          <Link href="/" className="font-bold text-[##7d6e83] mr-[40px]">Home</Link>
-          <Link href="/product" className="mr-[40px]">Product</Link>
-          <Link href="/payment-delivery-cust" className="mr-[40px]">Your Cart</Link>
-          <Link href="/history-cust">History</Link>
+        <div className=" hidden text-[#4F5665] text-[16px] mr-52 lg:flex gap-10">
+          <Link href="/" className="font-bold text-[#7d6e83] mr-[40px]">Home</Link>
+          <Link href="/product" className="mr-[40px] hover:text-[#7d6e83]">Product</Link>
+          <Link href="/payment-delivery-cust" className="mr-[40px] hover:text-[#7d6e83]">Your Cart</Link>
+          <Link href="/history-cust" className="hover:text-[#7d6e83]">History</Link>
         </div>
-        <div className="text-[16px] font-[600] leading-[19px]">
-          <Link href="/login" className="mr-[40px] text-[#0B132A]">
+        <div className="flex justify-center items-center gap-5 text-xs lg:text-[16px] font-[600] leading-[19px]">
+          <Link href="/login" className="lg:mr-[40px] text-[#0B132A]">
             Login
           </Link>
           <Link
             href="/sign-up"
-            className="text-white border-1 bg-[#7d6e83] py-[13px] px-[45px] rounded-[50px]"
+            className="text-white border-1 bg-[#7d6e83] py-[13px] px-5 lg:px-[45px] rounded-[50px] active:bg-[#544e56]"
           >
             Sign Up
           </Link>
         </div>
       </div>
-      <div className="bg-[url('../assets/background-home.png')] h-[645px] absolute w-full ">
-        <div className="px-[150px] flex">
-          <div className="pt-[78px] mr-auto">
-            <p className="text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
+      <div className="lg:bg-[url('../assets/background-home.png')] lg:h-[645px] lg:absolute w-full ">
+        <div className="flex flex-col px-5 w-full lg:px-[150px] lg:flex-row">
+          <div className="lg:pt-[78px] mr-auto">
+            <p className="hidden lg:block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
               Start Your Day with Coffee and Good Meals
             </p>
-            <p className="text-white text-[20px] font-bold leading-[30px] w-[555px] mb-[32px]">
+            <p className="block text-black text-5xl font-black lg:hidden">A good coffee <br/>is a good day</p>
+            <p className="hidden lg:block text-white text-[20px] font-bold leading-[30px] w-[555px] mb-[32px]">
               We provide high quality beans, good taste, and healthy meals made
               by love just for you. Start your day with us for a bigger smile!
             </p>
             <Link
               href="#"
-              className="text-white text-[16px] font-bold border-1 px-[78px] py-[18px] bg-[#7d6e83] rounded-[10px]"
+              className="hidden btn text-white text-[16px] font-bold border-1 bg-[#7d6e83] rounded-[10px] lg:w-40 lg:flex border-0"
             >
               Get Started
             </Link>
           </div>
-          <div className="pt-[20px]">
-            <Image
-              src={search}
-              alt="search"
-              className="absolute top-[40px] right-[420px]"
-            />
+          <div className="pt-[20px] relative">
+            <BiSearch className="absolute top-9 left-5 w-8 h-8"/>
             <input
               placeholder="Search"
-              className="focus:outline-none bg-[#f8ede3] py-[17px] pl-[75px] font-[900] rounded-[30px]"
+              className="focus:outline-none bg-[#f8ede3] py-[17px] pl-[75px] pr-10 font-[900] rounded-[30px]"
             />
           </div>
         </div>
-        <div className="px-[150px] pt-[135px]">
+        <div className="mb-10 lg:hidden">
+          <div className="flex text-xl w-full items-center mt-10">
+            <div className="flex w-full justify-evenly text-[#4F5665]">
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">Favorite</span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">Promo</span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">Coffee</span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">Non Coffee</span>
+            </div>
+          </div>
+        </div>
+        <div className="px-[150px] pt-[135px] hidden lg:block">
           <div className="pl-[90px] pr-[59px] py-[53px] border-1 bg-white  rounded-[10px] flex items-center shadow-lg mb-[103px]">
             <div className="flex mr-[134px]">
               <div className="mr-[36px]">
@@ -137,8 +142,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <div className="pt-[870px] px-[150px] flex mb-[82px]">
+      <div className="hidden pt-[870px] px-[150px] lg:flex mb-[82px]">
         <div className="mr-[139px]">
           <Image src={layer2} alt="img-layer-2" />
         </div>
@@ -172,8 +176,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] absolute h-[1250px] mb-[400px] w-full">
-        <div className="pt-[80px] text-center mb-[90px]">
+      <div className="bg-[#f8ede3] lg:absolute lg:h-[1250px] lg:mb-[400px] w-full flex flex-col items-center">
+        <div className="hidden lg:block pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
           </p>
@@ -182,10 +186,11 @@ export default function Home() {
             yours too!
           </p>
         </div>
-        <div className="flex pl-[100px]">
-          <div className=" flex mr-[50px] justify-center">
-            <div className="border-2 bg-white rounded-[10px] pt-[62px] pl-[68px] pr-[65px] pb-[50px] mb-[30px]">
-              <div className="mb-[30px] pl-[40px] leading-[30px]">
+        <div className="flex justify-center items-center px-5 w-full">
+          <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 lg:justify-center">
+          <div className="carousel-item">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="mb-[30px] leading-[30px]">
                 <Image
                   src={food1}
                   alt="food1"
@@ -195,7 +200,7 @@ export default function Home() {
                   Hazelnut Latte
                 </p>
               </div>
-              <div className="flex items-center mb-[130px] leading-[30px]">
+              <div className="hidden lg:flex items-center mb-[100px] leading-[30px]">
                 <div className="">
                   <div className="flex items-center mb-[10px]">
                     <Image
@@ -235,15 +240,15 @@ export default function Home() {
                 IDR 25.000
               </p>
               <div className="flex justify-center">
-                <button className="py-[13px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                <button className="py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
                   Order Now
                 </button>
               </div>
             </div>
           </div>
-          <div className=" flex mr-[50px] justify-center">
-            <div className="border-2 bg-white rounded-[10px] pt-[62px] pl-[68px] pr-[65px] pb-[50px] mb-[30px]">
-              <div className="mb-[30px] pl-[40px] ">
+          <div className="carousel-item">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="mb-[30px]">
                 <Image
                   src={food2}
                   alt="food2"
@@ -253,13 +258,13 @@ export default function Home() {
                   Pinky Promisee
                 </p>
               </div>
-              <div className="flex items-center mb-[110px]">
+              <div className="hidden lg:flex items-center mb-[110px]">
                 <div className="">
                   <div className="flex items-center mb-[10px] leading-[30px]">
                     <Image
                       src={ceklis2}
                       alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
+                      className="w-[14px] h-[9px] mr-[25px]"
                     />
                     <p className="">1 Shot of Coffee</p>
                   </div>
@@ -307,9 +312,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" flex mr-[50px] justify-center">
-            <div className="border-2 bg-white rounded-[10px] pt-[62px] pl-[68px] pr-[65px] pb-[50px] mb-[30px]">
-              <div className="mb-[30px] pl-[40px]">
+          <div className="carousel-item">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="mb-[30px]">
                 <Image
                   src={food3}
                   alt="food3"
@@ -319,8 +324,8 @@ export default function Home() {
                   Chicken Wings
                 </p>
               </div>
-              <div className="flex items-center mb-[70px]">
-                <div className="">
+              <div className="hidden lg:flex items-center mb-[70px]">
+                <div className="ml-5">
                   <div className="flex items-center mb-[10px] leading-[30px]">
                     <Image
                       src={ceklis2}
@@ -380,10 +385,11 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </div>
+            </div>
+            </div>
         </div>
       </div>
-      <div className=" pt-[1045px] relative">
+      <div className=" hidden lg:block pt-[80rem] relative">
         <div className="mb-[155px] text-center pt-[130px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
             Visit Our Store in the Spot on the Map Below
@@ -506,7 +512,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="px-[150px] absolute mt-[-100px]">
+      <div className="hidden lg:block right-32 absolute mt-[-100px]">
         <div className="border-1 bg-white px-[70px] py-[58px] flex items-center rounded-[10px] shadow-2xl">
           <div className="mr-[378px]">
             <p className="text-[#0B132A] text-[35px] font-bold leading-[40px] mb-[20px] w-[372px]">
@@ -517,13 +523,13 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <button className="text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
+            <button className="btn border-0 text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
               <p className="text-[16px] font-bold w-[86px]">See Promo</p>
             </button>
           </div>
         </div>
       </div>
-      <footer className=" w-full bg-[#dfd3c3] pt-[180px] ">
+      <footer className=" w-full bg-[#dfd3c3] lg:pt-[180px] ">
         <div className="flex py-[5%] px-[10%]">
           <div className="grow">
             <div className="flex gap-[15px]">
@@ -558,7 +564,7 @@ export default function Home() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
-                  class="w-3 h-3 text-white"
+                  className="w-3 h-3 text-white"
                 >
                   <path
                     fill="currentColor"
