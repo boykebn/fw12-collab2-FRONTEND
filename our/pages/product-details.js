@@ -1,28 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Footer from '../components/footer'
+import Navbar from '../components/navbar'
 
 const ProductDetails = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className='flex px-[7%] py-[5%] border-b-2 border-[#F8EDE3]'>
-        <div className='flex gap-[15px]'>
-          <Image src={require('../images/logoOurCoffee.png')} width="30" height="33" alt="desc" ></Image>
-          <div>Our Coffee</div>
-        </div>
-        <div className='flex flex-1 w-64 items-center justify-center gap-[41px]'>
-          <Link href="/">Home</Link>
-          <Link href="/">Product</Link>
-          <Link href="">Your Cart</Link>
-          <Link href="/">History</Link>
-        </div>
-        <div className='flex gap-[30px]'>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-          <Image src={require('../images/chat.png')} width="30" height="30" alt="desc" ></Image>
-          <Image src={require('../images/profile.png')} className="rounded-full" width="30" height="30" alt="desc" ></Image>
-        </div>
-      </nav>
+      <Navbar></Navbar>
 
       {/* Konten */}
       <main className='relative bg-[#F8EDE3] pt-[52px] pb-[10%]'>

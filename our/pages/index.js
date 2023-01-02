@@ -1,32 +1,25 @@
-import React from "react";
 import Image from "next/image";
-import logo from "../assets/logoOurCoffee.png";
 import Link from "next/link";
-import search from "../assets/search.png";
-import profileIcon from "../assets/profile-icon.png";
+import React from "react";
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiTwotoneHeart } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { AiTwotoneHeart } from "react-icons/ai";
-import layer2 from "../assets/img-layer2.png";
 import ceklis from "../assets/ceklis.png";
+import ceklis2 from "../assets/ceklis2.png";
 import food1 from "../assets/food1.png";
 import food2 from "../assets/food2.png";
 import food3 from "../assets/food3.png";
-import ceklis2 from "../assets/ceklis2.png";
 import globe from "../assets/Huge Global.png";
-import sponsored from "../assets/Sponsored.png";
+import layer2 from "../assets/img-layer2.png";
 import person1 from "../assets/person1.png";
 import person2 from "../assets/person2.png";
 import person3 from "../assets/person3.png";
+import sponsored from "../assets/Sponsored.png";
 import star from "../assets/star.png";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
-import { ImInstagram } from "react-icons/im";
 // import Footer from "../components/footer";
 
-import Navbar from "../components/navbar";
-import Footer from "../components/footer"
 import { BiSearch } from "react-icons/bi";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   return (

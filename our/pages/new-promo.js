@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Search, Camera as Photo, Facebook, Twitter, Instagram, X } from 'feather-icons-react/build/IconComponents'
+import { Search, Camera as Photo, Facebook, Twitter, Instagram, X, ChevronLeft, Trash2 } from 'feather-icons-react/build/IconComponents'
 import ImageUploading from 'react-images-uploading';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
@@ -70,19 +70,32 @@ const NewPromo = () => {
     </section>
 
     {/* Add new promo */}
-    <section className='bg-white px-28 py-8'>
-      <div className='flex items-center gap-2'>
+    <section className='bg-white px-5 md:px-28 py-8'>
+      <div className='hidden md:flex items-center gap-2'>
         <p>Favorite & Promo </p>
         <p className='text-[#7D6E83] font-bold'>&gt; Add new promo</p>
       </div>
+      <div className='flex md:hidden items-center'>
+        <div className='flex-[25%]'>
+          <ChevronLeft />
+        </div>
+        <div className='flex-[50%] text-center'>
+          <p className='font-bold text-lg'>New Promo</p>
+        </div>
+        <div className='flex-[25%] flex justify-end'>
+          <div className='bg-[#7D6E83] w-10 h-10 flex items-center justify-center rounded-full'>
+            <Trash2 className='text-white'/>
+          </div>
+          </div>
+      </div>
 
-      <div className='flex gap-28 py-16'>
+      <div className='flex flex-col md:flex-row gap-10 md:gap-28 py-16'>
         {/* Left */}
         <div className='flex-[35%] flex flex-col items-center'>
           <div className='flex justify-center items-center w-52 h-52 rounded-full bg-gray-400 mb-5'>
             <Photo className='feather-50'/>
           </div>
-          <div className='w-full mb-5'>
+          <div className='hidden md:block w-full mb-5'>
             <button onClick={() => setCamera(true) & setAlertTakePicture(false)} className='btn bg-[#7D6E83] border-0 w-full font-bold'>Take a picture</button>
           </div>
           <ImageUploading 
@@ -94,23 +107,23 @@ const NewPromo = () => {
               {({
                 onImageUpload
               })=> (
-                <div className='w-full mb-5'>
+                <div className='md:w-full mb-5'>
                   <button onClick={onImageUpload} className='btn bg-[#FFBA33] text-[#7D6E83] border-0 w-full font-bold'>Choose from gallery</button>
                 </div>
               )}
           </ImageUploading>
-          <div className='mt-12'>
+          <div className='hidden md:block mt-12'>
             <label className='font-bold text-[#7D6E83]'>Enter the discount :</label>
             <input type='number' name='discount' placeholder='Input discount' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
-          <div className='mt-8'>
+          <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Expire date :</label>
             <input type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoStartDate' placeholder='Select start date' className='input input-bordered focus:outline-none mt-3 '/>
             <input type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoEndDate' placeholder='Select end date' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
-          <div className='mt-8'>
+          <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Input coupon code :</label>
             <input type='number' name='discount' placeholder='Input stock' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
@@ -126,11 +139,23 @@ const NewPromo = () => {
             <label className='font-bold text-[#7D6E83]'>Normal Price :</label>
             <input type='text' name='normalPrice' placeholder='Type the normal price' className='input mt-2 focus:outline-none' />
           </div>
+          <div className='md:hidden border-b-2 mb-5'>
+            <label className='font-bold text-[#7D6E83]'>Discount :</label>
+            <input type='text' name='discount' placeholder="Input the discount you'll use for the promo" className='input mt-2 focus:outline-none' />
+          </div>
+          <div className='md:hidden border-b-2 mb-5'>
+            <label className='font-bold text-[#7D6E83]'>Delivery Info :</label>
+            <input type='text' name='deliveryInfo' placeholder="Type delivery information for this promo" className='input mt-2 focus:outline-none' />
+          </div>
+          <div className='md:hidden border-b-2 mb-5'>
+            <label className='font-bold text-[#7D6E83]'>Expired Date  :</label>
+            <input type='text' onFocus={(e) => (e.target.type = 'date')} onBlur={(e) => (e.target.type = 'text')} name='expiredDate' placeholder="Type the expire date for the promo" className='input mt-2 focus:outline-none' />
+          </div>
           <div className='border-b-2 mb-5'>
             <label className='font-bold text-[#7D6E83]'>Description :</label>
             <input type='text' name='description' placeholder='Describe your promo min. 150 characters' className='input mt-2 focus:outline-none' />
           </div>
-          <div className='mb-5'>
+          <div className='hidden md:block mb-5'>
             <label className='font-bold text-[#7D6E83]'>Input product size :</label>
             <p className='mt-2 mb-5'>Click product size you want to use for this promo</p>
             <div className='flex gap-3'>
@@ -154,7 +179,7 @@ const NewPromo = () => {
               </div>
             </div>
           </div>
-          <div className='mb-5'>
+          <div className='hidden md:block mb-5'>
             <label className='font-bold text-[#7D6E83]'>Input delivery methods :</label>
             <p className='mt-2 mb-5'>Click methods you want to use for this promo</p>
             <div className='grid grid-cols-3 gap-3'>
@@ -173,11 +198,12 @@ const NewPromo = () => {
             <div className='mb-5'>
               <button className='btn btn-lg bg-[#7D6E83] border-0'>Save Promo</button>
             </div>
-            <div>
+            <div className='hidden md:block'>
               <button className='btn btn-lg bg-gray-400 font-bold border-0 font-bold text-gray-700'>Cancel</button>
             </div>
           </div>
         </div>
+
       </div>
     </section>
     {/* Footer */}

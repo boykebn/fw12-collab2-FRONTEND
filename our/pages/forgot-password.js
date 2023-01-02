@@ -1,34 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import Logo from '../images/logoOurCoffee.png'
-import GoogleLogo from '../images/google.png'
 import FeatherIcon from 'feather-icons-react'
-import {Formik, Form, Field} from 'formik'
-import * as Yup from 'yup'
-import YupPasword from 'yup-password'
-YupPasword(Yup)
 
-const LoginSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string()
-    .password()
-    .min(8, 'Min lenght 8')
-    .minLowercase(1, 'Min lowercase 1')
-    .minUppercase(1, 'Min uppercase 1')
-    .minSymbols(1, 'Min symbol 1')
-    .minNumbers(1, 'Min number 1')
-})
-
-const Login = () => {
-  const [eyeClicked, setEyeClicked] = React.useState(false)
-  const showPassword = () => {
-    if (eyeClicked === false) {
-      setEyeClicked(true)
-    } else {
-      setEyeClicked(false)
-    }
-  }
+const ForgotPassword = () => {
 
   return(
     <>
@@ -113,4 +88,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default ForgotPassword
