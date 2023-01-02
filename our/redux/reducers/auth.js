@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-    token: null
+    token: null,
 }
 
 const authReducer = createSlice({
@@ -12,7 +12,7 @@ const authReducer = createSlice({
           state.token = payload.token
       },
       logout: (state, action) => {
-          return initialState
+          state.token = null
       }
     },
     extraReducers: (build) => {

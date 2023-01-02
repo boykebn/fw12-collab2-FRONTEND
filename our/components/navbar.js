@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   return (
@@ -84,12 +85,13 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div className="w-10 rounded-full">
+        <Link href="/profile"><div className="w-10 rounded-full">
           <img
             src="https://placeimg.com/80/80/people"
             className="rounded-full"
           />
         </div>
+        </Link>
       </div>
     </div>
   );
