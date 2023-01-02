@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import {logout} from "../redux/reducers/auth"
 
@@ -120,7 +121,7 @@ const Profile = () => {
                       <button className="btn btn-wide">Edit Password</button>
                     </div>
                     <div className='pt-5'>
-                      <button className="btn btn-wide" onClick={() => dispatch(logout())}>Log Out</button>
+                     <Link href="/"> <button className="btn btn-wide" onClick={() => dispatch(logout())}>Log Out</button> </Link>
                     </div>
                   </div>
               </div>
