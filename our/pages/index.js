@@ -60,7 +60,7 @@ export default function Home() {
             <p className="hidden lg:block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
               Start Your Day with Coffee and Good Meals
             </p>
-            <p className="block text-black text-5xl font-black lg:hidden">A good coffee <br/>is a good day</p>
+            <p className="block text-black text-5xl font-black lg:hidden">A good coffee <br />is a good day</p>
             <p className="hidden lg:block text-white text-[20px] font-bold leading-[30px] w-[555px] mb-[32px]">
               We provide high quality beans, good taste, and healthy meals made
               by love just for you. Start your day with us for a bigger smile!
@@ -73,7 +73,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="pt-[20px] relative">
-            <BiSearch className="absolute top-9 left-5 w-8 h-8"/>
+            <BiSearch className="absolute top-9 left-5 w-8 h-8" />
             <input
               placeholder="Search"
               className="focus:outline-none bg-[#f8ede3] py-[17px] pl-[75px] pr-10 font-[900] rounded-[30px]"
@@ -176,7 +176,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] lg:absolute lg:h-[1250px] lg:mb-[400px] w-full flex flex-col items-center">
+      <div className="bg-[#f8ede3] lg:h-[1250px] w-full flex flex-col items-center">
         <div className="hidden lg:block pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
@@ -188,208 +188,214 @@ export default function Home() {
         </div>
         <div className="flex justify-center items-center px-5 w-full">
           <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 lg:justify-center">
-          <div className="carousel-item">
-            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
-              <div className="mb-[30px] leading-[30px]">
-                <Image
-                  src={food1}
-                  alt="food1"
-                  className="rounded-[50%] shadow-xl mb-[53px]"
-                />
-                <p className="text-[18px] leading-[30px] font-bold">
-                  Hazelnut Latte
+            <div className="carousel-item">
+              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+                <div className="mb-[30px] leading-[30px]">
+                  <Image
+                    src={food1}
+                    alt="food1"
+                    className="rounded-[50%] shadow-xl mb-[53px]"
+                  />
+                  <p className="text-[18px] leading-[30px] font-bold">
+                    Hazelnut Latte
+                  </p>
+                </div>
+                <div className="hidden lg:flex items-center mb-[100px] leading-[30px]">
+                  <div className="">
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">HazelnutSyrup</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Wanilla Whipped Cream</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Ice / Hot</p>
+                    </div>
+                    <div className="flex items-center">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p>Sliced Banana on Top</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] text-center mb-[20px]">
+                  IDR 25.000
                 </p>
+                <div className="flex justify-center">
+                    <button className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                  <Link href="/payment-delivery-cust">
+                    Order Now
+                  </Link>
+                    </button>
+                </div>
               </div>
-              <div className="hidden lg:flex items-center mb-[100px] leading-[30px]">
-                <div className="">
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">HazelnutSyrup</p>
+            </div>
+            <div className="carousel-item">
+              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+                <div className="mb-[30px]">
+                  <Image
+                    src={food2}
+                    alt="food2"
+                    className="rounded-[50%] shadow-xl mb-[53px]"
+                  />
+                  <p className="text-[18px] leading-[30px] font-bold">
+                    Pinky Promisee
+                  </p>
+                </div>
+                <div className="hidden lg:flex items-center mb-[110px]">
+                  <div className="">
+                    <div className="flex items-center mb-[10px] leading-[30px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px] mr-[25px]"
+                      />
+                      <p className="">1 Shot of Coffee</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Vanilla Whipped Cream</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Chocolate Biscuits</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p>Strawberry Syrup</p>
+                    </div>
+                    <div className="flex items-center">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p>Sliced strawberry on Top</p>
+                    </div>
                   </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Wanilla Whipped Cream</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Ice / Hot</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p>Sliced Banana on Top</p>
+                </div>
+                <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] text-center mb-[20px]">
+                  IDR 30.000
+                </p>
+                <div className="flex justify-center">
+                  <div className="flex justify-center">
+                    <Link href="/payment-delivery-cust" className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                      Order Now
+                    </Link>
                   </div>
                 </div>
               </div>
-              <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] text-center mb-[20px]">
-                IDR 25.000
-              </p>
-              <div className="flex justify-center">
-                <button className="py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
-                  Order Now
-                </button>
+            </div>
+            <div className="carousel-item">
+              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+                <div className="mb-[30px]">
+                  <Image
+                    src={food3}
+                    alt="food3"
+                    className="rounded-[50%] shadow-xl mb-[53px]"
+                  />
+                  <p className="text-[18px] leading-[30px] font-bold">
+                    Chicken Wings
+                  </p>
+                </div>
+                <div className="hidden lg:flex items-center mb-[70px]">
+                  <div className="ml-5">
+                    <div className="flex items-center mb-[10px] leading-[30px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Wings</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Drum Sticks</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p className="">Mayonaise and Lemon</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p>Hot Fried</p>
+                    </div>
+                    <div className="flex items-center mb-[10px]">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p>Secret Recipe</p>
+                    </div>
+                    <div className="flex items-center">
+                      <Image
+                        src={ceklis2}
+                        alt="ceklis2"
+                        className="w-[14px] h-[9px]  mr-[25px]"
+                      />
+                      <p>Buy 1 Get 1 only for Dine in</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] text-center mb-[20px]">
+                  IDR 25.000
+                </p>
+                <div className="flex justify-center">
+                  <div className="flex justify-center">
+                    <Link href="/payment-delivery-cust" className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                      Order Now
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="carousel-item">
-            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
-              <div className="mb-[30px]">
-                <Image
-                  src={food2}
-                  alt="food2"
-                  className="rounded-[50%] shadow-xl mb-[53px]"
-                />
-                <p className="text-[18px] leading-[30px] font-bold">
-                  Pinky Promisee
-                </p>
-              </div>
-              <div className="hidden lg:flex items-center mb-[110px]">
-                <div className="">
-                  <div className="flex items-center mb-[10px] leading-[30px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px] mr-[25px]"
-                    />
-                    <p className="">1 Shot of Coffee</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Vanilla Whipped Cream</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Chocolate Biscuits</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p>Strawberry Syrup</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p>Sliced strawberry on Top</p>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] text-center mb-[20px]">
-                IDR 30.000
-              </p>
-              <div className="flex justify-center">
-                <button className="py-[13px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
-                  Order Now
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
-              <div className="mb-[30px]">
-                <Image
-                  src={food3}
-                  alt="food3"
-                  className="rounded-[50%] shadow-xl mb-[53px]"
-                />
-                <p className="text-[18px] leading-[30px] font-bold">
-                  Chicken Wings
-                </p>
-              </div>
-              <div className="hidden lg:flex items-center mb-[70px]">
-                <div className="ml-5">
-                  <div className="flex items-center mb-[10px] leading-[30px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Wings</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Drum Sticks</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p className="">Mayonaise and Lemon</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p>Hot Fried</p>
-                  </div>
-                  <div className="flex items-center mb-[10px]">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p>Secret Recipe</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Image
-                      src={ceklis2}
-                      alt="ceklis2"
-                      className="w-[14px] h-[9px]  mr-[25px]"
-                    />
-                    <p>Buy 1 Get 1 only for Dine in</p>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] text-center mb-[20px]">
-                IDR 25.000
-              </p>
-              <div className="flex justify-center">
-                <button className="py-[13px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
-                  Order Now
-                </button>
-              </div>
-            </div>
-            </div>
-            </div>
         </div>
       </div>
-      <div className=" hidden lg:block pt-[80rem] relative">
+      <div className=" hidden lg:block relative bg-white">
         <div className="mb-[155px] text-center pt-[130px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
             Visit Our Store in the Spot on the Map Below
@@ -417,7 +423,7 @@ export default function Home() {
             great pleasure.
           </p>
         </div>
-        <div className="pl-[40px] flex pb-[80px]">
+        <div className="px-[40px] flex pb-[80px]">
           <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
             <div className="flex mb-[20px]">
               <Image src={person1} alt="person1" className="mr-[21px]" />
@@ -524,7 +530,7 @@ export default function Home() {
           </div>
           <div>
             <button className="btn border-0 text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+              <p>See Promo</p>
             </button>
           </div>
         </div>

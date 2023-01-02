@@ -31,13 +31,13 @@ const Navbar = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/produck">Product</Link>
+              <Link href="/product">Product</Link>
             </li>
             <li>
-              <Link href="/">Your Cart</Link>
+              <Link href="/payment-delivery-cust">Your Cart</Link>
             </li>
             <li>
-              <Link href="/">History</Link>
+              <Link href="/history-cust">History</Link>
             </li>
           </ul>
         </div>
@@ -58,13 +58,13 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/produck">Product</Link>
+            <Link href="/product">Product</Link>
           </li>
           <li>
-            <Link href="">Your Cart</Link>
+            <Link href="/payment-delivery-cust">Your Cart</Link>
           </li>
           <li>
-            <Link href="/">History</Link>
+            <Link href="/history-cust">History</Link>
           </li>
         </ul>
       </div>
