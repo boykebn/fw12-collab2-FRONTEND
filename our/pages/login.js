@@ -43,18 +43,16 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = React.useState('')
   const [alertError, setAlertError] = React.useState(false)
   const [alertSuccess, setAlertSuccess] = React.useState(false)
-  console.log(role)
 
-  const cb = () => {
-    if (role === 2) {
-      setTimeout(()=>{
-        router.replace('/dashboard-admin')
-      }, 3000)
-    } else {
-      setTimeout(()=>{
-        router.replace('/product')
-      }, 3000)
-    }
+  const toProduct = () => {
+    setTimeout(()=>{
+      router.replace('/product')
+    }, 3000)
+  }
+  const toDashboard = () => {
+    setTimeout(()=>{
+      router.replace('/dashboard-admin')
+    }, 3000)
   }
 
   const login = async (value) => {
@@ -62,10 +60,14 @@ const Login = () => {
       const response = await http().post('/auth/login', value)
       const token = response?.data?.results?.token
       const decode = jwt_decode(token)
-      setRole(decode?.role)
+      const role = decode?.role
       dispatch(loginAction({token}))
       setAlertSuccess(true)
-      cb()
+      if (role == 1) {
+        toProduct()
+      } else {
+        toDashboard()
+      }
     } catch(error) {
       setErrorMessage(error?.response?.data?.message)
       setAlertError(true)
