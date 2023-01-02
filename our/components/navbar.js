@@ -31,18 +31,18 @@ const Navbar = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/produck">Product</Link>
+              <Link href="/product">Product</Link>
             </li>
             <li>
-              <Link href="/">Your Cart</Link>
+              <Link href="/payment-delivery-cust">Your Cart</Link>
             </li>
             <li>
-              <Link href="/">History</Link>
+              <Link href="/history-cust">History</Link>
             </li>
           </ul>
         </div>
         {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
-        <div className="flex ml-[5%] gap-2">
+        <Link href="" className="flex ml-[5%] gap-2">
           <Image
             src={require("../images/logoOurCoffee.png")}
             width="30"
@@ -50,7 +50,7 @@ const Navbar = () => {
             alt="desc"
           ></Image>
           <div>Our Coffee</div>
-        </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal">
@@ -58,13 +58,13 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/produck">Product</Link>
+            <Link href="/product">Product</Link>
           </li>
           <li>
-            <Link href="">Your Cart</Link>
+            <Link href="/payment-delivery-cust">Your Cart</Link>
           </li>
           <li>
-            <Link href="/">History</Link>
+            <Link href="/history-cust">History</Link>
           </li>
         </ul>
       </div>
@@ -85,12 +85,13 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <Link href="/profile"><div className="w-10 rounded-full">
-          <img
-            src="https://placeimg.com/80/80/people"
-            className="rounded-full"
-          />
-        </div>
+        <Link href="/profile">
+          <div className="w-10 rounded-full">
+            <img
+              src="https://placeimg.com/80/80/people"
+              className="rounded-full"
+            />
+          </div>
         </Link>
       </div>
     </div>

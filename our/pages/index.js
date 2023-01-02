@@ -202,7 +202,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-[#f8ede3] lg:absolute lg:h-[1250px] lg:mb-[400px] w-full flex flex-col items-center">
+      <div className="bg-[#f8ede3] lg:h-[1250px] w-full flex flex-col items-center">
         <div className="hidden lg:block pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
@@ -266,9 +266,11 @@ export default function Home() {
                   IDR 25.000
                 </p>
                 <div className="flex justify-center">
-                  <button className="py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                    <button className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                  <Link href="/payment-delivery-cust">
                     Order Now
-                  </button>
+                  </Link>
+                    </button>
                 </div>
               </div>
             </div>
@@ -332,9 +334,11 @@ export default function Home() {
                   IDR 30.000
                 </p>
                 <div className="flex justify-center">
-                  <button className="py-[13px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
-                    Order Now
-                  </button>
+                  <div className="flex justify-center">
+                    <Link href="/payment-delivery-cust" className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                      Order Now
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -406,16 +410,18 @@ export default function Home() {
                   IDR 25.000
                 </p>
                 <div className="flex justify-center">
-                  <button className="py-[13px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
-                    Order Now
-                  </button>
+                  <div className="flex justify-center">
+                    <Link href="/payment-delivery-cust" className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                      Order Now
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className=" hidden lg:block pt-[80rem] relative">
+      <div className=" hidden lg:block relative bg-white">
         <div className="mb-[155px] text-center pt-[130px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
             Visit Our Store in the Spot on the Map Below
@@ -443,7 +449,7 @@ export default function Home() {
             great pleasure.
           </p>
         </div>
-        <div className="pl-[40px] flex pb-[80px]">
+        <div className="px-[40px] flex pb-[80px]">
           <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
             <div className="flex mb-[20px]">
               <Image src={person1} alt="person1" className="mr-[21px]" />
@@ -550,7 +556,7 @@ export default function Home() {
           </div>
           <div>
             <button className="btn border-0 text-white border-1 bg-[#7d6e83] py-[17px] px-[60px] rounded-[10px] text-[16px] font-bold">
-              <p className="text-[16px] font-bold w-[86px]">See Promo</p>
+              <p>See Promo</p>
             </button>
           </div>
         </div>
