@@ -1,6 +1,9 @@
 import { Search } from 'feather-icons-react/build/IconComponents';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BiCreditCardFront } from "react-icons/bi";
+import { HiOutlineBuildingLibrary } from "react-icons/hi2";
+import {TbTruckDelivery} from "react-icons/tb"
 
 
 const PaymentAndDeliveryCust = () => {
@@ -117,18 +120,27 @@ const PaymentAndDeliveryCust = () => {
               <div className='flex items-center gap-5 pb-5'>
                 <input type="radio" name="radio-1" className="radio" checked />
                 <Image src={require('../images/card.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
+                <div className='absolute pl-[50px]'>
+                  <BiCreditCardFront className='w-[30px] h-[30px]' />
+                </div>
                 <p className='text-xl'>Card</p>
               </div>
               <hr />
               <div className='flex items-center gap-5 pt-5 pb-5'>
                 <input type="radio" name="radio-1" className="radio" checked />
                 <Image src={require('../images/bang.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
+                <div className='absolute pl-[50px]'>
+                  <HiOutlineBuildingLibrary className='w-[30px] h-[30px]' />
+                </div>
                 <p className='text-xl'>Bank account</p>
               </div>
               <hr />
               <div className='flex items-center gap-5 pt-5 pb-5'>
                 <input type="radio" name="radio-1" className="radio" checked />
                 <Image src={require('../images/delivery.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
+                <div className='absolute pl-[50px]'>
+                  <TbTruckDelivery className='w-[30px] h-[30px]' />
+                </div>
                 <p className='text-xl'>Cash on delivery</p>
               </div>
 
