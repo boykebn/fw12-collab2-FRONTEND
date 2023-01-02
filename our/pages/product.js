@@ -7,7 +7,7 @@ const Product = () => {
   return (
     <>
       {/* Navbar */}
-      <Navbar></Navbar>
+      <Navbar/>
 
       {/* Konten */}
       <div className='flex'>
@@ -23,8 +23,8 @@ const Product = () => {
                 <div className='absolute bg-[#D0B8A8] w-[284px] h-[400px] rounded-lg right-4 top-[-10%]'>
                   <div className='absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center'>
                     <Image src={require('../images/spaghetti.png')} className="rounded-full pt-[15%]" alt="desc" ></Image>
-                    <div className='mt-[30px] font-bold font-[22px]'>Beef Spaghetti</div>
-                    <div className='font-bold font-[22px]'>20% OFF</div>
+                    <div className='mt-[30px] font-bold'>Beef Spaghetti</div>
+                    <div className='font-bold'>20% OFF</div>
                     <div className='text-center'>
                       <div className='mt-5'>
                         <div>Buy 1 Choco Oreo and get 20% off</div>
@@ -136,7 +136,7 @@ const Product = () => {
       </div>
 
       {/* FOOTER */}
-      <Footer></Footer>
+      <Footer/>
     </>
   )
 }

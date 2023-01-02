@@ -1,7 +1,8 @@
 import React from 'react'
-import { Edit2, Facebook, Instagram, Search, Twitter } from 'feather-icons-react/build/IconComponents'
-import Image from 'next/image'
-import ImageUploading from 'react-images-uploading'
+import { Edit2, Facebook, Instagram, Search, Twitter } from 'feather-icons-react/build/IconComponents';
+import Image from 'next/image';
+import ImageUploading from 'react-images-uploading';
+import Link from 'next/link';
 
 
 const EditPromo = () => {
@@ -19,11 +20,19 @@ const EditPromo = () => {
           </div>
         </div>
         <div className=''>
-          <ul className='flex items-center justify-center gap-10'>
+            <ul className='flex items-center justify-center gap-10'>
+              <Link href="/">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
+              </Link>
+              <Link href="/product">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
+              </Link>
+              <Link href="manage-orders">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
+              </Link>
+              <Link href="/dashboard-admin">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Dashboard</li>
+              </Link>
           </ul>
         </div>
         <div className='flex gap-8 items-center'>

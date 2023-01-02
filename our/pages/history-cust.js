@@ -1,76 +1,44 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from 'next/link';
+import { Edit2, Facebook, Instagram, Search, Twitter } from 'feather-icons-react/build/IconComponents';
+
 
 const HistoryCust = () => {
     return(
         <div className='max-w-full max-h-full'>
-            <nav>
-              <div className="navbar bg-base-100 py-10">
-                <div className="navbar-start">
-                  <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                      <li><a>Home</a></li>
-                      <li tabIndex={0}>
-                        <a className="justify-between">
-                          Product
-                          <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
-                        </a>
-                        <ul className="p-2">
-                          <li><a>Submenu 1</a></li>
-                          <li><a>Submenu 2</a></li>
-                        </ul>
-                      </li>
-                      <li><a>Your Cart</a></li>
-                      <li><a>History</a></li>
-                    </ul>
-                  </div>
-                  <div className='pl-32 flex items-center'>
-                    <Image src={require('../images/logoOurCoffee.png')} width="40" height="40" alt="hazelnut"  className='rounded-lg'/>
-                    <a className="normal-case text-2xl font-bold">Our Coffe</a>
-                  </div>
-                </div>
-                <div className="navbar-center hidden lg:flex">
-                  <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
-                    <li tabIndex={0}>
-                      <a>
-                        Product
-                        {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg> */}
-                      </a>
-                      <ul className="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                      </ul>
-                    </li>
-                    <li><a>Your Cart</a></li>
-                    <li><a>History</a></li>
-                  </ul>
-                </div>
-                <div className="navbar-end gap-10">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-[30px] h-[30px]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                      <Image src={require('../images/chat-1.png')} width="30" height="33" alt="chat" ></Image>
-                  <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="avatar pr-32">
-                      <div className="w-10 rounded-full">
-                        <img src="https://placeimg.com/80/80/people" />
-                      </div>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                      <li>
-                        <a className="justify-between">
-                          Profile
-                          <span className="badge">New</span>
-                        </a>
-                      </li>
-                      <li><a>Settings</a></li>
-                      <li><a>Logout</a></li>
-                    </ul>
-                </div>
-                </div>
-              </div>
-            </nav>
+             <section>
+      <div className='hidden md:flex items-center gap-40 px-28 py-5 border-b-2'>
+        <div className='flex-1'>
+          <div className='flex items-center gap-3 w-fit cursor-pointer'>
+            <Image src={require('../images/logoOurCoffee.png')} alt='Logo' className='w-8 h-8' />
+            <h1 className='font-bold text-xl'>Our Coffee</h1>
+          </div>
+        </div>
+        <div className=''>
+            <ul className='flex items-center justify-center gap-10'>
+              <Link href="/">
+            <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
+              </Link>
+              <Link href="/product">
+            <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
+              </Link>
+              <Link href="manage-orders">
+            <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
+              </Link>
+              <Link href="/dashboard-admin">
+            <li className='cursor-pointer hover:text-[#7D6E83]'>Dashboard</li>
+              </Link>
+          </ul>
+        </div>
+        <div className='flex gap-8 items-center'>
+          <Search className='w-4/4 cursor-pointer' />
+          <Image src={require('../images/chat.png')} alt='chatIcon' className='w-4/4 cursor-pointer' />
+          <div>
+            <Image src={require('../images/profile.png')} alt='profile' className='w-4/4 rounded-full cursor-pointer' />
+          </div>
+        </div>
+      </div>
+    </section>
 
             <div className='bg-history_bg bg-no-repeat bg-cover pb-[100px]'>
 

@@ -1,11 +1,12 @@
 import { ChevronLeft, Facebook, Instagram, Search, Twitter } from 'feather-icons-react/build/IconComponents'
 import Image from 'next/image'
-import ChartDailyAvg from '../images/chartDailyAvg.png'
+import ChartDailyAvg from '../images/chartDailyAvg.png';
+import Navbar from '../components/navbar'
 
 const DashboardAdmin = () => {
   return(
     <>
-    {/* Header */}
+      {/* Header */}
     <section>
       <div className='hidden md:flex items-center gap-40 px-28 py-5'>
         <div className='flex-1'>
@@ -15,11 +16,19 @@ const DashboardAdmin = () => {
           </div>
         </div>
         <div className=''>
-          <ul className='flex items-center justify-center gap-10'>
+            <ul className='flex items-center justify-center gap-10'>
+              <Link href="/">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
+              </Link>
+              <Link href="/product">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
+              </Link>
+              <Link href="manage-orders">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
+              </Link>
+              <Link href="/dashboard-admin">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Dashboard</li>
+              </Link>
           </ul>
         </div>
         <div className='flex gap-8 items-center'>
@@ -165,7 +174,8 @@ const DashboardAdmin = () => {
 
       <div className='flex items-center gap-8'>
         <div className='flex-[70%]'>
-          <button className='btn rounded-xl bg-[#7D6E83]'>Download Report</button>
+          <button className='btn rounded-xl bg-[#7D6E83]'>Dowme
+Prnload Report</button>
         </div>
         <div className='hidden md:block flex-[30%]'>
           <button className='btn rounded-xl bg-[#7D6E83]'>Share Report</button>
