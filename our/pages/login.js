@@ -7,8 +7,12 @@ import FeatherIcon from 'feather-icons-react'
 import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
 import YupPasword from 'yup-password'
-import { useSelector } from 'react-redux'
+import http from '../helpers/http'
 YupPasword(Yup)
+import {useDispatch} from 'react-redux'
+import {useRouter} from 'next/router'
+import { login as loginAction } from '../redux/reducers/auth'
+import jwt_decode from "jwt-decode";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -22,13 +26,51 @@ const LoginSchema = Yup.object().shape({
 })
 
 const Login = () => {
-  const {error, loading } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  const router = useRouter()
+
   const [eyeClicked, setEyeClicked] = React.useState(false)
   const showPassword = () => {
     if (eyeClicked === false) {
       setEyeClicked(true)
     } else {
       setEyeClicked(false)
+    }
+  }
+
+  // Login
+  const [role, setRole] = React.useState(null)
+  const [errorMessage, setErrorMessage] = React.useState('')
+  const [alertError, setAlertError] = React.useState(false)
+  const [alertSuccess, setAlertSuccess] = React.useState(false)
+
+  const toProduct = () => {
+    setTimeout(()=>{
+      router.replace('/product')
+    }, 3000)
+  }
+  const toDashboard = () => {
+    setTimeout(()=>{
+      router.replace('/dashboard-admin')
+    }, 3000)
+  }
+
+  const login = async (value) => {
+    try {
+      const response = await http().post('/auth/login', value)
+      const token = response?.data?.results?.token
+      const decode = jwt_decode(token)
+      const role = decode?.role
+      dispatch(loginAction({token}))
+      setAlertSuccess(true)
+      if (role == 1) {
+        toProduct()
+      } else {
+        toDashboard()
+      }
+    } catch(error) {
+      setErrorMessage(error?.response?.data?.message)
+      setAlertError(true)
     }
   }
 
@@ -58,13 +100,27 @@ const Login = () => {
               password: ''
             }}
             validationSchema={LoginSchema}
-            onSubmit={(value) => console.log(value)}>
+            onSubmit={(value) => login(value)}>
               {({errors, touched}) => (
-                <Form className='px-5 flex flex-col'>
+                <Form className='px-5 flex flex-col' onChange={() => setAlertError(false)}>
                   <div className='relative py-5 md:my-8'>
-                    <Image src={require('../images/ladyCoffee.png')} className='md:hidden pl-10 w-3/5' />
+                    <Image src={require('../images/ladyCoffee.png')} alt='ladiCoffee' className='md:hidden pl-10 w-3/5' />
                     <h1 className='md:hidden font-bold text-6xl absolute top-32 right-20'>Log<br/>In</h1>
                     <h1 className='hidden md:block font-bold text-3xl text-[#7D6E83] text-center'>Login</h1>
+                    {alertError ?
+                    <div class="alert alert-error shadow-lg mt-8">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      <span>{errorMessage}</span>
+                    </div>
+                  </div> : false }
+                  {alertSuccess ?
+                  <div class="alert alert-success shadow-lg mt-8">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      <span>Login succesfully</span>
+                    </div>
+                  </div> : false}
                   </div>
                   <div className='w-[25rem] border-b-2 md:border-b-0 mb-8'>
                     <label>Email Address :</label><br />
