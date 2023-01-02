@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "../assets/logoOurCoffee.png";
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiTwotoneHeart } from "react-icons/ai";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+  AiTwotoneHeart,
+} from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import ceklis from "../assets/ceklis.png";
@@ -37,10 +41,21 @@ export default function Home() {
           </span>
         </div>
         <div className=" hidden text-[#4F5665] text-[16px] mr-52 lg:flex gap-10">
-          <Link href="/" className="font-bold text-[#7d6e83] mr-[40px]">Home</Link>
-          <Link href="/product" className="mr-[40px] hover:text-[#7d6e83]">Product</Link>
-          <Link href="/payment-delivery-cust" className="mr-[40px] hover:text-[#7d6e83]">Your Cart</Link>
-          <Link href="/history-cust" className="hover:text-[#7d6e83]">History</Link>
+          <Link href="/" className="font-bold text-[#7d6e83] mr-[40px]">
+            Home
+          </Link>
+          <Link href="/product" className="mr-[40px] hover:text-[#7d6e83]">
+            Product
+          </Link>
+          <Link
+            href="/payment-delivery-cust"
+            className="mr-[40px] hover:text-[#7d6e83]"
+          >
+            Your Cart
+          </Link>
+          <Link href="/history-cust" className="hover:text-[#7d6e83]">
+            History
+          </Link>
         </div>
         <div className="flex justify-center items-center gap-5 text-xs lg:text-[16px] font-[600] leading-[19px]">
           <Link href="/login" className="lg:mr-[40px] text-[#0B132A]">
@@ -60,7 +75,10 @@ export default function Home() {
             <p className="hidden lg:block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
               Start Your Day with Coffee and Good Meals
             </p>
-            <p className="block text-black text-5xl font-black lg:hidden">A good coffee <br />is a good day</p>
+            <p className="block text-black text-5xl font-black lg:hidden">
+              A good coffee <br />
+              is a good day
+            </p>
             <p className="hidden lg:block text-white text-[20px] font-bold leading-[30px] w-[555px] mb-[32px]">
               We provide high quality beans, good taste, and healthy meals made
               by love just for you. Start your day with us for a bigger smile!
@@ -83,10 +101,18 @@ export default function Home() {
         <div className="mb-10 lg:hidden">
           <div className="flex text-xl w-full items-center mt-10">
             <div className="flex w-full justify-evenly text-[#4F5665]">
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">Favorite</span>
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">Promo</span>
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">Coffee</span>
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">Non Coffee</span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">
+                Favorite
+              </span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">
+                Promo
+              </span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">
+                Coffee
+              </span>
+              <span className="hover:border-b-[2px] border-[#D0B8A8]">
+                Non Coffee
+              </span>
             </div>
           </div>
         </div>
@@ -616,3 +642,4 @@ export default function Home() {
     </div>
   );
 }
+
