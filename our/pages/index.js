@@ -186,10 +186,10 @@ export default function Home() {
             yours too!
           </p>
         </div>
-        <div className="flex justify-center items-center px-5 pt-10 w-full">
+        <div className="flex justify-center items-center px-5 w-full">
           <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 lg:justify-center">
           <div className="carousel-item">
-            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pl-[68px] lg:pr-[65px] lg:pb-[50px] mb-[30px]">
+            <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
               <div className="mb-[30px] leading-[30px]">
                 <Image
                   src={food1}
@@ -200,7 +200,7 @@ export default function Home() {
                   Hazelnut Latte
                 </p>
               </div>
-              <div className="hidden lg:flex items-center mb-[130px] leading-[30px]">
+              <div className="hidden lg:flex items-center mb-[100px] leading-[30px]">
                 <div className="">
                   <div className="flex items-center mb-[10px]">
                     <Image
@@ -240,7 +240,7 @@ export default function Home() {
                 IDR 25.000
               </p>
               <div className="flex justify-center">
-                <button className="py-[13px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                <button className="py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
                   Order Now
                 </button>
               </div>
