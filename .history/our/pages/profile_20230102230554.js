@@ -74,7 +74,7 @@ const Profile = () => {
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </button>
               <div>
-                <ReactModal isOpen={picture} classNamew="w-auto">
+                <ReactModal isOpen={picture} classNamew="w-[100px]">
                   <p>Upload Picture</p>
                   <form>
                     <input type="file" />

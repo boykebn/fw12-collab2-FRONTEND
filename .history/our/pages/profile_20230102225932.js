@@ -5,7 +5,6 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import http from "../helpers/http";
-import ReactModal from "react-modal";
 const Profile = () => {
   const token = useSelector((state) => state.auth.token);
   const [picture, setpicture] = useState(false);
@@ -67,20 +66,9 @@ const Profile = () => {
                 alt="tomato"
                 className="rounded-full"
               />
-              <button
-                onClick={() => setpicture(true)}
-                className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]"
-              >
+              <button className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]">
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </button>
-              <div>
-                <ReactModal isOpen={picture} classNamew="w-auto">
-                  <p>Upload Picture</p>
-                  <form>
-                    <input type="file" />
-                  </form>
-                </ReactModal>
-              </div>
             </div>
 
             <div className="flex flex-col justify-center items-center">

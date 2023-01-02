@@ -5,10 +5,8 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import http from "../helpers/http";
-import ReactModal from "react-modal";
 const Profile = () => {
   const token = useSelector((state) => state.auth.token);
-  const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   console.log(bio);
   useEffect(() => {
@@ -22,31 +20,6 @@ const Profile = () => {
       "https://fw12-collab2-backend.vercel.app/profile"
     );
     return data;
-  };
-
-  const upload = async (e) => {
-    e.preventDefault();
-    const file = e.target.picture.files[0];
-    if (file?.size > 1024 * 1024 * 2) {
-      window.alert("File too large");
-    } else {
-      try {
-        const form = new FormData();
-        form.append("picture, file");
-        const { data } = await axios.patch(
-          "https://fw12-collab2-backend.vercel.app/profile",
-          form,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        window.alert(data.message);
-      } catch (err) {
-        window.alert(err.response.data.message);
-      }
-    }
   };
   return (
     <div className="max-w-full max-h-full font-poppins">
@@ -67,25 +40,16 @@ const Profile = () => {
                 alt="tomato"
                 className="rounded-full"
               />
-              <button
-                onClick={() => setpicture(true)}
-                className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]"
-              >
-                <MdOutlineModeEdit className="w-[18px] h-[20px] " />
-              </button>
-              <div>
-                <ReactModal isOpen={picture} classNamew="w-auto">
-                  <p>Upload Picture</p>
-                  <form>
-                    <input type="file" />
-                  </form>
-                </ReactModal>
-              </div>
+              <Image
+                src={require("../images/ellips.png")}
+                alt="ellips-edit"
+                className="rounded-full w-[30px] h-[30px]"
+              />
             </div>
 
             <div className="flex flex-col justify-center items-center">
-              <p className="text-xl font-bold pb-2 pt-4">{bio.firstName}</p>
-              <p>{bio.email}</p>
+              <p className="text-xl font-bold pb-2 pt-4">Zulaikha</p>
+              <p>zulaikha17@gmail.com</p>
               <p className="text-[#4F5665] text-lg pt-10">
                 Has been ordered 15 products
               </p>
@@ -160,7 +124,7 @@ const Profile = () => {
                   First name :
                 </span>
                 <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
-                  Nirmala
+                  {bio.firstName}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
