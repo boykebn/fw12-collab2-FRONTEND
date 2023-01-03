@@ -63,7 +63,7 @@ const ResetPassword = () => {
                 <Form className='flex flex-col items-center gap-10'>
                 <div className='w-96 text-black border-b-2 md:border-b-0'>
                   <label className='font-bold md:text-white text-lg'>Password Reset Code :</label>
-                  <Field type='email' name='email' placeholder='Enter your reset password code' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
+                  <Field type='text' name='code' placeholder='Enter your reset password code' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
                 </div>
                 <div className='w-96 text-black relative border-b-2 md:border-b-0'>
                   <label className='md:text-white font-bold'>New Password :</label><br />

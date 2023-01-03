@@ -88,9 +88,11 @@ const Product = () => {
             <div className='grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4'>
               {product?.map((product, i) => (
                   <div key={i} className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-                    <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
-                    <div>{product?.name}</div>
-                    <div>IDR 34.000</div>
+                    <Link href='/product-details'>
+                      <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
+                      <div>{product?.name}</div>
+                      <div>IDR 34.000</div>
+                    </Link>
                   </div>
               ))}
             </div>
