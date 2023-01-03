@@ -1,9 +1,16 @@
 import { ChevronLeft, Facebook, Instagram, Search, Twitter } from 'feather-icons-react/build/IconComponents'
 import Image from 'next/image'
-import ChartDailyAvg from '../images/chartDailyAvg.png';
-import Navbar from '../components/navbar'
+import ChartDailyAvg from '../images/chartDailyAvg.png'
+import {useDispatch} from 'react-redux'
+import {logout as logoutAction} from '../redux/reducers/auth'
 
 const DashboardAdmin = () => {
+  const dispatch = useDispatch()
+
+  const logout = () => {
+    dispatch(logoutAction())
+  }
+
   return(
     <>
       {/* Header */}
@@ -34,8 +41,22 @@ const DashboardAdmin = () => {
         <div className='flex gap-8 items-center'>
           <Search className='w-4/4 cursor-pointer' />
           <Image src={require('../images/chat.png')} alt='chatIcon' className='w-4/4 cursor-pointer' />
-          <div>
-            <Image src={require('../images/profile.png')} alt='profile' className='w-4/4 rounded-full cursor-pointer' />
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://placeimg.com/80/80/people" />
+              </div>
+            </label>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box">
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li><a>Settings</a></li>
+              <li><a onClick={logout}>Logout</a></li>
+            </ul>
           </div>
         </div>
       </div>
