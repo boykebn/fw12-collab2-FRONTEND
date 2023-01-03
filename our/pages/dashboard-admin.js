@@ -1,5 +1,6 @@
 import { ChevronLeft, Facebook, Instagram, Search, Twitter } from 'feather-icons-react/build/IconComponents'
 import Image from 'next/image'
+import Link from "next/link";
 import ChartDailyAvg from '../images/chartDailyAvg.png'
 import {useDispatch} from 'react-redux'
 import {logout as logoutAction} from '../redux/reducers/auth'
