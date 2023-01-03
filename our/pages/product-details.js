@@ -74,7 +74,7 @@ const ProductDetails = () => {
         </div>
       </main>
 
-      <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px]'>
+      <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px] mb-[-25px]'>
         <div className='flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px]'>
           <div>
             <Image src={require('../images/cold-brew.png')} className="rounded-full" width="50" height="50" alt="desc" ></Image>
