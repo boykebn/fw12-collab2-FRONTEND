@@ -1,3 +1,4 @@
+
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -6,25 +7,25 @@ import Navbar from '../components/navbar'
 import http from '../helpers/http'
 
 const Product = () => {
-  const [product, setProduct] = React.useState({})
-  const getProduct = async () => {
-    try{
-      const {data} = await http().get('/product', {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      })
-      setProduct(data.results)
-      console.log(data.results)
-    } catch (error){
-      if (error) throw error
-    }
-  }
+  // const [product, setProduct] = React.useState({})
+  // const getProduct = async () => {
+  //   try{
+  //     const response = await http().get('/product/category/Food', {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       }
+  //     })
+  //     setProduct(response.data.results)
+  //   } catch (error){
+  //     if (error) throw error
+  //   }
+  // }
 
-  React.useEffect(()=> {
-    getProduct
-  }, [])
-  console.log(product)
+  // React.useEffect(()=> {
+  //   getProduct
+  // }, [])
+  // console.log(product)
+  
   return (
     <>
       {/* Navbar */}
