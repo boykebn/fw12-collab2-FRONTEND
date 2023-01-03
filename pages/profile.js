@@ -73,14 +73,6 @@ const Profile = () => {
               >
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </button>
-              <div>
-                <ReactModal isOpen={picture} classNamew="w-auto">
-                  <p>Upload Picture</p>
-                  <form>
-                    <input type="file" />
-                  </form>
-                </ReactModal>
-              </div>
             </div>
 
             <div className="flex flex-col justify-center items-center">
