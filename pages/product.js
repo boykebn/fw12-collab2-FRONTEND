@@ -6,25 +6,30 @@ import Navbar from '../components/navbar'
 import http from '../helpers/http'
 
 const Product = () => {
-  const [product, setProduct] = React.useState({})
+  const [product, setProduct] = React.useState([])
+  const [category, setCategory] = React.useState('')
+  console.log(category);
+
+  const url = category === 'Favourite Products' ? '/product' : `/product/category/${category}`;
+
   const getProduct = async () => {
     try{
-      const {data} = await http().get('/product', {
+      const {data} = await http().get(url, {
         headers: {
           "Content-Type": "application/json",
         }
-      })
+      }) 
       setProduct(data.results)
-      console.log(data.results)
+      // console.log(data.results)
     } catch (error){
       if (error) throw error
     }
   }
 
   React.useEffect(()=> {
-    getProduct
-  }, [])
-  console.log(product)
+    getProduct()
+  }, [category])
+  // console.log(product)
   return (
     <>
       {/* Navbar */}
@@ -73,86 +78,23 @@ const Product = () => {
 
         <div className='md:grow pt-[29px]'>
           <div className='flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base'>
-            <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Favourite Products</Link>
-            <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Coffee</Link>
-            <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Non Coffee</Link>
-            <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Foods</Link>
-            <Link href="/" className='hover:border-2 hover:border-b-[#7D6E83]'>Add-on</Link>
+            <button onClick={(e) => setCategory(e.target.innerText)} className='hover:border-2 hover:border-b-[#7D6E83]'>Favourite Products</button>
+            <button onClick={(e) => setCategory(e.target.innerText)} className='hover:border-2 hover:border-b-[#7D6E83]'>Coffee</button>
+            <button onClick={(e) => setCategory(e.target.innerText)} className='hover:border-2 hover:border-b-[#7D6E83]'>Non Coffee</button>
+            <button onClick={(e) => setCategory(e.target.innerText)} className='hover:border-2 hover:border-b-[#7D6E83]'>Food</button>
+            <button onClick={(e) => setCategory(e.target.innerText)} className='hover:border-2 hover:border-b-[#7D6E83]'>Add-on</button>
           </div>
 
-          <div className='grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4'>
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
-              <div>{product?.name}</div>
-              <div>IDR 34.000</div>
+            <div className='grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4'>
+              {product?.map((product, i) => (
+                  <div key={i} className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
+                    <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
+                    <div>{product?.name}</div>
+                    <div>IDR 34.000</div>
+                  </div>
+              ))}
             </div>
 
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/hazelnut.png')} alt="desc" ></Image>
-              <div>Hazelnut Latte</div>
-              <div>IDR 25.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
-              <div>Summer fried rice</div>
-              <div>IDR 32.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
-              <div>Creamy Ice Latte</div>
-              <div>IDR 27.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/drum-sticks.png')} alt="desc" ></Image>
-              <div>Drum Sticks</div>
-              <div>IDR 30.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/salty-rice.png')} alt="desc" ></Image>
-              <div>Salty Rice</div>
-              <div>IDR 20.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
-              <div>Summer fried rice</div>
-              <div>IDR 32.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
-              <div>Creamy Ice Latte</div>
-              <div>IDR 27.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
-              <div>Veggie tomato mix</div>
-              <div>IDR 34.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/hazelnut.png')} alt="desc" ></Image>
-              <div>Hazelnut Latte</div>
-              <div>IDR 25.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/fried-rice.png')} alt="desc" ></Image>
-              <div>Summer fried rice</div>
-              <div>IDR 32.000</div>
-            </div>
-
-            <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
-              <Image src={require('../images/ice-latte.png')} alt="desc" ></Image>
-              <div>Creamy Ice Latte</div>
-              <div>IDR 27.000</div>
-            </div>
-          </div>
         </div>
       </div>
 
