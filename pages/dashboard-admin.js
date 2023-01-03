@@ -29,10 +29,10 @@ const DashboardAdmin = () => {
               <Link href="/">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
               </Link>
-              <Link href="/product">
+              <Link href="">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
               </Link>
-              <Link href="manage-orders">
+              <Link href="">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
               </Link>
               <Link href="/dashboard-admin">
