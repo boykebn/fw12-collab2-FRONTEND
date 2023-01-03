@@ -4,18 +4,57 @@ import { Search, Camera as Photo, Facebook, Twitter, Instagram, X, ChevronLeft, 
 import ImageUploading from 'react-images-uploading';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import http from '../helpers/http'
+import { useSelector } from 'react-redux';
+import withAuth from '../components/hoc/withAuth';
 
 const NewPromo = () => {
-  const [image, setImage] = React.useState(null);
+  const token = useSelector((state) => state?.auth?.token)
   const [camera, setCamera] = React.useState(false)
   const [alertTakePicture, setAlertTakePicture] = React.useState(false)
-  console.log(image)
 
   function handleTakePhoto (value) {
     // Do stuff with the photo...
     setImage(value);
     setAlertTakePicture(true)
     setTimeout(()=>{setCamera(false)}, 3000)
+  }
+
+
+  // Add new promo
+  const [picture, setPicture] = React.useState(null)
+  const [name, setName] = React.useState(null)
+  const [discount, setDiscount] = React.useState(null)
+  const [price, setPrice] = React.useState(null)
+  const [description, setDescription] = React.useState(null)
+  const [startDate, setStartDate] = React.useState(null)
+  const [endDate, setEndDate] = React.useState(null)
+  const [code, setCode] = React.useState(null)
+  const [sizeId, setSizeId] = React.useState(null)
+  const [deliveryMethodId, setDeliveryMethodId] = React.useState(null)
+
+  const dataNewPromo = {
+    picture, name, discount, price, description, startDate, endDate, code, sizeId, deliveryMethodId
+  }
+
+  const addNewPromo = async () => {
+    try {
+      const form = new FormData()
+      form.append('picture', picture)
+      form.append('name', name)
+      form.append('discount', discount)
+      form.append('price', price)
+      form.append('description', description)
+      form.append('startDate', startDate)
+      form.append('endDate', endDate)
+      form.append('code', code)
+      form.append('sizeId', sizeId)
+      form.append('deliveryMethodId', deliveryMethodId)
+      const response = await http(token).post('/promo/add', form)
+      console.log(response?.data)
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   return(
@@ -99,9 +138,10 @@ const NewPromo = () => {
             <button onClick={() => setCamera(true) & setAlertTakePicture(false)} className='btn bg-[#7D6E83] border-0 w-full font-bold'>Take a picture</button>
           </div>
           <ImageUploading 
-            value={image}
-            onChange={(value) => setImage(value)}
+            // value={picture}
+            onChange={(value) => setPicture(value[0].file)}
             dataURLKey="data_url"
+            name='picture'
             acceptType={["jpg", "png"]}
             >
               {({
@@ -114,18 +154,18 @@ const NewPromo = () => {
           </ImageUploading>
           <div className='hidden md:block mt-12'>
             <label className='font-bold text-[#7D6E83]'>Enter the discount :</label>
-            <input type='number' name='discount' placeholder='Input discount' className='input input-bordered focus:outline-none mt-3 '/>
+            <input onChange={(e) => setDiscount(e.target.value)} type='text' name='discount' placeholder='Input discount' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
           <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Expire date :</label>
-            <input type='text' onFocus={(e) => (e.target.type = "date")}
+            <input onChange={(e) => setStartDate(e.target.value)} type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoStartDate' placeholder='Select start date' className='input input-bordered focus:outline-none mt-3 '/>
-            <input type='text' onFocus={(e) => (e.target.type = "date")}
+            <input onChange={(e) => setEndDate(e.target.value)} type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoEndDate' placeholder='Select end date' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
           <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Input coupon code :</label>
-            <input type='number' name='discount' placeholder='Input stock' className='input input-bordered focus:outline-none mt-3 '/>
+            <input onChange={(e) => setCode(e.target.value)} type='text' name='code' placeholder='Input stock' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
         </div>
 
@@ -133,11 +173,11 @@ const NewPromo = () => {
         <div className='flex-[65%]'>
           <div className='border-b-2 mb-5'>
             <label className='font-bold text-[#7D6E83]'>Name:</label>
-            <input type='text' name='name' placeholder='Type promo name min. 50 characters' className='input mt-2 focus:outline-none' />
+            <input onChange={(e) => setName(e.target.value)} type='text' name='name' placeholder='Type promo name min. 50 characters' className='input mt-2 focus:outline-none' />
           </div>
           <div className='border-b-2 mb-5'>
             <label className='font-bold text-[#7D6E83]'>Normal Price :</label>
-            <input type='text' name='normalPrice' placeholder='Type the normal price' className='input mt-2 focus:outline-none' />
+            <input onChange={(e) => setPrice(e.target.value)} type='number' name='normalPrice' placeholder='Type the normal price' className='input mt-2 focus:outline-none' />
           </div>
           <div className='md:hidden border-b-2 mb-5'>
             <label className='font-bold text-[#7D6E83]'>Discount :</label>
@@ -153,28 +193,28 @@ const NewPromo = () => {
           </div>
           <div className='border-b-2 mb-5'>
             <label className='font-bold text-[#7D6E83]'>Description :</label>
-            <input type='text' name='description' placeholder='Describe your promo min. 150 characters' className='input mt-2 focus:outline-none' />
+            <input onChange={(e) => setDescription(e.target.value)} type='text' name='description' placeholder='Describe your promo min. 150 characters' className='input mt-2 focus:outline-none' />
           </div>
           <div className='hidden md:block mb-5'>
             <label className='font-bold text-[#7D6E83]'>Input product size :</label>
             <p className='mt-2 mb-5'>Click product size you want to use for this promo</p>
             <div className='flex gap-3'>
-              <div className='flex items-center justify-center w-12 h-12 bg-[#FFBA33] rounded-full'>
+              <div onClick={() => setSizeId(2)} className={`flex items-center justify-center w-12 h-12 rounded-full cursor-pointer ${sizeId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'}`}>
                 <p className='font-bold'>R</p>
               </div>
-              <div className='flex items-center justify-center w-12 h-12 bg-[#FFBA33] rounded-full'>
+              <div onClick={() => setSizeId(1)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full cursor-pointer`}>
                 <p className='font-bold'>L</p>
               </div>
-              <div className='flex items-center justify-center w-12 h-12 bg-[#FFBA33] rounded-full'>
+              <div onClick={() => setSizeId(3)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full cursor-pointer`}>
                 <p className='font-bold'>XL</p>
               </div>
-              <div className='flex items-center justify-center w-12 h-12 bg-gray-400 rounded-full'>
+              <div onClick={() => setSizeId(5)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 5 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full cursor-pointer`}>
                 <p className='font-bold text-xs text-center'>250<br/>gr</p>
               </div>
-              <div className='flex items-center justify-center w-12 h-12 bg-gray-400 rounded-full'>
+              <div onClick={() => setSizeId(6)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 6 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full cursor-pointer`}>
                 <p className='font-bold text-xs text-center'>300<br/>gr</p>
               </div>
-              <div className='flex items-center justify-center w-12 h-12 bg-gray-400 rounded-full'>
+              <div onClick={() => setSizeId(7)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 7 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full cursor-pointer`}>
                 <p className='font-bold text-xs text-center'>500<br/>gr</p>
               </div>
             </div>
@@ -184,19 +224,19 @@ const NewPromo = () => {
             <p className='mt-2 mb-5'>Click methods you want to use for this promo</p>
             <div className='grid grid-cols-3 gap-3'>
               <div>
-                <button className='btn bg-[#FFBA33] font-bold border-0 font-bold text-[#7D6E83]'>Home Delivery</button>
+                <button onClick={() => setDeliveryMethodId(1)} className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  font-bold border-0 font-bold text-gray-700`}>Home Delivery</button>
               </div>
               <div>
-                <button className='btn bg-[#FFBA33] font-bold border-0 font-bold text-[#7D6E83]'>Dine in</button>
+                <button onClick={() => setDeliveryMethodId(2)} className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Dine in</button>
               </div>
               <div>
-                <button className='btn bg-gray-400 font-bold border-0 font-bold text-gray-700'>Take away</button>
+                <button onClick={() => setDeliveryMethodId(3)} className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Take away</button>
               </div>
             </div>
           </div>
           <div className='mt-16'>
             <div className='mb-5'>
-              <button className='btn btn-lg bg-[#7D6E83] border-0'>Save Promo</button>
+              <button onClick={addNewPromo} className='btn btn-lg bg-[#7D6E83] border-0'>Save Promo</button>
             </div>
             <div className='hidden md:block'>
               <button className='btn btn-lg bg-gray-400 font-bold border-0 font-bold text-gray-700'>Cancel</button>
@@ -258,4 +298,4 @@ const NewPromo = () => {
   )
 }
 
-export default NewPromo
+export default withAuth(NewPromo)
