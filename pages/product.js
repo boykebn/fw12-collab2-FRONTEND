@@ -1,9 +1,30 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
+import http from '../helpers/http'
 
 const Product = () => {
+  const [product, setProduct] = React.useState({})
+  const getProduct = async () => {
+    try{
+      const {data} = await http().get('/product', {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      setProduct(data.results)
+      console.log(data.results)
+    } catch (error){
+      if (error) throw error
+    }
+  }
+
+  React.useEffect(()=> {
+    getProduct
+  }, [])
+  console.log(product)
   return (
     <>
       {/* Navbar */}
@@ -62,7 +83,7 @@ const Product = () => {
           <div className='grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4'>
             <div className='bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center'>
               <Image src={require('../images/food_vegie.png')} alt="desc" ></Image>
-              <div>Veggie tomato mix</div>
+              <div>{product?.name}</div>
               <div>IDR 34.000</div>
             </div>
 
