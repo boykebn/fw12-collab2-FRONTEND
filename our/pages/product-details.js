@@ -74,13 +74,8 @@ const ProductDetails = () => {
         </div>
       </main>
 
-<<<<<<< HEAD
-      <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px] mb-[-25px]'>
-        <div className='flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px]'>
-=======
       <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px]'>
         <div className='absolute flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px] mr-[400px] shadow-lg shadow-gray-600'>
->>>>>>> bc0117ceb0411e6af96bc427b3a33cb7bf553afe
           <div>
             <Image src={require('../images/cold-brew.png')} className="rounded-full" width="50" height="50" alt="desc" ></Image>
           </div>
