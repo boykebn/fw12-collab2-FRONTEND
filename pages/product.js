@@ -7,7 +7,7 @@ import http from '../helpers/http'
 
 const Product = () => {
   const [product, setProduct] = React.useState([])
-  const [category, setCategory] = React.useState('')
+  const [category, setCategory] = React.useState('Favourite Products')
   console.log(category);
 
   const url = category === 'Favourite Products' ? '/product' : `/product/category/${category}`;
