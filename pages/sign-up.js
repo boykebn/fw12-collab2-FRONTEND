@@ -12,6 +12,7 @@ import http from '../helpers/http'
 import {useDispatch} from 'react-redux'
 import { useRouter } from "next/router"
 import { login as loginAction } from '../redux/reducers/auth'
+import withoutAuth from '../components/hoc/withoutAuth'
 
 const phoneRegExpID = /^(^08)(\d{8,10})$/
 
@@ -186,4 +187,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default withoutAuth(SignUp)
