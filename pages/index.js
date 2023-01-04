@@ -24,7 +24,7 @@ import star from "../assets/star.png";
 // import Footer from "../components/footer";
 
 import { BiSearch } from "react-icons/bi";
-// import navbar from "../components/Navbar";
+import navbar from "../components/navbar";
 import NavbarIndex from "../components/NavbarIndex";
 import { useSelector } from "react-redux";
 import jwt_decode from 'jwt-decode'
