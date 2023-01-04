@@ -103,7 +103,7 @@ const Product = () => {
             <div>4. Should make member card to apply coupon</div>
           </div>
 
-        <Link href='/new-promo'>
+        <Link href='/new-promo' className="w-full">
           <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
               Add new promo
           </button>
