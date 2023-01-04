@@ -59,18 +59,16 @@ const Profile = () => {
           <p>User Profile</p>
         </div>
 
-        <div className="pl-32 pt-20 flex gap-5 ">
-          <div className="w-[310px] h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
+        <div className="pl-3 pr-3 md:pr-0 md:pl-32 pt-20 md:flex gap-5 ">
+          <div className="mb-3 md:mb-0 md:w-[310px] md:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
-              {bio.picture && (
-                <Image
-                  src={bio?.picture}
-                  width="82"
-                  height="90"
-                  alt="picture"
-                  className="rounded-full w-[80px] h-[120px]"
-                />
-              )}
+              <Image
+                src={bio?.picture}
+                width="82"
+                height="90"
+                alt="tomato"
+                className="rounded-full w-[80px] h-[120px]"
+              />
               <button
                 onClick={() => setpicture(true)}
                 className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]"
@@ -111,7 +109,7 @@ const Profile = () => {
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
           </div>
 
-          <div className="w-[802px] h-[358px] rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
+          <div className=" md:w-[802px] md:h-[358px] rounded-lg bg-white md:flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="w-[340px] mr-[36px]">
               <div className="mb-[21px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
@@ -156,8 +154,8 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="pl-32 pt-20 flex gap-10 ">
-          <div className="flex w-[744px] h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-[31px] pb-[40px] ">
+        <div className="pl-3 pr-3 md:pr-0 pl-32 pt-3 md:pt-20 md:flex gap-10 ">
+          <div className="md:flex md:w-[744px] md:h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-[31px] pb-[40px] ">
             <div className="w-[396px] mr-[59px]">
               <div className="mb-[29px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
