@@ -21,7 +21,6 @@ const ProductDetails = () => {
         },
       });
       setProductId(data.results);
-      console.log(data.results);
     } catch (error) {
       if (error) throw error;
     }
@@ -42,8 +41,10 @@ const ProductDetails = () => {
       <main className="bg-[#F8EDE3] pt-[52px] pb-[10%]">
         <div className="flex flex-col md:flex-row">
           <div className="ml-[5%]">
-            <div className="flex gap-0.5 pl-[5%]">
-              <div>Favorite & Promo {">"}</div>
+            <div className="flex gap-0.5">
+              <div>
+                {productId?.nameCategory} {">"}
+              </div>
               <div>{productId?.name}</div>
             </div>
 
@@ -82,7 +83,7 @@ const ProductDetails = () => {
 
               <div className="flex flex-col justify-center items-center gap-[42px]">
                 <div className="mt-[10%]">Choose a size</div>
-                <div className="flex gap-[30px] md:gap-[57px]">
+                <div className="flex gap-[57px]">
                   <div className="bg-[#7D6E83] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]">
                     R
                   </div>

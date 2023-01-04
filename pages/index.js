@@ -609,7 +609,7 @@ export default function Home() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
-                  class="w-3 h-3 text-white"
+                  className="w-3 h-3 text-white"
                 >
                   <path
                     fill="currentColor"
