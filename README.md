@@ -1,9 +1,9 @@
 
 # Our Coffee
 
-Web application that can use to buy a coffee by Our Coffee
-![Logo](https://trello.com/1/cards/63aebc0913029601f0f71451/attachments/63aebc1838c4e300bbe0b111/previews/63aebc1838c4e300bbe0b150/download/logoOurCoffee.png)
+![image](https://user-images.githubusercontent.com/86812576/210517482-e3b1b0c2-eab3-44b2-b9cf-26cccdef1e25.png)
 
+Web application that can use to buy a coffee by Our Coffee
 
 ## Features
 
