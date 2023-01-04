@@ -5,12 +5,12 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import http from "../helpers/http";
-import ReactModal from "react-modal";
 import { logout as logoutAction } from "../redux/reducers/auth";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Link from "next/link";
-const Profile = () => {
+const EditProfile = () => {
   const token = useSelector((state) => state.auth.token);
+  const router = useRouter;
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   console.log(bio);
@@ -27,10 +27,10 @@ const Profile = () => {
     return data;
   };
 
+  // Upload Picture
   const upload = async (e) => {
     e.preventDefault();
     const file = e.target.picture.files[0];
-    console.log(file);
     if (file?.size > 1024 * 1024 * 2) {
       window.alert("File too large");
     } else {
@@ -38,22 +38,42 @@ const Profile = () => {
         const form = new FormData();
         form.append("picture, file");
         const { data } = await axios.patch(
-          "https://fw12-collab2-backend.vercel.app/profile/",
-          form
+          "https://fw12-collab2-backend.vercel.app/profile",
+          form,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         );
         window.alert(data.message);
       } catch (err) {
-        window.alert(err.response);
+        window.alert(err.response.data.message);
       }
     }
   };
 
-  // Logout
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const handlerLogout = () => {
-    dispatch(logoutAction());
-    router.push("/login");
+  // Edit Profile
+  const [alertSuccess, setAlertSuccess] = useState(false);
+  const UpdateProfile = async (e) => {
+    e.preventDefault();
+    const values = {
+      email: e.target.email.value,
+      phoneNumber: e.target.phoneNumber.value,
+      address: e.target.address.value,
+      displayName: e.target.displayName.value,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      birthDate: e.target.birthDate.value,
+    };
+    console.log(values.phoneNumber);
+    await http(token).patch("/profile/", values);
+    setAlertSuccess(true);
+  };
+
+  // Back
+  const back = () => {
+    router.push("/profile");
   };
   return (
     <div className="max-w-full max-h-full font-poppins">
@@ -80,28 +100,6 @@ const Profile = () => {
               >
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </button>
-              <div>
-                <ReactModal isOpen={picture} classNamew="w-auto">
-                  <div className="flex">
-                    <p className="flex-1">Upload Picture</p>
-                    <button
-                      onClick={() => setpicture(false)}
-                      className="text-[20px] text-[#3A3D42]"
-                    >
-                      X
-                    </button>
-                  </div>
-                  <form onSubmit={upload}>
-                    <input type="file" name="picture" />
-                    <button
-                      type="submit"
-                      className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold  text-white duration-300"
-                    >
-                      Save
-                    </button>
-                  </form>
-                </ReactModal>
-              </div>
             </div>
 
             <div className="flex flex-col justify-center items-center">
@@ -114,51 +112,149 @@ const Profile = () => {
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
           </div>
 
-          <div className="w-[802px] h-[358px] rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
+          <form
+            onSubmit={UpdateProfile}
+            className=" rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]"
+          >
             <div className="w-[340px] mr-[36px]">
               <div className="mb-[21px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
-                  Contacts
+                  Edit Profile
                 </span>
               </div>
+
               <div className="flex flex-col mb-[47px]">
                 <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px] ">
-                  Email adress :
+                  Email address :
                 </span>
-                <span className="text-[20px] font-rubik leading-[50px]">
-                  {bio.email}
-                </span>
+                <input
+                  name="email"
+                  defaultValue={bio.email}
+                  className="text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
               <div className="flex flex-col mb-[47px]">
                 <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
                   Delivery adress :
                 </span>
-                <span className="text-[20px] font-rubik mb-[9px]">
-                  {bio.address}
-                </span>
+                <input
+                  name="address"
+                  defaultValue={bio.address}
+                  className="text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
+
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
+              <div className="mb-[29px]">
+                <span className="text-[#4F5665] text-[25px] font-bold">
+                  Details
+                </span>
+              </div>
+              <div className="flex flex-col mb-[25px]">
+                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                  Display name :
+                </span>
+                <input
+                  name="displayName"
+                  defaultValue={bio.displayName}
+                  className="text-[#000000] text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
+
+                <div className="border-b border-2 border-[#000000]"></div>
+              </div>
+              <div className="flex flex-col mb-[25px]">
+                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                  First name :
+                </span>
+                <input
+                  name="firstName"
+                  defaultValue={bio.firstName}
+                  className="text-[#000000] text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
+
+                <div className="border-b border-2 border-[#000000]"></div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                  Last name :
+                </span>
+                <input
+                  name="lastName"
+                  defaultValue={bio.lastName}
+                  className="text-[#000000] text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
+
+                <div className="border-b border-2 border-[#000000]"></div>
+              </div>
+              <div className="pt-5">
+                <button
+                  type="submit"
+                  className="py-[17px] w-full rounded-[20px] bg-[#d0b8a8] border-1 font-bold hover:bg-[#7d6e83] hover:text-white duration-300"
+                >
+                  Save Change
+                </button>
+              </div>
+              <div className="pt-5">
+                <button className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold  text-white duration-300">
+                  <Link href="/profile">Back</Link>
+                </button>
+              </div>
+              {alertSuccess ? (
+                <div class="alert alert-success shadow-lg mt-8">
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="stroke-current flex-shrink-0 h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>Profile Updated</span>
+                  </div>
+                </div>
+              ) : (
+                false
+              )}
             </div>
+
             <div className="pt-[59px] w-[340px]">
               <div className="flex flex-col mb-[47px]">
                 <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
                   Mobile number :
                 </span>
-                <span className="text-[20px] font-rubik leading-[50px]">
-                  {bio.phoneNumber}
+                <input
+                  name="phoneNumber"
+                  defaultValue={bio.phoneNumber}
+                  type="number"
+                  className="text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
+
+                <div className="border-b border-2 border-[#000000]"></div>
+              </div>
+              <div className="flex flex-col mb-[34px]">
+                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                  DD/MM/YY
                 </span>
+                <input
+                  name="birthDate"
+                  type="date"
+                  defaultValue={bio.birthDate}
+                  className="text-[#000000] text-[20px] font-rubik leading-[50px] focus:outline-none"
+                />
+
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
             </div>
-            {/* <div className="">
-              <div className="border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center">
-                <MdOutlineModeEdit className="w-[18px] h-[20px] " />
-              </div>
-            </div> */}
-          </div>
+          </form>
         </div>
-
+        {/* 
         <div className="pl-32 pt-20 flex gap-10 ">
           <div className="flex w-[744px] h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-[31px] pb-[40px] ">
             <div className="w-[396px] mr-[59px]">
@@ -172,7 +268,7 @@ const Profile = () => {
                   Display name :
                 </span>
                 <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
-                  {bio.displayName}
+                  Zulaikha
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
@@ -181,7 +277,7 @@ const Profile = () => {
                   First name :
                 </span>
                 <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
-                  {bio.firstName}
+                  Nirmala
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
@@ -190,7 +286,7 @@ const Profile = () => {
                   Last name :
                 </span>
                 <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
-                  {bio.lastName}
+                  Nirmala
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
@@ -198,10 +294,10 @@ const Profile = () => {
             <div className="w-[217px] pt-[67px] ">
               <div className="flex flex-col mb-[34px]">
                 <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
-                  YYYY/MM/DD
+                  DD/MM/YY
                 </span>
                 <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
-                  {bio.birthDate}
+                  03/04/90
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
@@ -235,44 +331,38 @@ const Profile = () => {
               <div className="border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center">
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </div>
-            </div> */}
+            </div> 
           </div>
 
           <div>
             <div className="w-[330px] text-center">
               <p className="text-white font-semibold text-2xl">
-                Do you want to edit profile?
+                Do you want to save the change?
               </p>
             </div>
             <div className="pt-5">
-              <button
-                href="/edit-profile"
-                className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold hover:bg-[#d0b8a8] text-white duration-300"
-              >
-                <Link href="/edit-profile">Edit Profile</Link>
+              <button className="py-[17px] w-full rounded-[20px] bg-[#d0b8a8] border-1 font-bold hover:bg-[#7d6e83] hover:text-white duration-300">
+                Save Change
               </button>
             </div>
-            {/* <div className="pt-5">
+            <div className="pt-5">
               <button className="py-[17px] w-full rounded-[20px] bg-[#d0b8a8] border-1 font-bold hover:bg-[#7d6e83] hover:text-white duration-300">
                 Cancel
               </button>
-            </div> */}
+            </div>
+            <div className="pt-5">
+              <button className="btn btn-wide py-[17px]">Edit Password</button>
+            </div>
             <div className="pt-5">
               <button
-                href="/edit-profile"
-                className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold hover:bg-[#d0b8a8] text-white duration-300"
+                onClick={handlerLogout}
+                className="btn btn-wide py-[17px]"
               >
-                <Link href="/edit-profile">Edit Password</Link>
-              </button>
-            </div>
-
-            <div className="pt-5">
-              <button onClick={handlerLogout} className="btn btn-wide ">
                 Log Out
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Footer />
@@ -280,4 +370,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default EditProfile;
