@@ -62,11 +62,13 @@ const Product = () => {
                     </div>
                   </div>
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
-                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[230px] mt-[10px]">
+                  <Link href='/edit-promo'>
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
                     </div>
                   </div>
+                </Link>
                     <Image
                       src={require("../images/spaghetti.png")}
                       className="rounded-full pt-[15%]"
@@ -103,9 +105,11 @@ const Product = () => {
             <div>4. Should make member card to apply coupon</div>
           </div>
 
-        <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
-            Add new promo
-        </button>
+        <Link href='/new-promo' className="w-full">
+          <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
+              Add new promo
+          </button>
+        </Link>
         </div>
 
         <div className="md:grow pt-[29px]">
@@ -148,30 +152,46 @@ const Product = () => {
                 key={i}
                 className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
               >
-                <Link href={"/product-details/" + product.id}>
-                  <Image
-                    src={require("../images/food_vegie.png")}
-                    alt="desc"
-                  ></Image>
+                <Link href={"/admin-product-details/" + product.id}>
+                  {product?.picture ?(
+                    <Image
+                      src={product?.picture}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>):(
+                    <Image
+                      src={require("../images/food_vegie.png")}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>
+                  )}
                   <div className="w-[117px] flex justify-center items-center">
                     <div className="text-center font-bold text-xl">{product?.name}</div>
                   </div>
                   <div className="flex justify-center items-center font-semibold">IDR {Number(product?.price).toLocaleString("id")}</div>
                 </Link>
-                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[130px] mt-[200px]">
+                <Link href='/edit-product'>
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[50px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
                     </div>
                   </div>
+                </Link>
               </div>
             ))}
           </div>
-
-          <div className="flex justify-center items-center">
-            <button className="bg-[#7D6E83] mt-[45px] py-5 w-[729px] mr-[10%] rounded-lg text-white font-bold">
-              Add new product
-            </button>
-          </div>
+          
+          <Link href='/new-product'>
+            <div className="flex justify-center items-center">
+              <button className="bg-[#7D6E83] mt-[45px] py-5 w-[729px] mr-[10%] rounded-lg text-white font-bold">
+                Add new product
+              </button>
+            </div>
+          </Link>
         </div>
       </div>
 

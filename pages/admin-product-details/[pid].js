@@ -1,9 +1,37 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Footer from '../components/footer'
-import Navbar from '../components/navbar'
+import Footer from '../../components/footer'
+import Navbar from '../../components/navbar'
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import http from "../../helpers/http";
 
 const AdminProductDetails = () => {
+  const router = useRouter();
+  const { pid } = router.query;
+
+  //fetching data id product
+  const [productId, setProductId] = useState({});
+  const fetchProductId = async () => {
+    try {
+      const { data } = await http().get(`/product/${pid}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setProductId(data.results);
+    } catch (error) {
+      if (error) throw error;
+    }
+  };
+
+  React.useEffect(() => {
+    if (pid) {
+      fetchProductId();
+    }
+  }, [pid]);
+  console.log(productId);
+
   return (
     <>
       {/* Navbar */}
@@ -13,16 +41,35 @@ const AdminProductDetails = () => {
       <main className='relative bg-[#F8EDE3] pt-[52px] pb-[10%]'>
         <div className='flex'>
           <div className='ml-[5%]'>
-            <div className='flex gap-0.5'>
-              <div>Favorite & Promo {'>'}</div>
-              <div>Cold Brew</div>
+          <div className="flex gap-0.5 pl-[5%]">
+              <div>Favourite & Promo {">"}</div>
+              <div>
+                {productId?.nameCategory} {">"}
+              </div>
+              <div>{productId?.name}</div>
             </div>
 
             <div className='flex flex-col justify-center items-center mt-[40px]'>
-              <Image src={require('../images/cold-brew.png')} className="rounded-full h-[400px] w-[400px]" alt="desc" ></Image>
+                  {productId?.picture ?(
+                    <Image
+                      src={productId?.picture || require("../../images/food_vegie.png")}
+                      width={400}
+                      height={400}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>):(
+                    <Image
+                      src={require("../../images/food_vegie.png")}
+                      width={400}
+                      height={400}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>
+                  )}
+              {/* <Image src={require('../../images/cold-brew.png')} className="rounded-full h-[400px] w-[400px]" alt="desc" ></Image> */}
               <div className='text-center'>
-                <div className='font-black text-[65px]'>COLD BREW</div>
-                <div className='font-medium text-[35px] mb-[42px]'>IDR 30.000</div>
+                <div className='font-black text-[65px]'>{productId?.name}</div>
+                <div className='font-medium text-[35px] mb-[42px]'>IDR {Number(productId?.price).toLocaleString("id")}</div>
                 <div className='flex flex-col gap-[25px]'>
                   <button className='bg-[#DFD3C3] py-5 w-full rounded-lg'>Add to Cart</button>
                   <button className='bg-[#7D6E83] py-5 w-full rounded-lg text-white'>Edit Product</button>
@@ -40,7 +87,7 @@ const AdminProductDetails = () => {
                 <div>friday at 1 - 7 pm</div>
               </div>
               <div className='w-96 mt-[43px]'>
-                <div className='break-all'>Cold brewing is a method of brewing that combines ground coffee and cool water and uses time instead of heat to extract the flavor. It is brewed in small batches and steeped for as long as 48 hours.</div>
+                <div className='break-all'>{productId?.description}</div>
               </div>
 
               <div className='flex flex-col justify-center items-center gap-[42px]'>
@@ -76,12 +123,28 @@ const AdminProductDetails = () => {
       </main>
 
       <div className='flex bg-[#F8EDE3] justify-center items-center gap-[48px]'>
-        <div className='absolute flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px] mr-[400px] shadow-lg shadow-gray-600'>
+        <div className='absolute flex bg-[#FFFFFF] justify-center items-center rounded-lg px-[32px] py-[32px] gap-[46px] mr-[500px] shadow-lg shadow-gray-600'>
           <div>
-            <Image src={require('../images/cold-brew.png')} className="rounded-full" width="50" height="50" alt="desc" ></Image>
+          {productId?.picture ?(
+                    <Image
+                      src={productId?.picture || require("../../images/food_vegie.png")}
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>):(
+                    <Image
+                      src={require("../../images/food_vegie.png")}
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>
+                  )}
+            {/* <Image src={require('../../images/cold-brew.png')} className="rounded-full" width="50" height="50" alt="desc" ></Image> */}
           </div>
-          <div className='grow'>
-            <div>COLD BREW</div>
+          <div className='grow gap-5'>
+            <div className='font-bold text-xl'>{productId?.name}</div>
             <div>x1 (Large)</div>
             <div>x1 (Regular)</div>
           </div>
