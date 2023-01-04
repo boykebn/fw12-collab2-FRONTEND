@@ -150,11 +150,23 @@ const Product = () => {
                 key={i}
                 className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
               >
-                <Link href={"/product-details/" + product.id}>
-                  <Image
-                    src={require("../images/food_vegie.png")}
-                    alt="desc"
-                  ></Image>
+                <Link href={"/admin-product-details/" + product.id}>
+                  {product?.picture ?(
+                    <Image
+                      src={product?.picture}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>):(
+                    <Image
+                      src={require("../images/food_vegie.png")}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>
+                  )}
                   <div className="w-[117px] flex justify-center items-center">
                     <div className="text-center font-bold text-xl">{product?.name}</div>
                   </div>
