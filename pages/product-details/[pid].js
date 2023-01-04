@@ -41,7 +41,7 @@ const ProductDetails = () => {
       <main className="bg-[#F8EDE3] pt-[52px] pb-[10%]">
         <div className="flex flex-col md:flex-row">
           <div className="ml-[5%]">
-            <div className="flex gap-0.5">
+            <div className="flex gap-0.5 pl-[5%]">
               <div>
                 {productId?.nameCategory} {">"}
               </div>
