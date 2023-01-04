@@ -5,6 +5,9 @@ import ImageUploading from 'react-images-uploading';
 import Link from 'next/link';
 import http from '../helpers/http';
 import { useSelector } from 'react-redux';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import withAuth from '../components/hoc/withAuth'
 
 
 const EditPromo = () => {
@@ -89,7 +92,6 @@ const EditPromo = () => {
       setAlertError(true)
     }
   }
-  console.log(promo)
 
   return(
     <>
@@ -137,6 +139,7 @@ const EditPromo = () => {
       <form onSubmit={editPromo} className='flex gap-28 py-16'>
         {/* Left */}
         <div className='flex-[35%]'>
+          { promo?.picture ?
           <div className='bg-[#FFCB65] rounded-xl flex flex-col items-center py-8'>
             <div className='relative w-fit mb-5'>
               <ImageUploading 
@@ -151,7 +154,7 @@ const EditPromo = () => {
                 <>
                   <div>
                     <Image src={`http://localhost:8888/uploads/${promo?.picture}`} alt='promoPicture' className='rounded-full w-full h-[130px] w-[130px]' width={100} height={100}/>
-                  </div>
+                  </div>                  
                   <div onClick={onImageUpload} className='absolute right-0 bottom-0 w-8 h-8'>
                     <button type='button' className='btn btn-circle btn-sm bg-[#7D6E83] border-none'><Edit2 className='p-1' /></button>
                   </div>
@@ -171,7 +174,7 @@ const EditPromo = () => {
               <p className='text-3xl font-bold my-3'>{promo?.code}</p>
               <p>Valid untill {expiredDate}</p>
             </div>
-          </div>
+          </div> : <Skeleton className='h-[480px]'/>}
           <div className='mt-8'>
             <label className='font-bold text-[#7D6E83]'>Expire date :</label>
             <input onChange={(e) => setStartDate(e.target.value)} defaultValue={promo?.startDate} type='text' onFocus={(e) => (e.target.type = "date")}
@@ -193,7 +196,7 @@ const EditPromo = () => {
           </div>
           <div className='mb-5'>
             <label className='font-bold text-[#7D6E83]'>Normal Price :</label>
-            <input onChange={(e) => setPrice(e.target.value)} type='text' defaultValue={new Intl.NumberFormat('en-DE').format(Number(promo?.price))} name='normalPrice' placeholder='Type the normal price' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
+            <input onChange={(e) => setPrice(e.target.value)} type='text' defaultValue={(promo?.price) ? new Intl.NumberFormat('en-DE').format(Number(promo?.price)) : ''} name='normalPrice' placeholder='Type the normal price' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
           </div>
           <div className='mb-5'>
             <label className='font-bold text-[#7D6E83]'>Description :</label>
@@ -319,4 +322,4 @@ const EditPromo = () => {
   )
 }
 
-export default EditPromo
+export default withAuth(EditPromo)
