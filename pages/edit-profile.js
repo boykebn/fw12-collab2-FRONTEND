@@ -65,8 +65,10 @@ const EditProfile = () => {
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
       birthDate: e.target.birthDate.value,
+      gender: e.target.gender.value,
     };
     console.log(values.phoneNumber);
+    console.log(e.target.gender.value);
     await http(token).patch("/profile/", values);
     setAlertSuccess(true);
   };
@@ -81,25 +83,19 @@ const EditProfile = () => {
 
       <div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
         <div className="pl-32 pt-20 text-white text-2xl font-bold">
-          <p>User Profile</p>
+          <p>Edit Profile</p>
         </div>
 
         <div className="pl-32 pt-20 flex gap-5 ">
           <div className="w-[310px] h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
               <Image
-                src={require("../images/user.png")}
+                src={bio?.picture}
                 width="82"
                 height="90"
                 alt="tomato"
-                className="rounded-full"
+                className="rounded-full w-[80px] h-[120px]"
               />
-              <button
-                onClick={() => setpicture(true)}
-                className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]"
-              >
-                <MdOutlineModeEdit className="w-[18px] h-[20px] " />
-              </button>
             </div>
 
             <div className="flex flex-col justify-center items-center">
@@ -238,7 +234,7 @@ const EditProfile = () => {
 
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
-              <div className="flex flex-col mb-[34px]">
+              <div className="flex flex-col mb-[40px]">
                 <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
                   DD/MM/YY
                 </span>
@@ -248,6 +244,29 @@ const EditProfile = () => {
                   defaultValue={bio.birthDate}
                   className="text-[#000000] text-[20px] font-rubik leading-[50px] focus:outline-none"
                 />
+
+                <div className="border-b border-2 border-[#000000]"></div>
+              </div>
+              <div className="flex flex-col ">
+                <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
+                  Gender :
+                </span>
+                <select
+                  name="gender"
+                  defaultValue={bio.gender}
+                  className="text-[20px] font-rubik leading-[50px] focus:outline-none"
+                >
+                  <option value="Male" className="">
+                    Male
+                  </option>
+                  <option value="Female">Female</option>
+                </select>
+                {/* <input
+                  name="gender"
+                  defaultValue={bio.gender}
+                  type="text"
+                  className="text-[20px] font-rubik leading-[50px] focus:outline-none"
+                /> */}
 
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>

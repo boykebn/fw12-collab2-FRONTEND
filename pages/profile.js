@@ -10,20 +10,18 @@ import { logout as logoutAction } from "../redux/reducers/auth";
 import { useRouter } from "next/router";
 import Link from "next/link";
 const Profile = () => {
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state?.auth?.token);
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   console.log(bio);
   useEffect(() => {
     getBio().then((data) => {
-      setBio(data.results);
+      setBio(data?.results);
     });
   }, []);
 
   const getBio = async () => {
-    const { data } = await http(token).get(
-      "https://fw12-collab2-backend.vercel.app/profile"
-    );
+    const { data } = await http(token).get("/profile");
     return data;
   };
 
@@ -36,11 +34,8 @@ const Profile = () => {
     } else {
       try {
         const form = new FormData();
-        form.append("picture, file");
-        const { data } = await axios.patch(
-          "https://fw12-collab2-backend.vercel.app/profile/",
-          form
-        );
+        form.append("picture", file);
+        const { data } = await http(token).patch("/profile", form);
         window.alert(data.message);
       } catch (err) {
         window.alert(err.response);
@@ -67,13 +62,15 @@ const Profile = () => {
         <div className="pl-32 pt-20 flex gap-5 ">
           <div className="w-[310px] h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
-              <Image
-                src={require("../images/user.png")}
-                width="82"
-                height="90"
-                alt="tomato"
-                className="rounded-full"
-              />
+              {bio.picture && (
+                <Image
+                  src={bio?.picture}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              )}
               <button
                 onClick={() => setpicture(true)}
                 className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]"
@@ -205,31 +202,15 @@ const Profile = () => {
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
-              <form>
-                <div className="flex items-center mb-7">
-                  <label className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px] mr-20">
-                    Male
-                  </label>
-                  <input
-                    id="male"
-                    type="radio"
-                    name="radio-4"
-                    className="radio radio-accent"
-                    checked
-                  />
-                </div>
-                <div className="flex items-center">
-                  <label className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px] mr-14">
-                    Female
-                  </label>
-                  <input
-                    id="female"
-                    type="radio"
-                    name="radio-4"
-                    className="radio radio-accent"
-                  />
-                </div>
-              </form>
+              <div className="flex flex-col mb-[34px]">
+                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                  Gender
+                </span>
+                <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
+                  {bio.gender}
+                </span>
+                <div className="border-b border-2 border-[#000000]"></div>
+              </div>
             </div>
             {/* <div className="">
               <div className="border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center">
@@ -259,10 +240,10 @@ const Profile = () => {
             </div> */}
             <div className="pt-5">
               <button
-                href="/edit-profile"
+                href=""
                 className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold hover:bg-[#d0b8a8] text-white duration-300"
               >
-                <Link href="/edit-profile">Edit Password</Link>
+                <Link href="reset-password">Edit Password</Link>
               </button>
             </div>
 
@@ -281,4 +262,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
