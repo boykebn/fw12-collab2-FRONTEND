@@ -103,9 +103,11 @@ const Product = () => {
             <div>4. Should make member card to apply coupon</div>
           </div>
 
-        <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
-            Add new promo
-        </button>
+        <Link href='/new-promo'>
+          <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
+              Add new promo
+          </button>
+        </Link>
         </div>
 
         <div className="md:grow pt-[29px]">
@@ -166,12 +168,14 @@ const Product = () => {
               </div>
             ))}
           </div>
-
-          <div className="flex justify-center items-center">
-            <button className="bg-[#7D6E83] mt-[45px] py-5 w-[729px] mr-[10%] rounded-lg text-white font-bold">
-              Add new product
-            </button>
-          </div>
+          
+          <Link href='/new-product'>
+            <div className="flex justify-center items-center">
+              <button className="bg-[#7D6E83] mt-[45px] py-5 w-[729px] mr-[10%] rounded-lg text-white font-bold">
+                Add new product
+              </button>
+            </div>
+          </Link>
         </div>
       </div>
 
