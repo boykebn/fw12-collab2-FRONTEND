@@ -34,7 +34,7 @@ const ProductDetails = () => {
   console.log(productId);
 
   return (
-    <>
+    <div>
       {/* Navbar */}
       <Navbar></Navbar>
 
@@ -42,6 +42,7 @@ const ProductDetails = () => {
         <div className="flex flex-col md:flex-row">
           <div className="ml-[5%]">
             <div className="flex gap-0.5 pl-[5%]">
+              <div>Favourite & Promo {">"}</div>
               <div>
                 {productId?.nameCategory} {">"}
               </div>
@@ -165,7 +166,7 @@ const ProductDetails = () => {
       </div>
 
       <Footer></Footer>
-    </>
+    </div>
   );
 };
 
