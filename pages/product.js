@@ -37,8 +37,8 @@ const Product = () => {
       <Navbar />
 
       {/* Konten */}
-      <div className="flex">
-        <div className="hidden md:flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
           <div className="pt-[29px] text-[#7D6E83] font-bold text-[25px]">
             Promo for you
           </div>
@@ -78,6 +78,7 @@ const Product = () => {
           <button className="bg-[#7D6E83] mt-[45px] py-5 w-full mr-[10%] rounded-lg text-white">
             Apply Coupons
           </button>
+          
           <div className="text-sm pb-[15%]">
             <div className="font-bold">Terms and Condition </div>
             <div> 1. You can only apply 1 coupon per day</div>
@@ -87,7 +88,7 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="md:grow pt-[29px]">
+        <div className="grow pt-[29px]">
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
             <button
               onClick={(e) => setCategory(e.target.innerText)}
