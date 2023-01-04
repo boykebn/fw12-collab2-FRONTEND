@@ -6,6 +6,8 @@ import {Formik, Form, Field} from 'formik'
 import * as Yup from 'yup'
 import YupPasword from 'yup-password'
 YupPasword(Yup)
+import http from '../helpers/http'
+import {useRouter} from 'next/router'
 
 const ResetPasswordSchema = Yup.object().shape({
   newPassword: Yup.string()
@@ -25,6 +27,8 @@ const ResetPasswordSchema = Yup.object().shape({
 })
 
 const ResetPassword = () => {
+  const router = useRouter()
+
   const [eyeClicked1, setEyeClicked1] = React.useState(false)
   const [eyeClicked2, setEyeClicked2] = React.useState(false)
   const showNewPassword = () => {
@@ -42,6 +46,34 @@ const ResetPassword = () => {
     }
   }
 
+  // Reset password
+  const [successMessage, setSuccessMessage] = React.useState('')
+  const [ErrorMessage, setErrorMessage] = React.useState('')
+  const [alertSuccess, setAlertSuccess] = React.useState(false)
+  const [alertError, setAlertError] = React.useState(false)
+
+  const cb = () => {
+    setTimeout(() => {
+      router.replace('/login')
+    }, 5000)
+  }
+
+  const resetPassword = async (value) => {
+    try {
+      if (value.password === value.confirmPassword) {
+        const response = await http().post('/auth/resetPassword', value)
+        setSuccessMessage(response?.data?.message)
+        setAlertSuccess(true)
+        cb()
+      } else {
+        setErrorMessage("Confirm Password doesn't match")
+        setAlertError(true)
+      }
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   return(
     <>
       <section>
@@ -49,33 +81,53 @@ const ResetPassword = () => {
           <div className='text-center font-bold w-3/4 md:w-full'>
             <h1 className='text-5xl mb-3'>Reset your password</h1>
           </div>
+          {alertSuccess ? 
+          <div class="alert alert-success shadow-lg w-96">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>{successMessage}</span>
+            </div>
+          </div> : false}
+          {alertError ? 
+          <div class="alert alert-error shadow-lg w-96">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>{ErrorMessage}</span>
+            </div>
+          </div> : false}
           <div className='md:hidden'>
             <Image src={require('../images/boyWaiting.png')} alt='forgot password' className='py-5 w-4/4'/>
           </div>
           <div>
             <Formik initialValues={{
-              newPassword: '',
-              confirmNewPassword: ''
+              email: '',
+              code: '',
+              password: '',
+              confirmPassword: ''
             }}
             validationSchema={ResetPasswordSchema}
-            onSubmit={(value) => console.log(value)}>
+            onSubmit={(value) => resetPassword(value)}>
               {({errors, touched}) => (
-                <Form className='flex flex-col items-center gap-10'>
+                <Form onChange={() => setAlertError(false)} className='flex flex-col items-center gap-10'>
+                <div className='w-96 text-black border-b-2 md:border-b-0'>
+                  <label className='font-bold md:text-white text-lg'>Email :</label>
+                  <Field type='email' name='email' placeholder='Enter your reset password code' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
+                </div>
                 <div className='w-96 text-black border-b-2 md:border-b-0'>
                   <label className='font-bold md:text-white text-lg'>Password Reset Code :</label>
-                  <Field type='email' name='email' placeholder='Enter your reset password code' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
+                  <Field type='text' name='code' placeholder='Enter your reset password code' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
                 </div>
                 <div className='w-96 text-black relative border-b-2 md:border-b-0'>
                   <label className='md:text-white font-bold'>New Password :</label><br />
                   <FeatherIcon onClick={showNewPassword} icon={eyeClicked1 ? 'eye-off' : 'eye'} className='absolute right-5 bottom-5 opacity-20 cursor-pointer'/>
-                  <Field type={eyeClicked1? 'text' : 'password'} name='newPassword' placeholder='Enter your new password' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
-                  {errors.newPassword && touched.newPassword ? <div className='text-red-500 text-sm absolute'>{errors.newPassword}</div> : null}
+                  <Field type={eyeClicked1? 'text' : 'password'} name='password' placeholder='Enter your new password' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
+                  {errors.password && touched.password ? <div className='text-red-500 text-sm absolute'>{errors.password}</div> : null}
                 </div>
                 <div className='w-96 text-black relative border-b-2 md:border-b-0'>
                   <label className='md:text-white font-bold'>Confirm New Password :</label><br />
                   <FeatherIcon onClick={showConfirmNewPassword} icon={eyeClicked2 ? 'eye-off' : 'eye'} className='absolute right-5 bottom-5 opacity-20 cursor-pointer'/>
-                  <Field type={eyeClicked2? 'text' : 'password'} name='confirmNewPassword' placeholder='Enter your confirm new password' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
-                  {errors.confirmNewPassword && touched.confirmNewPassword ? <div className='text-red-500 text-sm absolute'>{errors.confirmNewPassword}</div> : null}
+                  <Field type={eyeClicked2? 'text' : 'password'} name='confirmPassword' placeholder='Enter your confirm new password' className='input md:input-bordered md:input-lg focus:outline-none bg-transparent md:bg-white mt-3'/>
+                  {errors.confirmPassword && touched.confirmPassword ? <div className='text-red-500 text-sm absolute'>{errors.confirmPassword}</div> : null}
                 </div>
                 <div className='w-96 mt-3'>
                   <button type='submit' className='btn btn-lg bg-[#7D6E83] text-white font-bold text-lg border-0'>Submit</button>

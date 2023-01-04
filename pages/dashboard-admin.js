@@ -4,6 +4,7 @@ import Link from "next/link";
 import ChartDailyAvg from '../images/chartDailyAvg.png'
 import {useDispatch} from 'react-redux'
 import {logout as logoutAction} from '../redux/reducers/auth'
+import withAuth from '../components/hoc/withAuth';
 
 const DashboardAdmin = () => {
   const dispatch = useDispatch()
@@ -28,10 +29,10 @@ const DashboardAdmin = () => {
               <Link href="/">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
               </Link>
-              <Link href="/product">
+              <Link href="">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
               </Link>
-              <Link href="manage-orders">
+              <Link href="">
             <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
               </Link>
               <Link href="/dashboard-admin">
@@ -196,11 +197,10 @@ const DashboardAdmin = () => {
 
       <div className='flex items-center gap-8'>
         <div className='flex-[70%]'>
-          <button className='btn rounded-xl bg-[#7D6E83]'>Dowme
-Prnload Report</button>
+          <button className='btn md:btn-lg rounded-xl bg-[#7D6E83]'>Download Report</button>
         </div>
         <div className='hidden md:block flex-[30%]'>
-          <button className='btn rounded-xl bg-[#7D6E83]'>Share Report</button>
+          <button className='btn md:btn-lg rounded-xl bg-[#7D6E83]'>Share Report</button>
         </div>
       </div>
     </section>
@@ -255,4 +255,4 @@ Prnload Report</button>
   )
 }
 
-export default DashboardAdmin
+export default withAuth(DashboardAdmin)
