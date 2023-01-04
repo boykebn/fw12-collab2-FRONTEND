@@ -1,12 +1,32 @@
 import { Search } from 'feather-icons-react/build/IconComponents';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { BiCreditCardFront } from "react-icons/bi";
 import { HiOutlineBuildingLibrary } from "react-icons/hi2";
 import {TbTruckDelivery} from "react-icons/tb"
-
+import { useSelector } from 'react-redux';
+import http from '../helpers/http';
 
 const PaymentAndDeliveryCust = () => {
+  const [profile, setProfile] = useState({})
+  const [product, setProduct] = useState({})
+  const [paymentMethodId, setPaymentMethodId] = useState(0)
+  const token = useSelector(state => state.auth.token)
+
+  useEffect(() => {
+    http(token).get('/profile')
+    .then(res => setProfile(res.data.results))
+
+    http(token).get('/transaction/process')
+    .then(res => setProduct(res.data.results))
+  }, [])
+
+  const subTotal = product.price * product.quantity
+  const tax = subTotal * 10 / 100
+  const shipping = 10000
+  const totalPrice = subTotal + tax + shipping
+
   return (
     <div className='max-w-full max-h-full'>
       <section>
@@ -56,21 +76,11 @@ const PaymentAndDeliveryCust = () => {
               <div className='pl-10 flex gap-7'>
                 <Image src={require('../images/hazelnut.png')} width="82" height="90" alt="hazelnut" className='rounded-lg' />
                 <div className='w-[170px] text-xl'>
-                  <p className=''>Hazelnut Latte</p>
-                  <p>x 1</p>
-                  <p>Regular</p>
+                  <p className=''>{product.name}</p>
+                  <p>x{product.quantity}</p>
+                  <p>{product.size === 'L' ? 'Large' : product.size === 'R' ? 'Regular' : 'Extra Large'}</p>
                 </div>
-                <p className='text-xl flex items-center'>IDR 24.0</p>
-              </div>
-
-              <div className='pl-10 flex gap-7 pt-5'>
-                <Image src={require('../images/chikenFW.png')} width="82" height="90" alt="hazelnut" className='rounded-lg' />
-                <div className='w-[170px] text-xl'>
-                  <p className=''>Chicken Fire Wings</p>
-                  <p>x 2</p>
-                  <p></p>
-                </div>
-                <p className='text-xl flex items-center'>IDR 30.0</p>
+                <p className='text-xl flex items-center'>IDR {product.price}</p>
               </div>
                         
               <hr className='ml-10 mr-14 bg-gray-400 mt-10' />
@@ -78,20 +88,20 @@ const PaymentAndDeliveryCust = () => {
               <div className='pl-10 pt-5 text-xl'>
                 <div className='flex justify-between pr-14'>
                   <p>SUBTOTAL</p>
-                  <p>IDR 120.000</p>
+                  <p>IDR {subTotal}</p>
                 </div>
                 <div className='flex justify-between pr-[66px]'>
                   <p>TAX & FEES</p>
-                  <p>IDR 20.000</p>
+                  <p>IDR {tax}</p>
                 </div>
-                <div className='flex justify-between pr-[66px]'>
+                <div className='flex justify-between pr-14'>
                   <p>SHIPPING</p>
-                  <p>IDR 10.000</p>
+                  <p>IDR {shipping}</p>
                 </div>
               </div>
               <div className='pl-10 pt-10 flex text-3xl font-bold gap-32'>
                 <p>TOTAL</p>
-                <p>IDR 150.000</p>
+                <p>IDR {totalPrice}</p>
               </div>
             </div>
           </div>
@@ -103,12 +113,10 @@ const PaymentAndDeliveryCust = () => {
               <p>Edit</p>
             </div>
 
-            <div className='px-10 py-10 w-[454px] h-[198px] rounded-xl bg-white mt-5 text-xl font-semibold leading-8'>
-              <p> <span className='text-black font-bold'>Delivery</span> to Iskandar Street</p>
+            <div className='flex flex-col px-10 py-10 w-[454px] h-[198px] rounded-xl bg-white mt-5 text-xl font-semibold leading-8'>
+              <p className='flex-1'> <span className='text-black font-bold'>Delivery</span> to {profile.address}</p>
               <hr />
-              <p>Km 5 refinery road oppsite republic road, effurun, Jakarta</p>
-              <hr />
-              <p>+62 81348287878</p>
+              <p className='flex-1 flex grow items-end'>{profile.phoneNumber}</p>
             </div>
 
             <div className='flex gap-[260px] text-2xl text-white font-bold pt-14'>
@@ -117,8 +125,8 @@ const PaymentAndDeliveryCust = () => {
 
             <div className='px-10 py-10 w-[454px] h-[259px] rounded-xl bg-white mt-5 text-xl font-semibold leading-8'>
 
-              <div className='flex items-center gap-5 pb-5'>
-                <input type="radio" name="radio-1" className="radio" checked />
+              <div className='flex items-center gap-5 pb-5' onClick={() => setPaymentMethodId(2)}>
+                <input type="radio" name="radio-1" className="radio" checked={paymentMethodId === 2 ? true : false} />
                 <Image src={require('../images/card.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
                 <div className='absolute pl-[50px]'>
                   <BiCreditCardFront className='w-[30px] h-[30px]' />
@@ -126,8 +134,8 @@ const PaymentAndDeliveryCust = () => {
                 <p className='text-xl'>Card</p>
               </div>
               <hr />
-              <div className='flex items-center gap-5 pt-5 pb-5'>
-                <input type="radio" name="radio-1" className="radio" checked />
+              <div className='flex items-center gap-5 pt-5 pb-5' onClick={() => setPaymentMethodId(3)}>
+                <input type="radio" name="radio-1" className="radio" checked={paymentMethodId === 3 ? true : false}/>
                 <Image src={require('../images/bang.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
                 <div className='absolute pl-[50px]'>
                   <HiOutlineBuildingLibrary className='w-[30px] h-[30px]' />
@@ -135,8 +143,8 @@ const PaymentAndDeliveryCust = () => {
                 <p className='text-xl'>Bank account</p>
               </div>
               <hr />
-              <div className='flex items-center gap-5 pt-5 pb-5'>
-                <input type="radio" name="radio-1" className="radio" checked />
+              <div className='flex items-center gap-5 pt-5 pb-5' onClick={() => setPaymentMethodId(4)}>
+                <input type="radio" name="radio-1" className="radio" checked={paymentMethodId === 4 ? true : false}/>
                 <Image src={require('../images/delivery.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
                 <div className='absolute pl-[50px]'>
                   <TbTruckDelivery className='w-[30px] h-[30px]' />
