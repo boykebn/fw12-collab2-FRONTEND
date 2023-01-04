@@ -17,7 +17,6 @@ const ProductDetails = () => {
   const [time, setTime] = useState(null) 
   const [quantity, setQuantity] = useState(0) 
   const token = useSelector(state => state.auth.token)
-  const userId = jwtDecode(token).id
 
   const fetchProductId = async () => {
     try {
@@ -46,7 +45,7 @@ const ProductDetails = () => {
 
     try {
       const result = await http(token).post('/transaction', data)
-      
+
       router.push('/payment-delivery-cust')
     } catch (error) {
       console.log(error)
