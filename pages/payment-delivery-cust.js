@@ -3,195 +3,119 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BiCreditCardFront } from "react-icons/bi";
 import { HiOutlineBuildingLibrary } from "react-icons/hi2";
-import {TbTruckDelivery} from "react-icons/tb"
+import { TbTruckDelivery } from "react-icons/tb"
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
 
 
 const PaymentAndDeliveryCust = () => {
   return (
-    <div className='max-w-full max-h-full'>
-      <section>
-        <div className='hidden md:flex items-center gap-40 px-28 py-5 border-b-2'>
-          <div className='flex-1'>
-            <div className='flex items-center gap-3 w-fit cursor-pointer'>
-              <Image src={require('../images/logoOurCoffee.png')} alt='Logo' className='w-8 h-8' />
-              <h1 className='font-bold text-xl'>Our Coffee</h1>
-            </div>
-          </div>
-          <div className=''>
-            <ul className='flex items-center justify-center gap-10'>
-              <Link href="/">
-                <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
-              </Link>
-              <Link href="/product">
-                <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
-              </Link>
-              <Link href="manage-orders">
-                <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
-              </Link>
-              <Link href="/dashboard-admin">
-                <li className='cursor-pointer hover:text-[#7D6E83]'>Dashboard</li>
-              </Link>
-            </ul>
-          </div>
-          <div className='flex gap-8 items-center'>
-            <Search className='w-4/4 cursor-pointer' />
-            <Image src={require('../images/chat.png')} alt='chatIcon' className='w-4/4 cursor-pointer' />
-            <div>
-              <Image src={require('../images/profile.png')} alt='profile' className='w-4/4 rounded-full cursor-pointer' />
-            </div>
-          </div>
-        </div>
-      </section>
-      <div className='bg-order_bg bg-no-repeat bg-cover pb-[300px]'>
-        <div className='grid grid-cols-[720px_minmax(720px,_1fr)] max-h-screen pb-32'>
-          {/* content-1 */}
-          <div className='pl-32 pt-[95px]'>
-            <div className='w-[316px]'>
-              <p className='text-4xl text-white font-bold drop-shadow-2xl shadow-black-500'>Checkout your item now!</p>
-            </div>
-            <div className='w-[487px] h-[700px] bg-white rounded-xl mt-14'>
-              <div className='flex justify-center py-24'>
-                <p className='text-3xl font-bold'>Order Summary</p>
-              </div>
-              <div className='pl-10 flex gap-7'>
-                <Image src={require('../images/hazelnut.png')} width="82" height="90" alt="hazelnut" className='rounded-lg' />
-                <div className='w-[170px] text-xl'>
-                  <p className=''>Hazelnut Latte</p>
-                  <p>x 1</p>
-                  <p>Regular</p>
+    <>
+      <Navbar />
+      <div className="bg-[url('../assets/bg-1.png')] bg-cover bg-no-repeat font-rubik">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className='pl-[15%] md:pl-[10%] pt-[5%]'>
+            <div className='text-white font-bold text-[40px]'>Checkout Your Item Now</div>
+            <div className='bg-white w-80 md:w-96 ml-[5%] md:ml-[0px] px-[5%] py-[5%] mt-[10%] rounded-lg'>
+              <div className='text-center font-bold text-[35px] font-poppins'>Order Summary</div>
+              <div className='flex flex-col gap-[19px] mt-[10%]'>
+                <div className='flex gap-[33px]'>
+                  <div><Image src={require("../images/hazelnut.png")} width="90" height="82" className="rounded-lg" alt="desc"></Image></div>
+                  <div>
+                    <div>Hazelnut Latte</div>
+                    <div>x1</div>
+                    <div>Regular</div>
+                  </div>
+                  <div>24.0</div>
                 </div>
-                <p className='text-xl flex items-center'>IDR 24.0</p>
+
+                <div className='flex gap-[33px]'>
+                  <div><Image src={require("../images/chikenFW.png")} width="90" height="82" className="rounded-lg" alt="desc"></Image></div>
+                  <div>
+                    <div>Chicken Wings</div>
+                    <div>x2</div>
+                  </div>
+                  <div>30.0</div>
+                </div>
               </div>
 
-              <div className='pl-10 flex gap-7 pt-5'>
-                <Image src={require('../images/chikenFW.png')} width="82" height="90" alt="hazelnut" className='rounded-lg' />
-                <div className='w-[170px] text-xl'>
-                  <p className=''>Chicken Fire Wings</p>
-                  <p>x 2</p>
-                  <p></p>
+              <div className="outline outline-1 outline-[#D0B8A8] mt-[5%]"></div>
+              <div className='flex flex-col gap-3 mt-[5%]'>
+                <div className='flex'>
+                  <div className='grow'>SUB TOTAL</div>
+                  <div>IDR 120.000</div>
                 </div>
-                <p className='text-xl flex items-center'>IDR 30.0</p>
-              </div>
-                        
-              <hr className='ml-10 mr-14 bg-gray-400 mt-10' />
-
-              <div className='pl-10 pt-5 text-xl'>
-                <div className='flex justify-between pr-14'>
-                  <p>SUBTOTAL</p>
-                  <p>IDR 120.000</p>
+                <div className='flex'>
+                  <div className='grow'>TAX & FEES</div>
+                  <div>IDR 20.000</div>
                 </div>
-                <div className='flex justify-between pr-[66px]'>
-                  <p>TAX & FEES</p>
-                  <p>IDR 20.000</p>
-                </div>
-                <div className='flex justify-between pr-[66px]'>
-                  <p>SHIPPING</p>
-                  <p>IDR 10.000</p>
+                <div className='flex'>
+                  <div className='grow'>SHIPPING</div>
+                  <div>IDR 10.000</div>
                 </div>
               </div>
-              <div className='pl-10 pt-10 flex text-3xl font-bold gap-32'>
-                <p>TOTAL</p>
-                <p>IDR 150.000</p>
-              </div>
+              <div className='flex mt-[5%]'>
+                  <div className='grow'>TOTAL</div>
+                  <div>IDR 150.000</div>
+                </div>
             </div>
           </div>
 
-          {/* content-2 */}
-          <div className='pl-32 pt-[230px]'>
-            <div className='flex gap-[260px] text-2xl text-white font-bold'>
-              <p>Address details</p>
-              <p>Edit</p>
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex text-white w-[60%] md:w-[50%] pt-[20%]">
+              <div className="grow">Address Details</div>
+              <div>edit</div>
+            </div>
+            <div className="bg-white w-[60%] md:w-[50%] rounded-lg px-[42px] py-[30px]">
+              <div>Delivery to Iskandar Street</div>
+              <div className="outline outline-1 outline-[#DFD3C3]"></div>
+              <div>Km 5 refinery road oppsite re
+                public road, effurun, Jakarta</div>
+              <div className="outline outline-1 outline-[#DFD3C3]"></div>
+              <div>+62 81348287878</div>
             </div>
 
-            <div className='px-10 py-10 w-[454px] h-[198px] rounded-xl bg-white mt-5 text-xl font-semibold leading-8'>
-              <p> <span className='text-black font-bold'>Delivery</span> to Iskandar Street</p>
-              <hr />
-              <p>Km 5 refinery road oppsite republic road, effurun, Jakarta</p>
-              <hr />
-              <p>+62 81348287878</p>
+            <div className="flex text-white w-[60%] md:w-[50%] pt-[10%]">
+              <div className="grow">Payment Method</div>
             </div>
-
-            <div className='flex gap-[260px] text-2xl text-white font-bold pt-14'>
-              <p>Payment Method</p>
-            </div>
-
-            <div className='px-10 py-10 w-[454px] h-[259px] rounded-xl bg-white mt-5 text-xl font-semibold leading-8'>
-
-              <div className='flex items-center gap-5 pb-5'>
-                <input type="radio" name="radio-1" className="radio" checked />
-                <Image src={require('../images/card.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-                <div className='absolute pl-[50px]'>
-                  <BiCreditCardFront className='w-[30px] h-[30px]' />
+            <div className="bg-white w-[60%] md:w-[50%] rounded-lg px-[42px] py-[30px]">
+              <div>
+                <div className="flex items-center gap-[11px]">
+                  <input type="radio" name="radio-1" className="radio" />
+                  <div className="h-10 w-10 bg-[#F47B0A] flex justify-center items-center rounded-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+                  </div>
+                  <div>Card</div>
                 </div>
-                <p className='text-xl'>Card</p>
-              </div>
-              <hr />
-              <div className='flex items-center gap-5 pt-5 pb-5'>
-                <input type="radio" name="radio-1" className="radio" checked />
-                <Image src={require('../images/bang.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-                <div className='absolute pl-[50px]'>
-                  <HiOutlineBuildingLibrary className='w-[30px] h-[30px]' />
-                </div>
-                <p className='text-xl'>Bank account</p>
-              </div>
-              <hr />
-              <div className='flex items-center gap-5 pt-5 pb-5'>
-                <input type="radio" name="radio-1" className="radio" checked />
-                <Image src={require('../images/delivery.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-                <div className='absolute pl-[50px]'>
-                  <TbTruckDelivery className='w-[30px] h-[30px]' />
-                </div>
-                <p className='text-xl'>Cash on delivery</p>
-              </div>
+                <div className="outline outline-1 outline-black mt-[17px]"></div>
 
+                <div className="flex items-center gap-[11px] pt-[17px]">
+                  <input type="radio" name="radio-1" className="radio" />
+                  <div className="h-10 w-10 bg-[#895537] flex justify-center items-center rounded-lg">
+                    <Image
+                      src={require("../images/acc.png")}
+                      alt="desc"
+                    ></Image>
+                  </div>
+                  <div>Bank Account</div>
+                </div>
+                <div className="outline outline-1 outline-black mt-[17px]"></div>
+
+                <div className="flex items-center gap-[11px] pt-[17px]">
+                  <input type="radio" name="radio-1" className="radio" />
+                  <div className="h-10 w-10 bg-[#FFBA33] flex justify-center items-center rounded-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                  </div>
+                  <div>Cash on Delivery</div>
+                </div>
+              </div>
             </div>
-            <div className='w-[454px] mr-10'>
-              <button className="mt-10 btn h-[60px] text-lg font-semibold">Confirm and Pay</button>
-            </div>
+            <button className="w-[60%] md:w-[50%] bg-[#DFD3C3] py-[27px] rounded-lg mt-[47px] mb-[5%]"> Confirm and Pay</button>
           </div>
         </div>
       </div>
-
-      <footer className="footer p-10 bg-base-200 text-base-content">
-
-        <div className='pl-32 pt-[100px]'>
-          <div className='flex items-center gap-2'>
-            <Image src={require('../images/logoOurCoffee.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-            <p className='text-2xl font-bold'>Our Coffe</p>
-          </div>
-          <div className='w-[360px] text-lg font-semibold pt-5'>
-            <p>Coffee Shop is a store that sells some good meals, and especially coffee. We provide </p>
-            <p>high quality beans</p>
-          </div>
-          <div className='flex gap-5 pt-5'>
-            <Image src={require('../images/fb.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-            <Image src={require('../images/twt.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-            <Image src={require('../images/instagram.png')} width="40" height="40" alt="hazelnut" className='rounded-lg' />
-          </div>
-          <div className='text-[#AFB5C0] text-xl pt-5'>
-            <p>©2022OurCoffe</p>
-          </div>
-        </div>
-              
-        <div className='pt-[100px] pl-32'>
-          <span className="footer-title">Product</span>
-          <a className="link link-hover">Download </a>
-          <a className="link link-hover">Pricing</a>
-          <a className="link link-hover">Locations</a>
-          <a className="link link-hover">Countries</a>
-          <a className="link link-hover">Blog</a>
-        </div>
-
-        <div className='pt-[100px]'>
-          <span className="footer-title">Engage</span>
-          <a className="link link-hover">Coffe Shop ? </a>
-          <a className="link link-hover">FAQ</a>
-          <a className="link link-hover">About Us</a>
-          <a className="link link-hover">Privacy Policy</a>
-          <a className="link link-hover">Terms of Service</a>
-        </div>
-      </footer>
-    </div>
+      <Footer />
+    </>
   )
 }
 

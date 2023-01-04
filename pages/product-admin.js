@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { MdOutlineModeEdit } from "react-icons/md";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import http from "../helpers/http";
@@ -37,8 +38,8 @@ const Product = () => {
       <Navbar />
 
       {/* Konten */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
+      <div className="flex">
+        <div className="hidden md:flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
           <div className="pt-[29px] text-[#7D6E83] font-bold text-[25px]">
             Promo for you
           </div>
@@ -49,8 +50,25 @@ const Product = () => {
           <div className="pl-[10%]">
             <div className="mt-20">
               <div className="relative bg-[#7D6E83] w-[284px] h-[338px] rounded-lg">
+                  <div className="relative border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[250px]">
+                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+                    </div>
+                  </div>
                 <div className="absolute bg-[#D0B8A8] w-[284px] h-[400px] rounded-lg right-4 top-[-10%]">
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[250px] mt-[10px]">
+                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+                    </div>
+                  </div>
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
+                  <Link href='/edit-promo'>
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
+                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+                    </div>
+                  </div>
+                </Link>
                     <Image
                       src={require("../images/spaghetti.png")}
                       className="rounded-full pt-[15%]"
@@ -75,20 +93,26 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <button className="bg-[#7D6E83] mt-[45px] py-5 w-full mr-[10%] rounded-lg text-white">
+          <button className="bg-[#7D6E83] mt-[45px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
             Apply Coupons
           </button>
-          
+
           <div className="text-sm pb-[15%]">
             <div className="font-bold">Terms and Condition </div>
-            <div> 1. You can only apply 1 coupon per day</div>
+            <div>1. You can only apply 1 coupon per day</div>
             <div>2. It only for dine in</div>
             <div>3. Buy 1 get 1 only for new user</div>
             <div>4. Should make member card to apply coupon</div>
           </div>
+
+        <Link href='/new-promo' className="w-full">
+          <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
+              Add new promo
+          </button>
+        </Link>
         </div>
 
-        <div className="grow pt-[29px]">
+        <div className="md:grow pt-[29px]">
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
             <button
               onClick={(e) => setCategory(e.target.innerText)}
@@ -128,17 +152,46 @@ const Product = () => {
                 key={i}
                 className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
               >
-                <Link href={"/product-details/" + product.id}>
-                  <Image
-                    src={require("../images/food_vegie.png")}
-                    alt="desc"
-                  ></Image>
-                  <div>{product?.name}</div>
-                  <div>IDR {Number(product?.price).toLocaleString("id")}</div>
+                <Link href={"/admin-product-details/" + product.id}>
+                  {product?.picture ?(
+                    <Image
+                      src={product?.picture}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>):(
+                    <Image
+                      src={require("../images/food_vegie.png")}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                      alt="desc"
+                    ></Image>
+                  )}
+                  <div className="w-[117px] flex justify-center items-center">
+                    <div className="text-center font-bold text-xl">{product?.name}</div>
+                  </div>
+                  <div className="flex justify-center items-center font-semibold">IDR {Number(product?.price).toLocaleString("id")}</div>
+                </Link>
+                <Link href='/edit-product'>
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[50px]">
+                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+                    </div>
+                  </div>
                 </Link>
               </div>
             ))}
           </div>
+          
+          <Link href='/new-product'>
+            <div className="flex justify-center items-center">
+              <button className="bg-[#7D6E83] mt-[45px] py-5 w-[729px] mr-[10%] rounded-lg text-white font-bold">
+                Add new product
+              </button>
+            </div>
+          </Link>
         </div>
       </div>
 
