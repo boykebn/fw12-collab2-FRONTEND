@@ -87,7 +87,7 @@ const Profile = () => {
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </button>
               <div>
-                <ReactModal isOpen={picture} classNamew="w-auto">
+                <ReactModal isOpen={picture} className="">
                   <div className="flex">
                     <p className="flex-1">Upload Picture</p>
                     <button
@@ -98,7 +98,7 @@ const Profile = () => {
                     </button>
                   </div>
                   <form onSubmit={upload}>
-                    <input type="file" name="picture" />
+                    <input type="file" name="picture" className="mb-5" />
                     <button
                       type="submit"
                       className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold  text-white duration-300"

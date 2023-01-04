@@ -7,6 +7,7 @@ import 'react-html5-camera-photo/build/css/index.css';
 import http from '../helpers/http'
 import { useSelector } from 'react-redux';
 import withAuth from '../components/hoc/withAuth';
+import NavbarAdmin from '../components/NavbarAdmin';
 
 const NewPromo = () => {
   const token = useSelector((state) => state?.auth?.token)
@@ -104,31 +105,7 @@ const NewPromo = () => {
         :
         <>
           {/* Header */}
-          <section>
-            <div className='hidden md:flex items-center gap-40 px-28 py-5 border-b-2'>
-              <div className='flex-1'>
-                <div className='flex items-center gap-3 w-fit cursor-pointer'>
-                  <Image src={require('../images/logoOurCoffee.png')} alt='Logo' className='w-8 h-8' />
-                  <h1 className='font-bold text-xl'>Our Coffee</h1>
-                </div>
-              </div>
-              <div className=''>
-                <ul className='flex items-center justify-center gap-10'>
-                  <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
-                  <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
-                  <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
-                  <li className='cursor-pointer hover:text-[#7D6E83]'>Dashboard</li>
-                </ul>
-              </div>
-              <div className='flex gap-8 items-center'>
-                <Search className='w-4/4 cursor-pointer' />
-                <Image src={require('../images/chat.png')} alt='chatIcon' className='w-4/4 cursor-pointer' />
-                <div>
-                  <Image src={require('../images/profile.png')} alt='profile' className='w-4/4 rounded-full cursor-pointer' />
-                </div>
-              </div>
-            </div>
-          </section>
+          <NavbarAdmin />
 
           {/* Add new promo */}
           <section className='bg-white px-5 md:px-28 py-8'>

@@ -23,8 +23,12 @@ const NavbarAdmin = () => {
   const token = useSelector((state) => state?.auth?.token)
 
   const getBio = async () => {
-    const { data } = await http(token).get("/profile");
+    try {
+      const { data } = await http(token).get("/profile");
     return data;
+    } catch(error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -46,10 +50,10 @@ const NavbarAdmin = () => {
               <Link href="/">
                 <li className="cursor-pointer hover:text-[#7D6E83]">Home</li>
               </Link>
-              <Link href="">
+              <Link href="/product-admin">
                 <li className="cursor-pointer hover:text-[#7D6E83]">Product</li>
               </Link>
-              <Link href="">
+              <Link href="/manage-orders">
                 <li className="cursor-pointer hover:text-[#7D6E83]">Orders</li>
               </Link>
               <Link href="/dashboard-admin">

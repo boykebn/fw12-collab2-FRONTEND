@@ -3,8 +3,10 @@ import Link from "next/link";
 import React from "react";
 import { MdOutlineModeEdit } from "react-icons/md";
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import NavbarAdmin from "../components/NavbarAdmin";
 import http from "../helpers/http";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Product = () => {
   const [product, setProduct] = React.useState([]);
@@ -35,7 +37,7 @@ const Product = () => {
   return (
     <>
       {/* Navbar */}
-      <Navbar />
+      <NavbarAdmin />
 
       {/* Konten */}
       <div className="flex">
@@ -62,7 +64,7 @@ const Product = () => {
                     </div>
                   </div>
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
-                  <Link href='/edit-promo'>
+                  <Link href={'/edit-promo/'+52}>
                   <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
@@ -148,11 +150,12 @@ const Product = () => {
 
           <div className="grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4">
             {product?.map((product, i) => (
+              product ?
               <div
                 key={i}
                 className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
               >
-                <Link href={"/admin-product-details/" + product.id}>
+                <Link href={"/admin-product-details/" + product?.id}>
                   {product?.picture ?(
                     <Image
                       src={product?.picture}
@@ -174,16 +177,16 @@ const Product = () => {
                   </div>
                   <div className="flex justify-center items-center font-semibold">IDR {Number(product?.price).toLocaleString("id")}</div>
                 </Link>
-                <Link href='/edit-product'>
+                <Link href={'edit-product/' + product?.id}>
                   <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[50px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
                     </div>
                   </div>
                 </Link>
-              </div>
-            ))}
-          </div>
+              </div> : <Skeleton className='h-[500px]'/>
+            ))} 
+          </div> 
           
           <Link href='/new-product'>
             <div className="flex justify-center items-center">
