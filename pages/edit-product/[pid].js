@@ -1,19 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Footer from '../components/footer'
-import Navbar from '../components/navbar'
+import Footer from '../../components/footer'
+import NavbarAdmin from '../../components/NavbarAdmin'
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from 'react-redux'
-import http from '../helpers/http'
+import http from '../../helpers/http'
 import { useRouter } from 'next/router'
 
 const EditProduct = () => {
   const token = useSelector((state) => state?.auth?.token)
   const router = useRouter()
+  const { pid } = router.query;
 
   // Get product by id
-  const productId = 80
   const [product, setProduct] = React.useState({})
   const [picture, setPicture] = React.useState(null)
   const [name, setName] = React.useState(null)
@@ -32,7 +32,7 @@ const EditProduct = () => {
   }, [])
   const getProduct = async () => {
     try {
-      const response = await http(token).get(`/product/${productId}`)
+      const response = await http(token).get(`/product/${pid}`)
       setProduct(response?.data?.results)
       setStock(response?.data?.results?.stock)
       setPrice(response?.data?.results?.price)
@@ -44,8 +44,8 @@ const EditProduct = () => {
   // Edit product
   const editProduct = async () => {
     try {
-      const response = await http(token).patch(`/product/edit/${productId}`, {name, description, stock})
-      await http(token).patch(`/productSize/${productId}`, {sizeId, price})
+      const response = await http(token).patch(`/product/edit/${pid}`, {name, description, stock})
+      await http(token).patch(`/productSize/${pid}`, {sizeId, price})
       setMessageSuccess(response?.data?.message)
       setAlertSuccess(true)
       setTimeout(() => {setAlertSuccess(false)}, 5000)
@@ -65,10 +65,10 @@ const EditProduct = () => {
 
   const deleteProduct = async () => {
     try {
-      await http(token).delete(`/productSize/${productId}`)
-      await http(token).delete(`/productCategory/${productId}`)
-      await http(token).delete(`/deliveryTime/${productId}`)
-      const response = await http(token).delete(`/product/${productId}`)
+      await http(token).delete(`/productSize/${pid}`)
+      await http(token).delete(`/productCategory/${pid}`)
+      await http(token).delete(`/deliveryTime/${pid}`)
+      const response = await http(token).delete(`/product/${pid}`)
       setMessageSuccessDelete(response?.data?.message)
       setTimeout(()=> {
         router.replace('/dashboard-admin')
@@ -106,7 +106,7 @@ const EditProduct = () => {
       </div>
       </> : false}
       {/* Navbar */}
-      <Navbar></Navbar>
+      <NavbarAdmin />
 
       {/* Konten */}
       <main className='relative bg-[#F8EDE3] px-28 py-10'>
