@@ -53,15 +53,15 @@ const AdminProductDetails = () => {
                   {productId?.picture ?(
                     <Image
                       src={productId?.picture || require("../../images/food_vegie.png")}
-                      width={100}
-                      height={100}
+                      width={400}
+                      height={400}
                       className="rounded-full"
                       alt="desc"
                     ></Image>):(
                     <Image
                       src={require("../../images/food_vegie.png")}
-                      width={100}
-                      height={100}
+                      width={400}
+                      height={400}
                       className="rounded-full"
                       alt="desc"
                     ></Image>

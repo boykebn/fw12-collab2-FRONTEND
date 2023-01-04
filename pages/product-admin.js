@@ -172,11 +172,13 @@ const Product = () => {
                   </div>
                   <div className="flex justify-center items-center font-semibold">IDR {Number(product?.price).toLocaleString("id")}</div>
                 </Link>
-                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[130px] mt-[200px]">
+                <Link href='/edit-product'>
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[50px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
                     </div>
                   </div>
+                </Link>
               </div>
             ))}
           </div>
