@@ -10,7 +10,6 @@ const Navbar = () => {
   const token = useSelector((state) => state?.auth?.token);
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
-  console.log(bio);
   useEffect(() => {
     getBio().then((data) => {
       setBio(data?.results);
