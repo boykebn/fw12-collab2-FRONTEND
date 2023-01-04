@@ -61,7 +61,7 @@ const NewPromo = () => {
       setTimeout(() => {setAlertSuccess(false)}, 5000)
     } catch (error) {
       console.log(error)
-      setMessageError('Promo created failed. Form cannot be empty')
+      setMessageError('Promo created failed.')
       setAlertError(true)
     }
   }
