@@ -14,3 +14,4 @@ const http = (token) => {
 };
 
 export default http;
+
