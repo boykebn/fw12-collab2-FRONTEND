@@ -62,11 +62,13 @@ const Product = () => {
                     </div>
                   </div>
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
-                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[230px] mt-[10px]">
+                  <Link href='/edit-promo'>
+                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
                     </div>
                   </div>
+                </Link>
                     <Image
                       src={require("../images/spaghetti.png")}
                       className="rounded-full pt-[15%]"
