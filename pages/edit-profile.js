@@ -8,6 +8,7 @@ import http from "../helpers/http";
 import { logout as logoutAction } from "../redux/reducers/auth";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
+import user from "../assets/user.png";
 const EditProfile = () => {
   const token = useSelector((state) => state.auth.token);
   const router = useRouter;
@@ -89,13 +90,23 @@ const EditProfile = () => {
         <div className="pl-3 pr-3 md:pr-0 md:pl-32 pt-20 md:flex gap-5 ">
           <div className="mb-3 md:mb-0 md:w-[310px] md:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
-              <Image
-                src={bio?.picture}
-                width="82"
-                height="90"
-                alt="tomato"
-                className="rounded-full w-[80px] h-[120px]"
-              />
+              {bio?.picture ? (
+                <Image
+                  src={bio?.picture}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              ) : (
+                <Image
+                  src={user}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              )}
             </div>
 
             <div className="flex flex-col justify-center items-center">
