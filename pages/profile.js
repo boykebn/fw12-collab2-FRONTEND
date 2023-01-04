@@ -9,6 +9,7 @@ import ReactModal from "react-modal";
 import { logout as logoutAction } from "../redux/reducers/auth";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import user from "../assets/user.png";
 const Profile = () => {
   const token = useSelector((state) => state?.auth?.token);
   const [picture, setpicture] = useState(false);
@@ -62,13 +63,23 @@ const Profile = () => {
         <div className="pl-3 pr-3 md:pr-0 md:pl-32 pt-20 md:flex gap-5 ">
           <div className="mb-3 md:mb-0 md:w-[310px] md:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
-              <Image
-                src={bio?.picture}
-                width="82"
-                height="90"
-                alt="tomato"
-                className="rounded-full w-[80px] h-[120px]"
-              />
+              {bio?.picture ? (
+                <Image
+                  src={bio?.picture}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              ) : (
+                <Image
+                  src={user}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              )}
               <button
                 onClick={() => setpicture(true)}
                 className=" absolute border-1 w-[30px] h-[30px] bg-[#d0b8a8] rounded-[50%] flex items-center justify-center mr-[-50px]"
