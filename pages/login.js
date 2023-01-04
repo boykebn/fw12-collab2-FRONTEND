@@ -13,6 +13,7 @@ import {useDispatch} from 'react-redux'
 import {useRouter} from 'next/router'
 import { login as loginAction } from '../redux/reducers/auth'
 import jwt_decode from "jwt-decode";
+import withoutAuth from "../components/hoc/withoutAuth"
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -214,4 +215,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withoutAuth(Login)

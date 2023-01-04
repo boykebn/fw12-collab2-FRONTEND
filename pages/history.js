@@ -19,14 +19,15 @@ const History = () => {
           "Content-Type": "application/json",
         },
       });
+      console.log(data)
       setHistory(data.results);
     } catch (error) {
       if (error) throw error;
     }
   };
   React.useEffect(() => {
-    fetchHistory(), [];
-  });
+    fetchHistory()
+  },[]);
   return (
     <div className="max-w-full max-h-full">
       <section>
