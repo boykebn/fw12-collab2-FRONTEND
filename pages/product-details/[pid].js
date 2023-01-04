@@ -52,7 +52,7 @@ const ProductDetails = () => {
             <div className="flex flex-col justify-center items-center mt-[40px]">
               <Image
                 src={cold_brew}
-                className="rounded-full h-[400px] w-[400px]"
+                className="rounded-full h-[300px] w-[300px] md:h-[400px] md:w-[400px]"
                 alt="desc"
               ></Image>
               <div className="text-center">
