@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Rubik&display=swap");
+.btn {
+  text-transform: none;
+  width: 100%;
+}
+.input {
+  width: 100%;
+}
+.feather-50{
+  width: 50px;
+  height: 50px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media (min-width: 768px) {
+  .bg-forgot-password {
+    background-image: url("../images/forgotPasswordBg.png");
+  }
+}
