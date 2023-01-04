@@ -29,6 +29,7 @@ import Navbar from "../components/navbar";
 export default function Home() {
   return (
     <div className="font-rubik">
+      {/* Navbar */}
       <div className="px-5 lg:px-12 py-[45px] flex items-center">
         <div className="flex flex-1 items-center">
           <Image
@@ -69,10 +70,12 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="lg:bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover lg:h-[645px] lg:absolute w-screen ">
+
+      {/* Konten */}
+      <div className="lg:bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover lg:h-[645px]">
         <div className="flex flex-col px-5 w-full lg:px-[150px] lg:flex-row">
           <div className="lg:pt-[78px] mr-auto">
-            <p className="hidden lg:block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
+            <p className="block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
               Start Your Day with Coffee and Good Meals
             </p>
             <p className="block text-black text-5xl font-black lg:hidden">
@@ -157,7 +160,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="">
-                <p className="text-[#0B132A] text-[25px] font-bold leading-[30px] mb-[5px]">
+                <p className="text-[#0B132A] text-[25px] font-bold mb-[5px]">
                   800+
                 </p>
                 <p className="text-[#4F5665] text-[20px] leading-[30px]">
@@ -168,6 +171,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div className="hidden pt-[870px] px-[150px] lg:flex mb-[82px]">
         <div className="mr-[139px]">
           <Image src={layer2} alt="img-layer-2" />
@@ -212,8 +216,8 @@ export default function Home() {
             yours too!
           </p>
         </div>
-        <div className="flex justify-center items-center px-5 w-full">
-          <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 lg:justify-center">
+        <div className="flex justify-center items-center md:px-5 md:w-full">
+          <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 justify-center">
             <div className="carousel-item">
               <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
                 <div className="mb-[30px] leading-[30px]">
@@ -561,6 +565,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
       <footer className=" w-full bg-[#dfd3c3] lg:pt-[180px] ">
         <div className="flex py-[5%] px-[10%]">
           <div className="grow">
@@ -639,6 +645,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {/* Footer */}
     </div>
   );
 }

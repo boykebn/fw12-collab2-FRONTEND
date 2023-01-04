@@ -83,3 +83,45 @@ Start the server
 - [jwt token](https://www.npmjs.com/package/jsonwebtoken)
 
 ## What's in Backend
+### CRUD Database for:
+- Status
+- Size 
+- Users
+- Delivery Time
+- Product Category
+- Category
+- Product Size
+- History
+- Products
+- Payment Method
+- Promo
+- Order
+- Chat
+
+## Endpoint
+
+
+|                              URL                         | Method | Description |
+| -------------------------------------------------------- |:------:| --------------------------------------------:|
+| /auth/login                                              | POST  |                                    LOGIN USER |
+| /auth/register                                           | POST  |                                 REGISTER USER |
+| /auth/forgotPassword                                     | POST  |                          FORGOT PASSWORD USER |
+| /auth/resetPassword                                      | POST  |                           RESET PASSWORD USER |
+| /profile                                                 | GET   |                                   GET PROFILE |
+| /profile/:id                                             | PATCH |                                 UPDATE PROFIL |
+| /promo/add                                               | POST  |                                     ADD PROMO |
+| /promo/edit/:id                                          | PATCH |                                  UPDATE PROMO |
+| /product/add                                             | POST  |                                   ADD PRODUCT |
+| /product/edit/:id                                        | PACTH |                                UPDATE PRODUCT |
+| /productSize/:id                                         | DELETE|                                DELETE PRODUCT |
+| /product/1                                               | DELETE|                                DELETE PRODUCT |
+| /product                                                 | GET   |                               GET ALL PRODUCT |
+| /product/category/Food                                   | GET   |                          GET PRODUCT CATEGORY |
+| /product/:id                                             | GET   |                            GET PRODUCT DETAIL |
+| /history/delete/:id                                      | DELETE|                           DELETE HISTORY USER |
+| /transaction                                             | POST  |                            CREATE TRANSACTION |
+| /transaction/process                                     |  GET  |                       GET TRANSACTION PROCESS |
+| /transaction/pay/3                                       | PATCH|                       EDIT PAYMENT TRANSACTION |
+| http://localhost:8888/transaction/confirm/3              | PATCH |                  UPDATE TRANSACTION (CONFIRM) |
+| /transaction/confirm                                     | GET   |                       GET TRANSACTOPN CONFIRM |
+| /history                                                 | GET  |                        GET HISTORY TRANSACTION |
