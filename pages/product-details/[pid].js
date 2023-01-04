@@ -39,7 +39,6 @@ const ProductDetails = () => {
       {/* Navbar */}
       <Navbar></Navbar>
 
-      {/* Konten */}
       <main className="relative bg-[#F8EDE3] pt-[52px] pb-[10%]">
         <div className="flex">
           <div className="ml-[5%]">
