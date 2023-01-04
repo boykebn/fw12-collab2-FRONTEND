@@ -73,12 +73,12 @@ const ProductDetails = () => {
           </div>
 
           <div className="ml-[20%] md:ml-[10%]">
-            <div className="bg-[#FFFFFF] px-[84px] py-[10%] w-80 md:w-full rounded-lg">
+            <div className="bg-[#FFFFFF] px-[84px] py-[10%] w-80 mr-[5%] md:w-96 rounded-lg">
               <div>
                 <div>Delivery only on Monday to </div>
                 <div>friday at 1 - 7 pm</div>
               </div>
-              <div className="w-96 mt-[43px]">
+              <div className="mt-[43px]">
                 <div className="break-all">{productId?.description}</div>
               </div>
 

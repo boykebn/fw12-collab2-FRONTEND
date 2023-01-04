@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import http from "../helpers/http";
 import { useSelector } from "react-redux";
+import user from "../assets/user.png"
 
 const Navbar = () => {
   const token = useSelector((state) => state?.auth?.token);
@@ -104,9 +105,17 @@ const Navbar = () => {
         </div>
         <Link href="/profile">
           <div className="w-10 rounded-full">
-            {bio.picture && (
+            {bio?.picture ? (
               <Image
                 src={bio?.picture}
+                width="82"
+                height="90"
+                alt="picture"
+                className="rounded-full w-[20px] h-[30px]"
+              />
+            ) : (
+              <Image
+                src={user}
                 width="82"
                 height="90"
                 alt="picture"
