@@ -1,10 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import http from "../helpers/http";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const token = useSelector((state) => state?.auth?.token);
+  const [picture, setpicture] = useState(false);
+  const [bio, setBio] = useState({});
+  console.log(bio);
+  useEffect(() => {
+    getBio().then((data) => {
+      setBio(data?.results);
+    });
+  }, []);
+
+  const getBio = async () => {
+    const { data } = await http(token).get("/profile");
+    return data;
+  };
   return (
-    <div className="navbar bg-base-100 pt-[30px] pb-[53px]">
+    <div className="navbar bg-base-100 pt-[30px] pb-[30px]">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,14 +59,14 @@ const Navbar = () => {
           </ul>
         </div>
         {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
-        <Link href="" className="flex ml-[5%] gap-2">
+        <Link href="/product" className="flex ml-[5%] gap-2 items-center">
           <Image
             src={require("../images/logoOurCoffee.png")}
             width="30"
             height="33"
             alt="desc"
           ></Image>
-          <div>Our Coffee</div>
+          <div className="font-bold">Our Coffee</div>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -87,10 +104,15 @@ const Navbar = () => {
         </div>
         <Link href="/profile">
           <div className="w-10 rounded-full">
-            <img
-              src="https://placeimg.com/80/80/people"
-              className="rounded-full"
-            />
+            {bio.picture && (
+              <Image
+                src={bio?.picture}
+                width="82"
+                height="90"
+                alt="picture"
+                className="rounded-full w-[20px] h-[30px]"
+              />
+            )}
           </div>
         </Link>
       </div>
