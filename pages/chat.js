@@ -4,7 +4,7 @@ import search from "../assets/search.png";
 import man from "../assets/man.png";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import withAuth from '../components/hoc/withAuth'
+import withAuthUser from '../components/hoc/withAuthUser'
 
 const Chat = () => {
   return (
@@ -96,4 +96,4 @@ const Chat = () => {
   );
 };
 
-export default withAuth(Chat);
+export default withAuthUser(Chat);

@@ -4,7 +4,7 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import http from "../helpers/http";
-import withAuth from '../components/hoc/withAuth'
+import withAuthUser from '../components/hoc/withAuthUser'
 
 const Product = () => {
   const [product, setProduct] = React.useState([]);
@@ -149,4 +149,4 @@ const Product = () => {
   );
 };
 
-export default withAuth(Product);
+export default withAuthUser(Product);
