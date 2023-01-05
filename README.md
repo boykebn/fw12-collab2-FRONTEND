@@ -114,14 +114,14 @@ Start the server
 | /product/add                                             | POST  |                                   ADD PRODUCT |
 | /product/edit/:id                                        | PACTH |                                UPDATE PRODUCT |
 | /productSize/:id                                         | DELETE|                                DELETE PRODUCT |
-| /product/1                                               | DELETE|                                DELETE PRODUCT |
+| /product/:id                                               | DELETE|                                DELETE PRODUCT |
 | /product                                                 | GET   |                               GET ALL PRODUCT |
 | /product/category/Food                                   | GET   |                          GET PRODUCT CATEGORY |
 | /product/:id                                             | GET   |                            GET PRODUCT DETAIL |
 | /history/delete/:id                                      | DELETE|                           DELETE HISTORY USER |
 | /transaction                                             | POST  |                            CREATE TRANSACTION |
 | /transaction/process                                     |  GET  |                       GET TRANSACTION PROCESS |
-| /transaction/pay/3                                       | PATCH|                       EDIT PAYMENT TRANSACTION |
-| http://localhost:8888/transaction/confirm/3              | PATCH |                  UPDATE TRANSACTION (CONFIRM) |
+| /transaction/pay/:id                                       | PATCH|                       EDIT PAYMENT TRANSACTION |
+| http://localhost:8888/transaction/confirm/:id              | PATCH |                  UPDATE TRANSACTION (CONFIRM) |
 | /transaction/confirm                                     | GET   |                       GET TRANSACTOPN CONFIRM |
 | /history                                                 | GET  |                        GET HISTORY TRANSACTION |
