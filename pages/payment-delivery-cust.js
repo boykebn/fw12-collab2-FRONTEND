@@ -71,10 +71,10 @@ const PaymentAndDeliveryCust = () => {
                 <div className="flex gap-[33px]">
                   <div>
                     <Image
-                      src={require("../images/hazelnut.png")}
+                      src={product?.picture}
                       width="90"
-                      height="82"
-                      className="rounded-lg"
+                      height="200"
+                      className="rounded-lg h-10"
                       alt="desc"
                     ></Image>
                   </div>

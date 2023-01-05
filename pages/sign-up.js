@@ -89,7 +89,7 @@ const SignUp = () => {
               {({errors, touched}) => (
                 <Form className='px-5 flex flex-col items-center gap-8'>
                   <div className='py-5 relative'>
-                    <Image src={require('../images/girlChilling.png')} className='md:hidden w-4/4' />
+                    <Image src={require('../images/girlChilling.png')} className='md:hidden w-4/4' alt='girl chilin'/>
                     <h1 className='md:hidden font-bold text-6xl absolute top-12 right-5'>Sign<br/>Up</h1>
                     <h1 className='hidden md:block font-bold text-3xl text-[#7D6E83]'>Sign Up</h1>
                   </div>
