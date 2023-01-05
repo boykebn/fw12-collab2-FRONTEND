@@ -11,6 +11,7 @@ import React, { useState, useEffect } from "react";
 import http from "../helpers/http";
 import Footer from "../components/footer";
 import withAuthUser from '../components/hoc/withAuthUser'
+import Navbar from "../components/navbar";
 
 const History = () => {
   const [history, setHistory] = useState([]);
@@ -32,53 +33,7 @@ const History = () => {
   },[]);
   return (
     <div className="">
-      <section>
-        <div className="hidden md:flex items-center gap-40 px-28 py-5 border-b-2">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 w-fit cursor-pointer">
-              <Image
-                src={require("../images/logoOurCoffee.png")}
-                alt="Logo"
-                className="w-8 h-8"
-              />
-              <h1 className="font-bold text-xl">Our Coffee</h1>
-            </div>
-          </div>
-          <div className="">
-            <ul className="flex items-center justify-center gap-10">
-              <Link href="/">
-                <li className="cursor-pointer hover:text-[#7D6E83]">Home</li>
-              </Link>
-              <Link href="/product">
-                <li className="cursor-pointer hover:text-[#7D6E83]">Product</li>
-              </Link>
-              <Link href="manage-orders">
-                <li className="cursor-pointer hover:text-[#7D6E83]">Orders</li>
-              </Link>
-              <Link href="/dashboard-admin">
-                <li className="cursor-pointer hover:text-[#7D6E83]">
-                  Dashboard
-                </li>
-              </Link>
-            </ul>
-          </div>
-          <div className="flex gap-8 items-center">
-            <Search className="w-4/4 cursor-pointer" />
-            <Image
-              src={require("../images/chat.png")}
-              alt="chatIcon"
-              className="w-4/4 cursor-pointer"
-            />
-            <div>
-              <Image
-                src={require("../images/profile.png")}
-                alt="profile"
-                className="w-4/4 rounded-full cursor-pointer"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Navbar />
 
       <div className="bg-history_bg bg-no-repeat bg-cover pb-[100px]">
         <div className="flex flex-col justify-center items-center pl-[5%] leading-10 pt-[100px]">

@@ -54,7 +54,7 @@ const Navbar = () => {
               <Link href="/payment-delivery-cust">Your Cart</Link>
             </li>
             <li>
-              <Link href="/history-cust">History</Link>
+              <Link href="/history">History</Link>
             </li>
           </ul>
         </div>
@@ -62,8 +62,8 @@ const Navbar = () => {
         <Link href="/product" className="flex ml-[5%] gap-2 items-center">
           <Image
             src={require("../images/logoOurCoffee.png")}
-            width="30"
-            height="33"
+            width={30}
+            height={33}
             alt="desc"
           ></Image>
           <div className="font-bold">Our Coffee</div>
@@ -81,7 +81,7 @@ const Navbar = () => {
             <Link href="/payment-delivery-cust">Your Cart</Link>
           </li>
           <li>
-            <Link href="/history-cust">History</Link>
+            <Link href="/history">History</Link>
           </li>
         </ul>
       </div>

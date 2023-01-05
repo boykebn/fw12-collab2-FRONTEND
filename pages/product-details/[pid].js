@@ -21,11 +21,12 @@ const ProductDetails = () => {
   const fetchProductId = async () => {
     try {
       const { data } = await http().get(`/product/details/${pid}?sizeId=${sizeId}`);
-      setProductId(data.results);
+      setProductId(data?.results);
     } catch (error) {
       if (error) throw error;
     }
   };
+  console.log(productId)
 
   React.useEffect(() => {
     if (pid) {

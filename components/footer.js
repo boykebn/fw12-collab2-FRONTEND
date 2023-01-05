@@ -10,8 +10,8 @@ const Footer = () => {
             <div className="flex gap-[15px]">
               <Image
                 src={require("../images/logoOurCoffee.png")}
-                height="33"
-                width="30"
+                height={33}
+                width={33}
                 alt="desc"
               ></Image>
               <div className="font-bold">Our Coffee</div>

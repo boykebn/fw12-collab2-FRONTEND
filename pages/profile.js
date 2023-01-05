@@ -11,9 +11,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import user from "../assets/user.png";
 import withAuthUser from '../components/hoc/withAuthUser'
+import { RiDoubleQuotesR } from "react-icons/ri";
 
 const Profile = () => {
   const token = useSelector((state) => state?.auth?.token);
+  const router = useRouter();
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   console.log(bio);
@@ -27,6 +29,7 @@ const Profile = () => {
     const { data } = await http(token).get("/profile");
     return data;
   };
+  console.log(bio)
 
   const upload = async (e) => {
     e.preventDefault();
@@ -40,6 +43,10 @@ const Profile = () => {
         form.append("picture", file);
         const { data } = await http(token).patch("/profile", form);
         window.alert(data.message);
+        setTimeout(()=>{
+          router.replace('/profile')
+          setpicture(false)
+        }, 3000)
       } catch (err) {
         window.alert(err.response);
       }
@@ -47,8 +54,7 @@ const Profile = () => {
   };
 
   // Logout
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const dispatch = useDispatch()
   const handlerLogout = () => {
     dispatch(logoutAction());
     router.push("/login");
@@ -116,7 +122,7 @@ const Profile = () => {
               <p className="text-xl font-bold pb-2 pt-4">{bio.displayName}</p>
               <p>{bio.email}</p>
               <p className="text-[#4F5665] text-lg pt-10">
-                Has been ordered {bio.totalOrder} products
+                Has been ordered {bio?.totalOrder} products
               </p>
             </div>
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
@@ -254,7 +260,7 @@ const Profile = () => {
                 href=""
                 className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold hover:bg-[#d0b8a8] text-white duration-300"
               >
-                <Link href="reset-password">Edit Password</Link>
+                <Link href="forgot-password">Edit Password</Link>
               </button>
             </div>
 

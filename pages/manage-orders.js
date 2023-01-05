@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Navbar from "../components/navbar";
+import NavbarAdmin from "../components/NavbarAdmin";
 import Footer from "../components/footer";
 import http from "../helpers/http";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ const ManageOrders = () => {
 
   return (
     <>
-      <Navbar></Navbar>
+      <NavbarAdmin></NavbarAdmin>
 
       <div className="bg-[url('../assets/bg-1.png')] bg-cover bg-no-repeat font-rubik">
         <div className="grid grid-cols-1 md:grid-cols-2">
