@@ -7,6 +7,7 @@ import { BiTrash } from "react-icons/bi";
 import { useSelector } from 'react-redux'
 import http from '../../helpers/http'
 import { useRouter } from 'next/router'
+import withAuth from '../../components/hoc/withAuth'
 
 const EditProduct = () => {
   const token = useSelector((state) => state?.auth?.token)
@@ -211,4 +212,4 @@ const EditProduct = () => {
   )
 }
 
-export default EditProduct;
+export default withAuth(EditProduct);

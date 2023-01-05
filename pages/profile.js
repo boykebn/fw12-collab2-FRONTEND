@@ -10,6 +10,8 @@ import { logout as logoutAction } from "../redux/reducers/auth";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import user from "../assets/user.png";
+import withAuth from '../../components/hoc/withAuth'
+
 const Profile = () => {
   const token = useSelector((state) => state?.auth?.token);
   const [picture, setpicture] = useState(false);
@@ -271,4 +273,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuth(Profile);

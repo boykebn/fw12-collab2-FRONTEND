@@ -10,6 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import http from "../helpers/http";
 import Footer from "../components/footer";
+import withAuth from '../../components/hoc/withAuth'
 
 const History = () => {
   const [history, setHistory] = useState([]);
@@ -117,4 +118,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default withAuth(History);

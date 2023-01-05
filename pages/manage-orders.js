@@ -4,6 +4,7 @@ import Footer from "../components/footer";
 import http from "../helpers/http";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import withAuth from '../../components/hoc/withAuth'
 
 const ManageOrders = () => {
   const [order, setOrder] = useState({});
@@ -248,4 +249,4 @@ const ManageOrders = () => {
   );
 };
 
-export default ManageOrders;
+export default withAuth(ManageOrders);

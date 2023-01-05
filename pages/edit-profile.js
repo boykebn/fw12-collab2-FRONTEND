@@ -9,6 +9,10 @@ import { logout as logoutAction } from "../redux/reducers/auth";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import user from "../assets/user.png";
+import withAuth from '../../components/hoc/withAuth'
+
+
+
 const EditProfile = () => {
   const token = useSelector((state) => state.auth.token);
   const router = useRouter;
@@ -428,4 +432,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default withAuth(EditProfile);
