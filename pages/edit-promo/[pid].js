@@ -89,7 +89,10 @@ const EditPromo = () => {
       const response = await http(token).patch(`/promo/edit/${pid}`, form)
       setMessageSuccess(response?.data?.message)
       setAlertSuccess(true)
-      setTimeout(() => {setAlertSuccess(false)}, 5000)
+      setTimeout(() => {
+        setAlertSuccess(false)
+        router.replace('/product-admin')
+      }, 3000)
       setPromo(response?.data?.results)
     } catch (error) {
       console.log(error)
@@ -97,7 +100,6 @@ const EditPromo = () => {
       setAlertError(true)
     }
   }
-  console.log(pid)
 
   return(
     <>
@@ -151,14 +153,14 @@ const EditPromo = () => {
           </div> : <Skeleton className='h-[480px]'/>}
           <div className='mt-8'>
             <label className='font-bold text-[#7D6E83]'>Expire date :</label>
-            <input onChange={(e) => setStartDate(e.target.value)} defaultValue={promo?.startDate} type='text' onFocus={(e) => (e.target.type = "date")}
+            <input onChange={(e) => setStartDate(e.target.value) & setAlertError(false)} defaultValue={promo?.startDate} type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoStartDate' placeholder='Select start date' className='input input-bordered focus:outline-none mt-3 '/>
-            <input onChange={(e) => setEndDate(e.target.value)} defaultValue={promo?.endDate} type='text' onFocus={(e) => (e.target.type = "date")}
+            <input onChange={(e) => setEndDate(e.target.value) & setAlertError(false)} defaultValue={promo?.endDate} type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoEndDate' placeholder='Select end date' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
           <div className='mt-8'>
             <label className='font-bold text-[#7D6E83]'>Input coupon code :</label>
-            <input onChange={(e) => setCode(e.target.value)} defaultValue={promo?.code} type='text' name='discount' placeholder='Input stock' className='input input-bordered focus:outline-none mt-3 '/>
+            <input onChange={(e) => setCode(e.target.value) & setAlertError(false)} defaultValue={promo?.code} type='text' name='discount' placeholder='Input stock' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
         </div>
 
@@ -166,36 +168,36 @@ const EditPromo = () => {
         <div className='flex-[65%]'>
           <div className='mb-5'>
             <label className='font-bold text-[#7D6E83]'>Name:</label>
-            <input onChange={(e) => setName(e.target.value)} type='text' defaultValue={promo?.name} name='name' placeholder='Type promo name min. 50 characters' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
+            <input onChange={(e) => setName(e.target.value) & setAlertError(false)} type='text' defaultValue={promo?.name} name='name' placeholder='Type promo name min. 50 characters' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
           </div>
           <div className='mb-5'>
             <label className='font-bold text-[#7D6E83]'>Normal Price :</label>
-            <input onChange={(e) => setPrice(e.target.value)} type='text' defaultValue={(promo?.price) ? new Intl.NumberFormat('en-DE').format(Number(promo?.price)) : ''} name='normalPrice' placeholder='Type the normal price' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
+            <input onChange={(e) => setPrice(e.target.value) & setAlertError(false)} type='text' defaultValue={(promo?.price) ? new Intl.NumberFormat('en-DE').format(Number(promo?.price)) : ''} name='normalPrice' placeholder='Type the normal price' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
           </div>
           <div className='mb-5'>
             <label className='font-bold text-[#7D6E83]'>Description :</label>
-            <input onChange={(e) => setDescription(e.target.value)} type='text' defaultValue={promo?.description} name='description' placeholder='Describe your promo min. 150 characters' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
+            <input onChange={(e) => setDescription(e.target.value) & setAlertError(false)} type='text' defaultValue={promo?.description} name='description' placeholder='Describe your promo min. 150 characters' className='input input-bordered rounded-xl mt-2 focus:outline-none' />
           </div>
           <div className='mb-5'>
             <label className='font-bold text-[#7D6E83]'>Input product size :</label>
             <p className='mt-2 mb-5'>Click product size you want to use for this promo</p>
             <div className='flex gap-3'>
-              <div onClick={() => setSizeId(2)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  rounded-full`}>
+              <div onClick={() => setSizeId(2) & setAlertError(false)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  rounded-full`}>
                 <p className='font-bold'>R</p>
               </div>
-              <div onClick={() => setSizeId(1)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
+              <div onClick={() => setSizeId(1) & setAlertError(false)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
                 <p className='font-bold'>L</p>
               </div>
-              <div onClick={() => setSizeId(3)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
+              <div onClick={() => setSizeId(3) & setAlertError(false)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
                 <p className='font-bold'>XL</p>
               </div>
-              <div onClick={() => setSizeId(5)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 5 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
+              <div onClick={() => setSizeId(5) & setAlertError(false)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 5 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
                 <p className='font-bold text-xs text-center'>250<br/>gr</p>
               </div>
-              <div onClick={() => setSizeId(6)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 6 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
+              <div onClick={() => setSizeId(6) & setAlertError(false)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 6 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
                 <p className='font-bold text-xs text-center'>300<br/>gr</p>
               </div>
-              <div onClick={() => setSizeId(7)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 7 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
+              <div onClick={() => setSizeId(7) & setAlertError(false)} className={`flex items-center justify-center w-12 h-12 ${sizeId == 7 ? 'bg-[#FFBA33]' : 'bg-gray-400'} rounded-full`}>
                 <p className='font-bold text-xs text-center'>500<br/>gr</p>
               </div>
             </div>
@@ -205,20 +207,20 @@ const EditPromo = () => {
             <p className='mt-2 mb-5'>Click methods you want to use for this promo</p>
             <div className='grid grid-cols-3 gap-3'>
               <div>
-                <button onClick={() => setDeliveryMethodId(1)} type='button' className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  font-bold border-0 font-bold text-gray-700`}>Home Delivery</button>
+                <button onClick={() => setDeliveryMethodId(1) & setAlertError(false)} type='button' className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  font-bold border-0 font-bold text-gray-700`}>Home Delivery</button>
               </div>
               <div>
-                <button onClick={() => setDeliveryMethodId(2)} type='button' className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Dine in</button>
+                <button onClick={() => setDeliveryMethodId(2) & setAlertError(false)} type='button' className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Dine in</button>
               </div>
               <div>
-                <button onClick={() => setDeliveryMethodId(3)} type='button' className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Take away</button>
+                <button onClick={() => setDeliveryMethodId(3) & setAlertError(false)} type='button' className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Take away</button>
               </div>
             </div>
           </div>
           <div className='mb-14'>
             <label className='font-bold text-[#7D6E83]'>Enter the discount :</label>
             <div className='w-1/4'>
-              <input onChange={(e) => setDiscount(e.target.value)} type='text' defaultValue={promo?.discount} name='discount' className=' input input-bordered rounded-xl mt-2 focus:outline-none' />
+              <input onChange={(e) => setDiscount(e.target.value) & setAlertError(false)} type='text' defaultValue={promo?.discount} name='discount' className=' input input-bordered rounded-xl mt-2 focus:outline-none' />
             </div>
           </div>
           <div>

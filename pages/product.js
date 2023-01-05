@@ -4,6 +4,7 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import http from "../helpers/http";
+import withAuthUser from '../components/hoc/withAuthUser'
 
 const Product = () => {
   const [product, setProduct] = React.useState([]);
@@ -53,6 +54,8 @@ const Product = () => {
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
                     <Image
                       src={require("../images/spaghetti.png")}
+                      width={100}
+                      height={100}
                       className="rounded-full pt-[15%]"
                       alt="desc"
                     ></Image>
@@ -129,10 +132,21 @@ const Product = () => {
                 className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
               >
                 <Link href={"/product-details/" + product.id}>
+                  {product?.picture ? 
                   <Image
-                    src={require("../images/food_vegie.png")}
-                    alt="desc"
-                  ></Image>
+                  width={100}
+                  height={100}
+                  src={product?.picture}
+                  alt="desc"
+                  className="rounded-full"
+                ></Image> : 
+                <Image
+                width={100}
+                height={100}
+                src={require("../images/food_vegie.png")}
+                alt="desc"
+                className="rounded-full"
+              ></Image>}
                   <div>{product?.name}</div>
                   <div>IDR {Number(product?.price).toLocaleString("id")}</div>
                 </Link>
@@ -148,4 +162,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default withAuthUser(Product);

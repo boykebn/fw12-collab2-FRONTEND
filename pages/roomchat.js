@@ -6,6 +6,7 @@ import Footer from "../components/footer";
 import { RiCheckDoubleFill } from "react-icons/ri";
 import camera from "../assets/camera.png";
 import Navbar from "../components/navbar";
+import withAuthUser from '../components/hoc/withAuthUser'
 
 const RoomChat = () => {
   return (
@@ -121,4 +122,4 @@ const RoomChat = () => {
   );
 };
 
-export default RoomChat;
+export default withAuthUser(RoomChat);

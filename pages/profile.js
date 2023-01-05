@@ -10,8 +10,12 @@ import { logout as logoutAction } from "../redux/reducers/auth";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import user from "../assets/user.png";
+import withAuthUser from '../components/hoc/withAuthUser'
+import { RiDoubleQuotesR } from "react-icons/ri";
+
 const Profile = () => {
   const token = useSelector((state) => state?.auth?.token);
+  const router = useRouter();
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   console.log(bio);
@@ -25,6 +29,7 @@ const Profile = () => {
     const { data } = await http(token).get("/profile");
     return data;
   };
+  console.log(bio)
 
   const upload = async (e) => {
     e.preventDefault();
@@ -38,6 +43,10 @@ const Profile = () => {
         form.append("picture", file);
         const { data } = await http(token).patch("/profile", form);
         window.alert(data.message);
+        setTimeout(()=>{
+          router.replace('/profile')
+          setpicture(false)
+        }, 3000)
       } catch (err) {
         window.alert(err.response);
       }
@@ -45,14 +54,13 @@ const Profile = () => {
   };
 
   // Logout
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const dispatch = useDispatch()
   const handlerLogout = () => {
     dispatch(logoutAction());
     router.push("/login");
   };
   return (
-    <div className="max-w-full max-h-full font-poppins">
+    <div className="font-poppins">
       <Navbar />
 
       <div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
@@ -114,13 +122,13 @@ const Profile = () => {
               <p className="text-xl font-bold pb-2 pt-4">{bio.displayName}</p>
               <p>{bio.email}</p>
               <p className="text-[#4F5665] text-lg pt-10">
-                Has been ordered {bio.totalOrder} products
+                Has been ordered {bio?.totalOrder} products
               </p>
             </div>
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
           </div>
 
-          <div className=" md:w-[802px] md:h-[358px] rounded-lg bg-white md:flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
+          <div className="w-[802px] h-[358px] rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="w-[340px] mr-[36px]">
               <div className="mb-[21px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
@@ -134,7 +142,7 @@ const Profile = () => {
                 <span className="text-[20px] font-rubik leading-[50px]">
                   {bio.email}
                 </span>
-                <div className="border-b border-2 border-[#000000]"></div>
+                <div className="border-2 border-[#000000]"></div>
               </div>
               <div className="flex flex-col mb-[47px]">
                 <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
@@ -143,7 +151,7 @@ const Profile = () => {
                 <span className="text-[20px] font-rubik mb-[9px]">
                   {bio.address}
                 </span>
-                <div className="border-b border-2 border-[#000000]"></div>
+                <div className="border-2 border-[#000000]"></div>
               </div>
             </div>
             <div className="pt-[59px] w-[340px]">
@@ -252,7 +260,7 @@ const Profile = () => {
                 href=""
                 className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold hover:bg-[#d0b8a8] text-white duration-300"
               >
-                <Link href="reset-password">Edit Password</Link>
+                <Link href="forgot-password">Edit Password</Link>
               </button>
             </div>
 
@@ -263,6 +271,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
+
       </div>
 
       <Footer />
@@ -270,4 +279,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuthUser(Profile);

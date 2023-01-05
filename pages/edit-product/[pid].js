@@ -7,6 +7,7 @@ import { BiTrash } from "react-icons/bi";
 import { useSelector } from 'react-redux'
 import http from '../../helpers/http'
 import { useRouter } from 'next/router'
+import withAuth from '../../components/hoc/withAuth'
 
 const EditProduct = () => {
   const token = useSelector((state) => state?.auth?.token)
@@ -48,7 +49,9 @@ const EditProduct = () => {
       await http(token).patch(`/productSize/${pid}`, {sizeId, price})
       setMessageSuccess(response?.data?.message)
       setAlertSuccess(true)
-      setTimeout(() => {setAlertSuccess(false)}, 5000)
+      setTimeout(() => {
+        setAlertSuccess(false)
+        router.replace('/product-admin')}, 3000)
     } catch(error) {
       console.log(error)
       setMessageError('Product edit failed.')
@@ -70,8 +73,9 @@ const EditProduct = () => {
       await http(token).delete(`/deliveryTime/${pid}`)
       const response = await http(token).delete(`/product/${pid}`)
       setMessageSuccessDelete(response?.data?.message)
+      setMessageSuccessDelete(true)
       setTimeout(()=> {
-        router.replace('/dashboard-admin')
+        router.replace('/product-admin')
       }, 3000)
     } catch(error) {
       console.log(error)
@@ -208,4 +212,4 @@ const EditProduct = () => {
   )
 }
 
-export default EditProduct;
+export default withAuth(EditProduct);

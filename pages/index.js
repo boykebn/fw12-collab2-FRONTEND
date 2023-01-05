@@ -24,21 +24,14 @@ import star from "../assets/star.png";
 // import Footer from "../components/footer";
 
 import { BiSearch } from "react-icons/bi";
-import navbar from "../components/Navbar";
 import NavbarIndex from "../components/NavbarIndex";
-import { useSelector } from "react-redux";
-import jwt_decode from 'jwt-decode'
-import NavbarAdmin from "../components/NavbarAdmin";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
-  const token = useSelector((state) => state?.auth?.token)
-  const {role} = jwt_decode(token)
 
   return (
     <div className="font-rubik">
       {/* Navbar */}
-      {(role == 2) ? <NavbarAdmin /> : ((role == 1) ? <Navbar /> : <NavbarIndex />)}
+      <NavbarIndex/>
 
       {/* Konten */}
       <div className="lg:bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover lg:h-[645px]">

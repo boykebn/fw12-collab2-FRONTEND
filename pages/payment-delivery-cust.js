@@ -9,6 +9,7 @@ import http from "../helpers/http";
 import { TbTruckDelivery } from "react-icons/tb";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import withAuthUser from '../components/hoc/withAuthUser'
 
 const PaymentAndDeliveryCust = () => {
   const [profile, setProfile] = useState({});
@@ -244,4 +245,4 @@ const PaymentAndDeliveryCust = () => {
   );
 };
 
-export default PaymentAndDeliveryCust;
+export default withAuthUser(PaymentAndDeliveryCust);

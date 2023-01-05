@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import http from "../../helpers/http";
 import { useSelector } from 'react-redux';
+import withAuth from '../../components/hoc/withAuth';
 
 const AdminProductDetails = () => {
   const token = useSelector((state) => state?.auth?.token)
@@ -217,4 +218,4 @@ const AdminProductDetails = () => {
   )
 }
 
-export default AdminProductDetails;
+export default withAuth(AdminProductDetails);

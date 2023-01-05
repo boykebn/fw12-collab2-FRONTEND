@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { useRouter } from 'next/router'
 import jwt_decode from 'jwt-decode'
 
-const withAuth = (Components) => {
+const withAuthUser = (Components) => {
   return (props) => {
     const router = useRouter()
     const token = useSelector((state) => state?.auth?.token)
@@ -12,12 +12,10 @@ const withAuth = (Components) => {
     React.useEffect(()=>{
       if(!token) {
         router.replace('/login')
-      } else if (token && role === '1') {
-        router.replace('/product')
       }
     }, [token])
     return <Components {...props} />
   }
 }
 
-export default withAuth
+export default withAuthUser
