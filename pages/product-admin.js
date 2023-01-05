@@ -5,10 +5,12 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import Footer from "../components/footer";
 import NavbarAdmin from "../components/NavbarAdmin";
 import http from "../helpers/http";
+import { useSelector } from "react-redux";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const Product = () => {
+  const token = useSelector((state) => state?.auth?.token) 
   const [product, setProduct] = React.useState([]);
   const [category, setCategory] = React.useState("Favourite Products");
 
@@ -34,6 +36,28 @@ const Product = () => {
   React.useEffect(() => {
     getProduct();
   }, [category]);
+
+  // Get promo
+  const promoId = 53
+  const [promo, setPromo] = React.useState({})
+  React.useEffect(()=>{
+    getPromo().then((response)=>{
+      setPromo(response?.data?.results)
+    })
+  }, [])
+  const getPromo = async () => {
+    const response = await http(token).get('promo/'+promoId)
+    return response
+  }
+  console.log(promo)
+  // Format date
+  const currentMonth = new Date(promo?.endDate);
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const month = (months[currentMonth.getMonth()]);
+  const date = new Date(promo?.endDate).getDate()
+  const year = new Date(promo?.endDate).getFullYear()
+  const expiredDate = `${month} ${date}th ${year}`
+
   return (
     <>
       {/* Navbar */}
@@ -64,7 +88,7 @@ const Product = () => {
                     </div>
                   </div>
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
-                  <Link href={'/edit-promo/'+52}>
+                  <Link href={'/edit-promo/'+promoId}>
                   <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
                       <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
@@ -72,22 +96,23 @@ const Product = () => {
                   </div>
                 </Link>
                     <Image
-                      src={require("../images/spaghetti.png")}
+                      src={promo?.picture}
+                      width={100}
+                      height={100}
                       className="rounded-full pt-[15%]"
                       alt="desc"
                     ></Image>
-                    <div className="mt-[30px] font-bold">Beef Spaghetti</div>
-                    <div className="font-bold">20% OFF</div>
+                    <div className="mt-[30px] font-bold">{promo?.name}</div>
+                    <div className="font-bold">{promo?.discount} OFF</div>
                     <div className="text-center">
-                      <div className="mt-5">
-                        <div>Buy 1 Choco Oreo and get 20% off</div>
-                        <div>for Beef Spaghetti</div>
+                      <div className="mt-5 px-5">
+                        <div>{promo?.description}</div>
                       </div>
                       <div className="outline outline-1 outline-dashed outline-black mt-[27px]"></div>
                       <div className="font-base pt-[27px]">COUPON CODE</div>
-                      <div className="text-[33px] font-bold">FNPR15RG</div>
+                      <div className="text-[33px] font-bold">{promo?.code}</div>
                       <div className="font-sm pb-[5%]">
-                        Valid until October 10th 2020
+                        Valid until {expiredDate}
                       </div>
                     </div>
                   </div>

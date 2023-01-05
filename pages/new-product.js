@@ -28,7 +28,7 @@ const NewProduct = () => {
   const [alertSuccess, setAlertSuccess] = React.useState(false)
   const [messageError, setMessageError] = React.useState('')
   const [alertError, setAlertError] = React.useState(false)
-  const [productId, setProductId] = React.useState(null)
+  // const [productId, setProductId] = React.useState(null)
 
   // Handle take photo
   function handleTakePhoto (value) {
@@ -43,16 +43,15 @@ const NewProduct = () => {
     picture, startHour, endHour, stock, name, price, description, sizeId, deliveryMethodId, categoryId
   }
 
-  const createProductCategory = async () => {
+  const createProductCategory = async (productId) => {
     try {
-      console.log(productId)
       const response = await http(token).post('/productCategory', {productId, categoryId})
     return response
     } catch(error) {
       console.log(error)
     }
   }
-  console.log(productId)
+
   const addNewProduct = async (e) => {
     e.preventDefault()
     try {
@@ -67,15 +66,17 @@ const NewProduct = () => {
       form.append('sizeId', sizeId)
       const responseProduct = await http(token).post('/product/add', form)
       const product = responseProduct?.data?.results
-      const productId = Number(product.id) + 35
-      setProductId(productId)
-      createProductCategory()
+      const productId = Number(product?.id) + 34     
+      setTimeout(()=>{
+        console.log(productId)
+        createProductCategory(productId)
+      }, 3000)
       setMessageSuccess(responseProduct?.data?.message)
       setAlertSuccess(true)
-      // setTimeout(() => {
-      //   setAlertSuccess(false)
-      //   router.replace('/product-admin')
-      // }, 5000)
+      setTimeout(() => {
+        setAlertSuccess(false)
+        router.replace('/product-admin')
+      }, 5000)
 
     } catch(error) {
       console.log(error)
@@ -169,7 +170,7 @@ const NewProduct = () => {
           <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Category :</label>
             <select onChange={(e) => setCategoryId(e.target.value) & setAlertError(false)} name='category' className='input input-bordered focus:outline-none mt-3' defaultValue='2'>
-              <option value='' disabled selected hidden>Select Category</option>
+              <option value='1' disabled selected hidden>Select Category</option>
               <option value='2'>Food</option>
               <option value='3'>Coffee</option>
               <option value='4'>Non Coffee</option>
