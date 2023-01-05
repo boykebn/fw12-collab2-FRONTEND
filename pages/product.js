@@ -38,7 +38,7 @@ const Product = () => {
       <Navbar />
 
       {/* Konten */}
-      <div className="grid grid-cols-1 md:grid-cols-[500px_minmax(500px,_1fr)_1px]">
+      <div className="grid grid-cols-1 md:grid-cols-[400px_minmax(500px,_1fr)_1px] lg:grid-cols-[500px_minmax(500px,_1fr)_1px]">
         <div className="flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
           <div className="pt-[29px] text-[#7D6E83] font-bold text-[25px]">
             Promo for you
@@ -91,7 +91,7 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="grow pt-[29px] w-full">
+        <div className="grow pt-[29px] md:w-96 lg:w-full">
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
             <button
               onClick={(e) => setCategory(e.target.innerText)}
@@ -125,7 +125,7 @@ const Product = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 md:ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4">
+          <div className="grid grid-cols-2 md:ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-2 lg:grid-cols-4">
             {product?.map((product, i) => (
               <div
                 key={i}
