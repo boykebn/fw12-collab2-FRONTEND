@@ -51,7 +51,7 @@ const Profile = () => {
     router.push("/login");
   };
   return (
-    <div className="max-w-full max-h-full font-poppins">
+    <div className="font-poppins">
       <Navbar />
 
       <div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
@@ -59,9 +59,9 @@ const Profile = () => {
           <p>User Profile</p>
         </div>
 
-        <div className="pl-32 pt-20 flex gap-5 ">
-          <div className="w-[310px] h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
-            <div className="flex justify-center items-end">
+        <div className="pl-32 pt-20 flex flex-col md:flex-row gap-5 ">
+          <div className="rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
+            <div className="flex flex-col md:flex-row justify-center items-end">
               {bio.picture && (
                 <Image
                   src={bio?.picture}
@@ -111,8 +111,8 @@ const Profile = () => {
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
           </div>
 
-          <div className="w-[802px] h-[358px] rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
-            <div className="w-[340px] mr-[36px]">
+          <div className="rounded-lg bg-white flex flex-col md:flex-row py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
+            <div className="w-[340px]">
               <div className="mb-[21px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
                   Contacts
@@ -125,7 +125,7 @@ const Profile = () => {
                 <span className="text-[20px] font-rubik leading-[50px]">
                   {bio.email}
                 </span>
-                <div className="border-b border-2 border-[#000000]"></div>
+                <div className="border-2 border-[#000000]"></div>
               </div>
               <div className="flex flex-col mb-[47px]">
                 <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
@@ -134,7 +134,7 @@ const Profile = () => {
                 <span className="text-[20px] font-rubik mb-[9px]">
                   {bio.address}
                 </span>
-                <div className="border-b border-2 border-[#000000]"></div>
+                <div className="border-2 border-[#000000]"></div>
               </div>
             </div>
             <div className="pt-[59px] w-[340px]">
@@ -254,6 +254,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
+
       </div>
 
       <Footer />
