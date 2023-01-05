@@ -65,11 +65,11 @@ const NavbarAdmin = () => {
           </div>
           <div className="flex gap-8 items-center">
             <Search className="w-4/4 cursor-pointer" />
-            <Image
-              src={require("../images/chat.png")}
+            <Link href='/roomchat-admin'>
+              <Image src={require("../images/chat.png")}
               alt="chatIcon"
-              className="w-4/4 cursor-pointer"
-            />
+              className="w-4/4 cursor-pointer"/>
+            </Link>
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="avatar">
                 <div className="w-10 rounded-full">

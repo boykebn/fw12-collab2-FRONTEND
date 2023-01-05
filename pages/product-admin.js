@@ -8,6 +8,7 @@ import http from "../helpers/http";
 import { useSelector } from "react-redux";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import withAuth from '../components/hoc/withAuth'
 
 const Product = () => {
   const token = useSelector((state) => state?.auth?.token) 
@@ -229,4 +230,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default withAuth(Product);
