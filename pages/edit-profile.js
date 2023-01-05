@@ -8,6 +8,7 @@ import http from "../helpers/http";
 import { logout as logoutAction } from "../redux/reducers/auth";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
+import user from "../assets/user.png";
 const EditProfile = () => {
   const token = useSelector((state) => state.auth.token);
   const router = useRouter;
@@ -82,20 +83,30 @@ const EditProfile = () => {
       <Navbar />
 
       <div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
-        <div className="pl-32 pt-20 text-white text-2xl font-bold">
+        <div className="pl-3 md:pl-32 pt-20 text-white text-2xl font-bold">
           <p>Edit Profile</p>
         </div>
 
-        <div className="pl-32 pt-20 flex gap-5 ">
-          <div className="w-[310px] h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
+        <div className="pl-3 pr-3 md:pr-0 md:pl-32 pt-20 md:flex gap-5 ">
+          <div className="mb-3 md:mb-0 md:w-[310px] md:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
-              <Image
-                src={bio?.picture}
-                width="82"
-                height="90"
-                alt="tomato"
-                className="rounded-full w-[80px] h-[120px]"
-              />
+              {bio?.picture ? (
+                <Image
+                  src={bio?.picture}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              ) : (
+                <Image
+                  src={user}
+                  width="82"
+                  height="90"
+                  alt="picture"
+                  className="rounded-full w-[80px] h-[120px]"
+                />
+              )}
             </div>
 
             <div className="flex flex-col justify-center items-center">
@@ -110,7 +121,7 @@ const EditProfile = () => {
 
           <form
             onSubmit={UpdateProfile}
-            className=" rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]"
+            className=" rounded-lg bg-white md:flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]"
           >
             <div className="w-[340px] mr-[36px]">
               <div className="mb-[21px]">
@@ -183,7 +194,7 @@ const EditProfile = () => {
 
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
-              <div className="pt-5">
+              <div className="hidden md:block pt-5">
                 <button
                   type="submit"
                   className="py-[17px] w-full rounded-[20px] bg-[#d0b8a8] border-1 font-bold hover:bg-[#7d6e83] hover:text-white duration-300"
@@ -191,17 +202,17 @@ const EditProfile = () => {
                   Save Change
                 </button>
               </div>
-              <div className="pt-5">
+              <div className="hidden md:block pt-5">
                 <button className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold  text-white duration-300">
                   <Link href="/profile">Back</Link>
                 </button>
               </div>
               {alertSuccess ? (
-                <div class="alert alert-success shadow-lg mt-8">
+                <div className="hidden md:block alert alert-success shadow-lg mt-8">
                   <div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="stroke-current flex-shrink-0 h-6 w-6"
+                      className="stroke-current flex-shrink-0 h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
                     >
@@ -261,16 +272,44 @@ const EditProfile = () => {
                   </option>
                   <option value="Female">Female</option>
                 </select>
-                {/* <input
-                  name="gender"
-                  defaultValue={bio.gender}
-                  type="text"
-                  className="text-[20px] font-rubik leading-[50px] focus:outline-none"
-                /> */}
-
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
             </div>
+            <div className="md:hidden pt-5">
+              <button
+                type="submit"
+                className="py-[17px] w-full rounded-[20px] bg-[#d0b8a8] border-1 font-bold hover:bg-[#7d6e83] hover:text-white duration-300"
+              >
+                Save Change
+              </button>
+            </div>
+            <div className="md:hidden pt-5">
+              <button className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold  text-white duration-300">
+                <Link href="/profile">Back</Link>
+              </button>
+            </div>
+            {alertSuccess ? (
+              <div className="md:hidden alert alert-success shadow-lg mt-8">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current flex-shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>Profile Updated</span>
+                </div>
+              </div>
+            ) : (
+              false
+            )}
           </form>
         </div>
         {/* 

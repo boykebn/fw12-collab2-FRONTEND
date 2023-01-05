@@ -1,79 +1,16 @@
-import Image from "next/image";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import { MdOutlineModeEdit } from "react-icons/md";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import http from "../helpers/http";
-import ReactModal from "react-modal";
-import { logout as logoutAction } from "../redux/reducers/auth";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import user from "../assets/user.png";
-const Profile = () => {
-  const token = useSelector((state) => state?.auth?.token);
-  const [picture, setpicture] = useState(false);
-  const [bio, setBio] = useState({});
-  console.log(bio);
-  useEffect(() => {
-    getBio().then((data) => {
-      setBio(data?.results);
-    });
-  }, []);
-
-  const getBio = async () => {
-    const { data } = await http(token).get("/profile");
-    return data;
-  };
-
-  const upload = async (e) => {
-    e.preventDefault();
-    const file = e.target.picture.files[0];
-    console.log(file);
-    if (file?.size > 1024 * 1024 * 2) {
-      window.alert("File too large");
-    } else {
-      try {
-        const form = new FormData();
-        form.append("picture", file);
-        const { data } = await http(token).patch("/profile", form);
-        window.alert(data.message);
-      } catch (err) {
-        window.alert(err.response);
-      }
-    }
-  };
-
-  // Logout
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const handlerLogout = () => {
-    dispatch(logoutAction());
-    router.push("/login");
-  };
-  return (
-    <div className="font-poppins">
-      <Navbar />
-
-      <div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
+// KODE PRODUCT SIAPA TAU CONFLICT YAALLAH JANGAN SAMPE TAPI
+<>
+<div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
         <div className="pl-32 pt-20 text-white text-2xl font-bold">
           <p>User Profile</p>
         </div>
 
-        <div className="pl-3 pr-3 md:pr-0 md:pl-32 pt-20 md:flex gap-5 ">
-          <div className="mb-3 md:mb-0 md:w-[310px] md:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
-            <div className="flex justify-center items-end">
-              {bio?.picture ? (
+        <div className="pl-32 pt-20 flex flex-col md:flex-row gap-5 ">
+          <div className="rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
+            <div className="flex flex-col md:flex-row justify-center items-end">
+              {bio.picture && (
                 <Image
                   src={bio?.picture}
-                  width="82"
-                  height="90"
-                  alt="picture"
-                  className="rounded-full w-[80px] h-[120px]"
-                />
-              ) : (
-                <Image
-                  src={user}
                   width="82"
                   height="90"
                   alt="picture"
@@ -87,7 +24,7 @@ const Profile = () => {
                 <MdOutlineModeEdit className="w-[18px] h-[20px] " />
               </button>
               <div>
-                <ReactModal isOpen={picture} className="">
+                <ReactModal isOpen={picture} classNamew="w-auto">
                   <div className="flex">
                     <p className="flex-1">Upload Picture</p>
                     <button
@@ -98,7 +35,7 @@ const Profile = () => {
                     </button>
                   </div>
                   <form onSubmit={upload}>
-                    <input type="file" name="picture" className="mb-5" />
+                    <input type="file" name="picture" />
                     <button
                       type="submit"
                       className="py-[17px] w-full rounded-[20px] bg-[#7d6e83] border-1 font-bold  text-white duration-300"
@@ -120,8 +57,8 @@ const Profile = () => {
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
           </div>
 
-          <div className="w-[802px] h-[358px] rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
-            <div className="w-[340px] mr-[36px]">
+          <div className="rounded-lg bg-white flex flex-col md:flex-row py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
+            <div className="w-[340px]">
               <div className="mb-[21px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
                   Contacts
@@ -165,8 +102,8 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="pl-3 pr-3 md:pr-0 pl-32 pt-3 md:pt-20 md:flex gap-10 ">
-          <div className="md:flex md:w-[744px] md:h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-[31px] pb-[40px] ">
+        <div className="pl-32 pt-20 flex gap-10 ">
+          <div className="flex w-[744px] h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-[31px] pb-[40px] ">
             <div className="w-[396px] mr-[59px]">
               <div className="mb-[29px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
@@ -265,10 +202,6 @@ const Profile = () => {
         </div>
 
       </div>
+    </>
+    
 
-      <Footer />
-    </div>
-  );
-};
-
-export default Profile;

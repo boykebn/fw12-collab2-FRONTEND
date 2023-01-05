@@ -5,8 +5,10 @@ import Navbar from '../../components/navbar'
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import http from "../../helpers/http";
+import { useSelector } from 'react-redux';
 
 const AdminProductDetails = () => {
+  const token = useSelector((state) => state?.auth?.token)
   const router = useRouter();
   const { pid } = router.query;
 
@@ -32,8 +34,55 @@ const AdminProductDetails = () => {
   }, [pid]);
   console.log(productId);
 
+  // Show delete option
+  const [showDeleteOption, setShowDeleteOption] = React.useState(false)
+
+  // Delete product
+  const [messageSuccessDelete, setMessageSuccessDelete] = React.useState('')
+  const [showMessageSuccessDelete, setShowMessageSuccessDelete] = React.useState(false)
+
+  const deleteProduct = async () => {
+    try {
+      await http(token).delete(`/productSize/${pid}`)
+      await http(token).delete(`/productCategory/${pid}`)
+      await http(token).delete(`/deliveryTime/${pid}`)
+      const response = await http(token).delete(`/product/${pid}`)
+      setMessageSuccessDelete(response?.data?.message)
+      setShowMessageSuccessDelete(true)
+      setTimeout(()=> {
+        router.replace('/product-admin')
+      }, 3000)
+    } catch(error) {
+      console.log(error)
+    }
+  }
   return (
-    <>
+    <div className='relative'>
+      {showDeleteOption ? 
+      <>
+      <div className='absolute top-0 h-full w-screen bg-[#060606] opacity-80 z-10'>
+      </div>
+      <div className='sticky w-[500px] top-1/4 left-96 bg-white flex flex-col items-center gap-10 p-10 z-10 rounded-xl shadow-xl'>
+        <div>
+          <p>Are you sure want to delete this product?</p>
+        </div>
+        <div className='flex gap-10'>
+          <div>
+            <button type='button' onClick={() => setShowDeleteOption(false)} className='btn btn-outline border-2-[#7D6E83]'>Cancel</button>
+          </div>
+          <div>
+            <button onClick={deleteProduct} type='button' className='btn bg-[#7D6E83] border-2-[#7D6E83]'>Delete</button>
+          </div>
+        </div>
+      {showMessageSuccessDelete ? 
+      <div class="alert alert-success shadow-lg">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>{messageSuccessDelete}</span>
+        </div>
+      </div> : false}
+      </div>
+      </> : false}
       {/* Navbar */}
       <Navbar></Navbar>
 
@@ -73,7 +122,7 @@ const AdminProductDetails = () => {
                 <div className='flex flex-col gap-[25px]'>
                   <button className='bg-[#DFD3C3] py-5 w-full rounded-lg'>Add to Cart</button>
                   <button className='bg-[#7D6E83] py-5 w-full rounded-lg text-white'>Edit Product</button>
-                  <button className='bg-[#7D6E83] py-5 w-full rounded-lg text-white'>Delete Menu</button>
+                  <button onClick={() => setShowDeleteOption(true)} className='bg-[#7D6E83] py-5 w-full rounded-lg text-white'>Delete Menu</button>
                 </div>
               </div>
             </div>
@@ -164,7 +213,7 @@ const AdminProductDetails = () => {
       </div>
 
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 

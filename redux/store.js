@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk'
-import reducer from './reducers';
 import {persistStore} from 'redux-persist'
+import reducer from './reducers';
 
 const store = configureStore({
     reducer,

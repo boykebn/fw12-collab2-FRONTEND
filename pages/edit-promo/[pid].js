@@ -3,16 +3,19 @@ import { Edit2, Facebook, Instagram, Search, Twitter } from 'feather-icons-react
 import Image from 'next/image';
 import ImageUploading from 'react-images-uploading';
 import Link from 'next/link';
-import http from '../helpers/http';
+import http from '../../helpers/http';
 import { useSelector } from 'react-redux';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import withAuth from '../components/hoc/withAuth'
+import withAuth from '../../components/hoc/withAuth'
+import { useRouter } from 'next/router';
+import NavbarAdmin from '../../components/NavbarAdmin';
 
 
 const EditPromo = () => {
   const token = useSelector((state) => state?.auth?.token)
-  const promoId = 47
+  const router = useRouter()
+  const { pid } = router.query;
   const [promo, setPromo] = React.useState({})
   const [picture, setPicture] = React.useState(null)
   const [name, setName] = React.useState(null)
@@ -35,11 +38,13 @@ const EditPromo = () => {
 
   // Get promo by id
   React.useEffect(() => {
-    getPromo()
-  }, [])
+    if (pid) {
+      getPromo()
+    }
+  }, [pid])
   const getPromo = async () => {
     try {
-      const response = await http(token).get(`/promo/${promoId}`)
+      const response = await http(token).get('/promo/'+pid)
       const promo = response?.data?.results
       setPromo(response?.data?.results)
       setPicture(promo?.picture)
@@ -81,54 +86,23 @@ const EditPromo = () => {
       form.append('code', code)
       form.append('sizeId', sizeId)
       form.append('deliveryMethodId', deliveryMethodId)
-      const response = await http(token).patch(`/promo/edit/${promoId}`, form)
+      const response = await http(token).patch(`/promo/edit/${pid}`, form)
       setMessageSuccess(response?.data?.message)
       setAlertSuccess(true)
       setTimeout(() => {setAlertSuccess(false)}, 5000)
       setPromo(response?.data?.results)
     } catch (error) {
       console.log(error)
-      setMessageError('Promo edit failed. Form cannot be empty')
+      setMessageError('Promo edit failed.')
       setAlertError(true)
     }
   }
+  console.log(pid)
 
   return(
     <>
     {/* Header */}
-    <section>
-      <div className='hidden md:flex items-center gap-40 px-28 py-5 border-b-2'>
-        <div className='flex-1'>
-          <div className='flex items-center gap-3 w-fit cursor-pointer'>
-            <Image src={require('../images/logoOurCoffee.png')} alt='Logo' className='w-8 h-8' />
-            <h1 className='font-bold text-xl'>Our Coffee</h1>
-          </div>
-        </div>
-        <div className=''>
-            <ul className='flex items-center justify-center gap-10'>
-              <Link href="">
-            <li className='cursor-pointer hover:text-[#7D6E83]'>Home</li>
-              </Link>
-              <Link href="">
-            <li className='cursor-pointer hover:text-[#7D6E83]'>Product</li>
-              </Link>
-              <Link href="">
-            <li className='cursor-pointer hover:text-[#7D6E83]'>Orders</li>
-              </Link>
-              <Link href="/dashboard-admin">
-            <li className='cursor-pointer hover:text-[#7D6E83]'>Dashboard</li>
-              </Link>
-          </ul>
-        </div>
-        <div className='flex gap-8 items-center'>
-          <Search className='w-4/4 cursor-pointer' />
-          <Image src={require('../images/chat.png')} alt='chatIcon' className='w-4/4 cursor-pointer' />
-          <div>
-            <Image src={require('../images/profile.png')} alt='profile' className='w-4/4 rounded-full cursor-pointer' />
-          </div>
-        </div>
-      </div>
-    </section>
+    <NavbarAdmin />
 
     {/* Edit promo */}
     <section className='bg-white px-28 py-8'>
@@ -153,7 +127,7 @@ const EditPromo = () => {
                 })=> (
                 <>
                   <div>
-                    <Image src={`http://localhost:8888/uploads/${promo?.picture}`} alt='promoPicture' className='rounded-full w-full h-[130px] w-[130px]' width={100} height={100}/>
+                    <Image src={promo?.picture} alt='promoPicture' className='rounded-full w-full h-[130px] w-[130px]' width={100} height={100}/>
                   </div>                  
                   <div onClick={onImageUpload} className='absolute right-0 bottom-0 w-8 h-8'>
                     <button type='button' className='btn btn-circle btn-sm bg-[#7D6E83] border-none'><Edit2 className='p-1' /></button>
@@ -276,7 +250,7 @@ const EditPromo = () => {
     <footer className='hidden md:flex gap-20 relative bg-[#F8EDE3] py-10 pb-20 pl-28 px-52'>
       <div className='flex-1 flex flex-col gap-5'>
         <div className='flex items-center gap-3'>
-          <Image src={require('../images/logoOurCoffee.png')} alt='Logo' className='w-8 h-8'/>
+          <Image src={require('../../images/logoOurCoffee.png')} alt='Logo' className='w-8 h-8'/>
           <p className='font-bold text-lg'>Our Coffee</p>
         </div>
         <div>
