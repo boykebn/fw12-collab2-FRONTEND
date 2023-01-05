@@ -122,6 +122,6 @@ Start the server
 | /transaction                                             | POST  |                            CREATE TRANSACTION |
 | /transaction/process                                     |  GET  |                       GET TRANSACTION PROCESS |
 | /transaction/pay/:id                                       | PATCH|                       EDIT PAYMENT TRANSACTION |
-| http://localhost:8888/transaction/confirm/:id              | PATCH |                  UPDATE TRANSACTION (CONFIRM) |
+| /transaction/confirm/:id              | PATCH |                  UPDATE TRANSACTION (CONFIRM) |
 | /transaction/confirm                                     | GET   |                       GET TRANSACTOPN CONFIRM |
 | /history                                                 | GET  |                        GET HISTORY TRANSACTION |
