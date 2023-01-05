@@ -47,7 +47,7 @@ const NavbarAdmin = () => {
           </div>
           <div className="">
             <ul className="flex items-center justify-center gap-10">
-              <Link href="/">
+              <Link href="/dashboard-admin">
                 <li className="cursor-pointer hover:text-[#7D6E83]">Home</li>
               </Link>
               <Link href="/product-admin">
