@@ -8,7 +8,7 @@ import http from '../helpers/http';
 import { useSelector } from 'react-redux';
 import NavbarAdmin from '../components/NavbarAdmin';
 import { useRouter } from 'next/router';
-import withAuth from '../../components/hoc/withAuth'
+import withAuth from '../components/hoc/withAuth'
 
 const NewProduct = () => {
   const token = useSelector((state) => state?.auth?.token)

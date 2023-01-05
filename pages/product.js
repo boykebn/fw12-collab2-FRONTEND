@@ -4,7 +4,7 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import http from "../helpers/http";
-import withAuth from '../../components/hoc/withAuth'
+import withAuth from '../components/hoc/withAuth'
 
 const Product = () => {
   const [product, setProduct] = React.useState([]);

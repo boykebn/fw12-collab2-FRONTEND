@@ -9,7 +9,7 @@ import { logout as logoutAction } from "../redux/reducers/auth";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import user from "../assets/user.png";
-import withAuth from '../../components/hoc/withAuth'
+import withAuth from '../components/hoc/withAuth'
 
 
 

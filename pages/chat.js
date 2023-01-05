@@ -4,7 +4,7 @@ import search from "../assets/search.png";
 import man from "../assets/man.png";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import withAuth from '../../components/hoc/withAuth'
+import withAuth from '../components/hoc/withAuth'
 
 const Chat = () => {
   return (
