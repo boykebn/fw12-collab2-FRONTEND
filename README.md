@@ -116,7 +116,7 @@ Start the server
 | /productSize/:id                                         | DELETE|                                DELETE PRODUCT |
 | /product/:id                                               | DELETE|                                DELETE PRODUCT |
 | /product                                                 | GET   |                               GET ALL PRODUCT |
-| /product/category/Food                                   | GET   |                          GET PRODUCT CATEGORY |
+| /product/category/:id                                   | GET   |                          GET PRODUCT CATEGORY |
 | /product/:id                                             | GET   |                            GET PRODUCT DETAIL |
 | /history/delete/:id                                      | DELETE|                           DELETE HISTORY USER |
 | /transaction                                             | POST  |                            CREATE TRANSACTION |
