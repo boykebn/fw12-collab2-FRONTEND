@@ -110,7 +110,7 @@ const EditPromo = () => {
     <section className='bg-white px-28 py-8'>
       <div className='flex items-center'>
         <p className='flex-1'>Favorite & Promo <span className='font-bold text-[#7D6E83]'>&gt; Edit promo</span></p>
-        <p className='font-bold text-[#7D6E83] underline cursor-pointer'>Cancel</p>
+        <Link href='/product-admin' className='font-bold text-[#7D6E83] underline cursor-pointer'>Cancel</Link>
       </div>
       <form onSubmit={editPromo} className='flex gap-28 py-16'>
         {/* Left */}
