@@ -85,6 +85,20 @@ const NewProduct = () => {
       setAlertError(true)
     }
   }
+
+  // Reset new product
+  const resetNewProduct = () => {
+    setPicture(null)
+    setStartHour(null)
+    setEndHour(null)
+    setStock(null)
+    setCategoryId(null)
+    setName(null)
+    setPrice(null)
+    setDescription(null)
+    setSizeId(null)
+    setDeliveryMethodId(null)
+  }
   
 
   return(
@@ -157,6 +171,7 @@ const NewProduct = () => {
                 </div>
               )}
           </ImageUploading>
+          <div>{picture?.name}</div>
           <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Delivery Hour :</label>
             <input onChange={(e) => setStartHour(e.target.value) & setAlertError(false)}  type='text' onFocus={(e) => (e.target.type = "time")}
@@ -229,13 +244,13 @@ const NewProduct = () => {
             <p className='mt-2 mb-5'>Click methods you want to use for this product</p>
             <div className='grid grid-cols-3 gap-3'>
               <div>
-                <button type='button' onClick={() => setDeliveryMethodId(1) & setAlertError(false)} className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Home Delivery</button>
+                <button type='button' onClick={() => setDeliveryMethodId(1) & setAlertError(false)} className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} border-0 font-bold text-gray-700`}>Home Delivery</button>
               </div>
               <div>
-                <button type='button' onClick={() => setDeliveryMethodId(2) & setAlertError(false)} className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Dine in</button>
+                <button type='button' onClick={() => setDeliveryMethodId(2) & setAlertError(false)} className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 text-gray-700`}>Dine in</button>
               </div>
               <div>
-                <button type='button' onClick={() => setDeliveryMethodId(3) & setAlertError(false)} className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Take away</button>
+                <button type='button' onClick={() => setDeliveryMethodId(3) & setAlertError(false)} className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  border-0 font-bold text-gray-700`}>Take away</button>
               </div>
             </div>
           </div>
@@ -258,7 +273,7 @@ const NewProduct = () => {
               <button type='submit' className='btn btn-lg bg-[#7D6E83] border-0'>Save Product</button>
             </div>
             <div className='hidden md:block'>
-              <button className='btn btn-lg bg-gray-400 font-bold border-0 font-bold text-gray-700'>Cancel</button>
+              <button type='button' onClick={resetNewProduct} className='btn btn-lg bg-gray-400 font-bold border-0 font-bold text-gray-700'>Cancel</button>
             </div>
           </div>
         </div>

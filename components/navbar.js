@@ -107,16 +107,16 @@ const Navbar = () => {
             {bio?.picture ? (
               <Image
                 src={bio?.picture}
-                width="82"
-                height="90"
+                width={100}
+                height={100}
                 alt="picture"
                 className="rounded-full w-[20px] h-[30px]"
               />
             ) : (
               <Image
                 src={user}
-                width="82"
-                height="90"
+                width={100}
+                height={100}
                 alt="picture"
                 className="rounded-full w-[20px] h-[30px]"
               />
