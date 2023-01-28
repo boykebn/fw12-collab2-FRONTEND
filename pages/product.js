@@ -38,7 +38,7 @@ const Product = () => {
       <Navbar />
 
       {/* Konten */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-[400px_minmax(500px,_1fr)_1px] lg:grid-cols-[500px_minmax(500px,_1fr)_1px]">
         <div className="flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
           <div className="pt-[29px] text-[#7D6E83] font-bold text-[25px]">
             Promo for you
@@ -51,18 +51,18 @@ const Product = () => {
             <div className="mt-20">
               <div className="relative bg-[#7D6E83] w-[284px] h-[338px] rounded-lg">
                 <div className="absolute bg-[#D0B8A8] w-[284px] h-[400px] rounded-lg right-4 top-[-10%]">
-                  <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
+                  <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center border-[1px] border-black">
                     <Image
                       src={require("../images/spaghetti.png")}
                       width={100}
                       height={100}
-                      className="rounded-full pt-[15%]"
+                      className="rounded-full pt-[5%]"
                       alt="desc"
                     ></Image>
                     <div className="mt-[30px] font-bold">Beef Spaghetti</div>
                     <div className="font-bold">20% OFF</div>
                     <div className="text-center">
-                      <div className="mt-5">
+                      <div className="mt-5 px-5">
                         <div>Buy 1 Choco Oreo and get 20% off</div>
                         <div>for Beef Spaghetti</div>
                       </div>
@@ -78,7 +78,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <button className="bg-[#7D6E83] mt-[45px] py-5 w-full mr-[10%] rounded-lg text-white">
+          <button className="bg-[#7D6E83] mt-[45px] py-5 w-80 rounded-lg text-white">
             Apply Coupons
           </button>
           
@@ -91,7 +91,7 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="grow pt-[29px]">
+        <div className="grow pt-[29px] md:w-96 lg:w-full">
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
             <button
               onClick={(e) => setCategory(e.target.innerText)}
@@ -125,7 +125,7 @@ const Product = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4">
+          <div className="grid grid-cols-2 md:ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-2 lg:grid-cols-4">
             {product?.map((product, i) => (
               <div
                 key={i}

@@ -244,13 +244,13 @@ const NewProduct = () => {
             <p className='mt-2 mb-5'>Click methods you want to use for this product</p>
             <div className='grid grid-cols-3 gap-3'>
               <div>
-                <button type='button' onClick={() => setDeliveryMethodId(1) & setAlertError(false)} className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Home Delivery</button>
+                <button type='button' onClick={() => setDeliveryMethodId(1) & setAlertError(false)} className={`btn ${deliveryMethodId == 1 ? 'bg-[#FFBA33]' : 'bg-gray-400'} border-0 font-bold text-gray-700`}>Home Delivery</button>
               </div>
               <div>
-                <button type='button' onClick={() => setDeliveryMethodId(2) & setAlertError(false)} className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Dine in</button>
+                <button type='button' onClick={() => setDeliveryMethodId(2) & setAlertError(false)} className={`btn ${deliveryMethodId == 2 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 text-gray-700`}>Dine in</button>
               </div>
               <div>
-                <button type='button' onClick={() => setDeliveryMethodId(3) & setAlertError(false)} className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'} font-bold border-0 font-bold text-gray-700`}>Take away</button>
+                <button type='button' onClick={() => setDeliveryMethodId(3) & setAlertError(false)} className={`btn ${deliveryMethodId == 3 ? 'bg-[#FFBA33]' : 'bg-gray-400'}  border-0 font-bold text-gray-700`}>Take away</button>
               </div>
             </div>
           </div>
