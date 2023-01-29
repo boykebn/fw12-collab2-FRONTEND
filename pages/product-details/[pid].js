@@ -92,10 +92,9 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="ml-[10%]">
-            <div className="mr-[-5%] bg-red-200">
-            <div className="bg-[#FFFFFF] px-[84px] py-[10%] w-80 mr-[10%] md:w-96 rounded-lg">
-              <div>
+          <div className="w-full flex flex-col md-flex-col justify-center items-center pl-5">
+            <div className="bg-[#FFFFFF] px-[50px] md:px-[84px] py-[10%] w-[265px] md:w-70 xl:w-96 rounded-lg">
+              <div className="text center">
                 <div>Delivery only on Monday to </div>
                 <div>friday at 1 - 7 pm</div>
               </div>
@@ -105,7 +104,7 @@ const ProductDetails = () => {
 
               <div className="flex flex-col justify-center items-center gap-[42px]">
                 <div className="mt-[10%]">Choose a size</div>
-                <div className="flex gap-[57px]">
+                <div className="flex gap-[25px] md:gap-[40px]">
                   <button onClick={() => setSizeId(2)} className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]">
                     R
                   </button>
@@ -118,9 +117,8 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            </div>
 
-            <div className="flex flex-col justify-center items-center mt-[46px] gap-[10px] mr-[15%] md:mr-[0px] md:gap-[27px]">
+            <div className="flex flex-col md-flex-col justify-center items-center pl-6 mt-[46px] gap-[10px] mr-[15%] md:mr-[0px] md:gap-[27px]">
               <div>Choose Delivery Method</div>
               <div className="flex gap-5">
                 <button onClick={() => setDeliveryMethodId(2)}  className="bg-[#F4F4F8] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] py-3 rounded-lg px-[26px] drop-shadow-lg">
@@ -179,7 +177,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
