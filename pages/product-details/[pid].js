@@ -92,8 +92,9 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="ml-[20%] md:ml-[10%]">
-            <div className="bg-[#FFFFFF] px-[84px] py-[10%] w-80 mr-[5%] md:w-96 rounded-lg">
+          <div className="ml-[10%]">
+            <div className="mr-[-5%] bg-red-200">
+            <div className="bg-[#FFFFFF] px-[84px] py-[10%] w-80 mr-[10%] md:w-96 rounded-lg">
               <div>
                 <div>Delivery only on Monday to </div>
                 <div>friday at 1 - 7 pm</div>
@@ -116,6 +117,7 @@ const ProductDetails = () => {
                   </button>
                 </div>
               </div>
+            </div>
             </div>
 
             <div className="flex flex-col justify-center items-center mt-[46px] gap-[10px] mr-[15%] md:mr-[0px] md:gap-[27px]">
