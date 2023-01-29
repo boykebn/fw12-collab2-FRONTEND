@@ -73,7 +73,7 @@ const EditProduct = () => {
       await http(token).delete(`/deliveryTime/${pid}`)
       const response = await http(token).delete(`/product/${pid}`)
       setMessageSuccessDelete(response?.data?.message)
-      setMessageSuccessDelete(true)
+      setShowMessageSuccessDelete(true)
       setTimeout(()=> {
         router.replace('/product-admin')
       }, 3000)
