@@ -18,12 +18,11 @@ const Profile = () => {
   const router = useRouter();
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
-  console.log(bio);
   useEffect(() => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
 
   const getBio = async () => {
     const { data } = await http(token).get("/profile");

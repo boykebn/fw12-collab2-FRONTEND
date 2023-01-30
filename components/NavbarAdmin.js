@@ -19,7 +19,7 @@ const NavbarAdmin = () => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
   const token = useSelector((state) => state?.auth?.token)
 
   const getBio = async () => {

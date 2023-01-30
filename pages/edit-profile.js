@@ -23,7 +23,7 @@ const EditProfile = () => {
     getBio().then((data) => {
       setBio(data.results);
     });
-  }, []);
+  }, [getBio]);
 
   const getBio = async () => {
     const { data } = await http(token).get(

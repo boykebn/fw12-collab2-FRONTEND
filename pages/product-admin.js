@@ -36,7 +36,7 @@ const Product = () => {
 
   React.useEffect(() => {
     getProduct();
-  }, [category]);
+  }, [category, getProduct]);
 
   // Get promo
   const promoId = 53
@@ -45,7 +45,7 @@ const Product = () => {
     getPromo().then((response)=>{
       setPromo(response?.data?.results)
     })
-  }, [])
+  }, [getPromo])
   const getPromo = async () => {
     const response = await http(token).get('promo/'+promoId)
     return response

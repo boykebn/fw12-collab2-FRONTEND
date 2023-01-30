@@ -32,7 +32,7 @@ const ProductDetails = () => {
     if (pid) {
       fetchProductId();
     }
-  }, [pid, sizeId]);
+  }, [pid, sizeId, fetchProductId]);
 
   const checkout = async () => {
     const data = {
