@@ -18,7 +18,7 @@ const withoutAuth = (Components) => {
       } else if (role === "1") {
         router.replace("/product");
       }
-    }, [token]);
+    }, [token, role]);
     return <Components {...props} />;
   };
 };

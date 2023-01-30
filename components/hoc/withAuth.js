@@ -18,7 +18,7 @@ const withAuth = (Components) => {
       } else if (token && role === "1") {
         router.replace("/product");
       }
-    }, [token]);
+    }, [token, role]);
     return <Components {...props} />;
   };
 };

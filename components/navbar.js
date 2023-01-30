@@ -8,13 +8,13 @@ import user from "../assets/user.png"
 
 const Navbar = () => {
   const token = useSelector((state) => state?.auth?.token);
-  const [picture, setpicture] = useState(false);
+  // const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   useEffect(() => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
 
   const getBio = async () => {
     const { data } = await http(token).get("/profile");

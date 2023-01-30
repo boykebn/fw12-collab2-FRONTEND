@@ -32,7 +32,7 @@ const Product = () => {
 
   React.useEffect(() => {
     getProduct();
-  }, [category]);
+  }, [category, getProduct]);
   return (
     <>
       {/* Navbar */}

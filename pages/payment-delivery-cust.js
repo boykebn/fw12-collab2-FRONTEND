@@ -27,7 +27,7 @@ const PaymentAndDeliveryCust = () => {
     http(token)
       .get("/transaction/process")
       .then((res) => setProduct(res.data.results));
-  }, []);
+  }, [token]);
 
   const subTotal = product.price * product.quantity;
   const tax = (subTotal * 10) / 100;
