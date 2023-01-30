@@ -4,22 +4,25 @@ import React from "react";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import http from "../helpers/http";
-import withAuthUser from '../components/hoc/withAuthUser'
+import withAuthUser from "../components/hoc/withAuthUser";
 
 const Product = () => {
   const [product, setProduct] = React.useState([]);
   const [category, setCategory] = React.useState("");
-  const [page, setPage] = React.useState(1)
-  const [limit, setLimit] = React.useState(null)
-  const [search, setSearch] = React.useState('')
+  const [page, setPage] = React.useState(1);
+  const [limit, setLimit] = React.useState(null);
+  const [search, setSearch] = React.useState("");
 
   const getProduct = async () => {
     try {
-      const { data } = await http().get(`/product?category=${category}&page=${page}&limit=${limit}&search=${search}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const { data } = await http().get(
+        `/product?category=${category}&page=${page}&limit=${limit}&search=${search}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setProduct(data.results);
     } catch (error) {
       if (error) throw error;
@@ -78,7 +81,7 @@ const Product = () => {
           <button className="bg-[#7D6E83] mt-[45px] py-5 w-80 rounded-lg text-white">
             Apply Coupons
           </button>
-          
+
           <div className="text-sm pb-[15%]">
             <div className="font-bold">Terms and Condition </div>
             <div> 1. You can only apply 1 coupon per day</div>
@@ -91,7 +94,12 @@ const Product = () => {
         <div className="grow pt-[29px] md:w-96 lg:w-full">
           <div className="flex justify-end mr-[3%]">
             <div>
-              <input name='category' className="py-3 pl-3 sm:pr-5 text-xs rounded-xl mb-5 bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE] justify-end" placeholder='Search...' onChange={(e) => setSearch(e.target.value)}/>
+              <input
+                name="category"
+                className="py-3 pl-3 sm:pr-5 text-xs rounded-xl mb-5 bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE] justify-end"
+                placeholder="Search..."
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
           </div>
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
@@ -134,21 +142,23 @@ const Product = () => {
                 className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
               >
                 <Link href={"/product-details/" + product.id}>
-                  {product?.picture ? 
-                  <Image
-                  width={100}
-                  height={100}
-                  src={product?.picture}
-                  alt="desc"
-                  className="rounded-full"
-                ></Image> : 
-                <Image
-                width={100}
-                height={100}
-                src={require("../images/food_vegie.png")}
-                alt="desc"
-                className="rounded-full"
-              ></Image>}
+                  {product?.picture ? (
+                    <Image
+                      width={100}
+                      height={100}
+                      src={product?.picture}
+                      alt="desc"
+                      className="rounded-full"
+                    ></Image>
+                  ) : (
+                    <Image
+                      width={100}
+                      height={100}
+                      src={require("../images/food_vegie.png")}
+                      alt="desc"
+                      className="rounded-full"
+                    ></Image>
+                  )}
                   <div>{product?.name}</div>
                   <div>IDR {Number(product?.price).toLocaleString("id")}</div>
                 </Link>
@@ -156,13 +166,21 @@ const Product = () => {
             ))}
           </div>
 
-          <div className='flex justify-center gap-3'>
-            <div onClick={() => setPage(prev => prev === 1 ? prev : prev - 1)}>
-              <button className='bg-[#7D6E83] px-5 py-3 rounded text-white'>Prev</button>
+          <div className="flex justify-center gap-3">
+            <div
+              onClick={() => setPage((prev) => (prev === 1 ? prev : prev - 1))}
+            >
+              <button className="bg-[#7D6E83] px-5 py-3 rounded text-white">
+                Prev
+              </button>
             </div>
-            <div className='bg-[#7D6E83] px-3 py-3 rounded text-white'>{page}</div>
-            <div onClick={() => setPage(prev => prev + 1)}>
-               <button className='bg-[#7D6E83] px-5 py-3 rounded text-white'>Next</button>
+            <div className="bg-[#7D6E83] px-3 py-3 rounded text-white">
+              {page}
+            </div>
+            <div onClick={() => setPage((prev) => prev + 1)}>
+              <button className="bg-[#7D6E83] px-5 py-3 rounded text-white">
+                Next
+              </button>
             </div>
           </div>
         </div>
@@ -175,3 +193,4 @@ const Product = () => {
 };
 
 export default withAuthUser(Product);
+

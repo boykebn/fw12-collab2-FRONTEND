@@ -19,7 +19,7 @@ const NavbarAdmin = () => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
   const token = useSelector((state) => state?.auth?.token)
 
   const getBio = async () => {
@@ -34,7 +34,7 @@ const NavbarAdmin = () => {
   return (
     <>
       <section>
-        <div className="hidden md:flex items-center gap-40 px-28 py-5">
+        <div className="hidden md:flex items-center gap-3 lg:gap-40 px-3 lg:px-28 py-5">
           <div className="flex-1">
             <div className="flex items-center gap-3 w-fit cursor-pointer">
               <Image

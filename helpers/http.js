@@ -5,12 +5,14 @@ const http = (token) => {
   if (token) {
     headers.authorization = "Bearer " + token;
   }
+  console.log(process.env.NEXT_PUBLIC_DATA_BACKEND)
   const instance = axios.create({
-    baseURL: process.env.DATA_BACKEND || 'https://fw12-collab2-backend.vercel.app',
+    // baseURL: 'http://localhost:8888',
+    baseURL: process.env.NEXT_PUBLIC_DATA_BACKEND,
     headers,
+    keepAlive: true,
   });
   return instance;
 };
 
 export default http;
-

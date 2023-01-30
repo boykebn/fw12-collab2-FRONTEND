@@ -36,16 +36,16 @@ const Product = () => {
 
   React.useEffect(() => {
     getProduct();
-  }, [category, page, search]);
+  }, [category, page, search, getProduct]);
 
   // Get promo
-  const promoId = 53;
-  const [promo, setPromo] = React.useState({});
-  React.useEffect(() => {
-    getPromo().then((response) => {
-      setPromo(response?.data?.results);
-    });
-  }, []);
+  const promoId = 53
+  const [promo, setPromo] = React.useState({})
+  React.useEffect(()=>{
+    getPromo().then((response)=>{
+      setPromo(response?.data?.results)
+    })
+  }, [getPromo])
 
   const getPromo = async () => {
     const response = await http(token).get("promo/" + promoId);
@@ -79,8 +79,8 @@ const Product = () => {
       <NavbarAdmin />
 
       {/* Konten */}
-      <div className="flex">
-        <div className="hidden md:flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
+      <div className="grid grid-cols-1 md:grid-cols-[400px_minmax(500px,_1fr)_1px] lg:grid-cols-[500px_minmax(500px,_1fr)_1px]">
+        <div className="flex px-[5%] flex-col justify-items items-center gap-[45px] border-r-2 border-[#F8EDE3]">
           <div className="pt-[29px] text-[#7D6E83] font-bold text-[25px]">
             Promo for you
           </div>
@@ -88,7 +88,7 @@ const Product = () => {
             <div>Coupons will be updated every weeks.</div>
             <div>Check them out! </div>
           </div>
-          <div className="pl-[10%]">
+          <div className="pl-[10%] flex">
             <div className="mt-20">
               <div className="relative bg-[#7D6E83] w-[284px] h-[338px] rounded-lg">
                 <div className="relative border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[250px]">
@@ -135,9 +135,29 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <button className="bg-[#7D6E83] mt-[45px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
-            Apply Coupons
-          </button>
+          <div className="mt-[45px] flex flex-col gap-4">
+            <div className="flex gap-4">
+              <div className="grow">
+                <button className="border-2 border-current hover:bg-black rounded-full w-9 h-9 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 hover:text-white">
+                    <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clip-rule="evenodd" />
+                  </svg>
+
+                </button>
+              </div>
+              <div>
+                <button className="border-2 border-current hover:bg-black rounded-full w-9 h-9 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 hover:text-white">
+                    <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clip-rule="evenodd" />
+                  </svg>
+
+                </button>
+              </div>
+            </div>
+            <button className="bg-[#7D6E83] py-5 w-80 rounded-lg text-white">
+              Apply Coupons
+            </button>
+          </div>
 
           <div className="text-sm pb-[15%]">
             <div className="font-bold">Terms and Condition </div>
@@ -154,7 +174,8 @@ const Product = () => {
           </Link>
         </div>
 
-        <div className="md:grow pt-[29px]">
+
+        <div className="grow pt-[29px] md:w-96 lg:w-full">
           <div className="flex justify-end mr-[3%]">
             <div>
               <input
@@ -241,6 +262,7 @@ const Product = () => {
                   </Link>
                 </div>
               ) : (
+                // eslint-disable-next-line react/jsx-key
                 <Skeleton className="h-[500px]" />
               )
             )}
@@ -273,4 +295,5 @@ const Product = () => {
   );
 };
 
-export default withAuth(Product);
+// export default withAuth(Product);
+export default Product;

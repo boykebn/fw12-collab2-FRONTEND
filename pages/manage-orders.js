@@ -15,7 +15,7 @@ const ManageOrders = () => {
     http(token)
       .get("/transaction/confirm")
       .then((res) => setOrder(res.data.results));
-  }, []);
+  }, [token]);
 
   const confirmTransaction = async () => {
     try {
@@ -30,12 +30,17 @@ const ManageOrders = () => {
     <>
       <NavbarAdmin></NavbarAdmin>
 
-      <div className="bg-[url('../assets/bg-1.png')] bg-cover bg-no-repeat font-rubik">
+      {/* Konten */}
+
+      <div>
+      <div className="bg-order_bg bg-no-repeat bg-cover font-rubik">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="flex flex-col justify-center items-center ml-[10%] pt-[10%]">
             <div className="font-bold text-white text-[40px] drop-shadow-lg">
               Finish your customer order now.
             </div>
+
+            <div className="mt-[10%] pr-[6%]">
             <div className="relative mt-[15%] bg-white w-[350px] h-[524px] rounded-lg drop-shadow-xl">
               <div className="absolute bg-white mt-[-10%] w-[350px] h-[524px] rounded-lg drop-shadow-xl">
                 <div className="absolute bg-white mt-[-10%] w-[350px] h-[524px] rounded-lg drop-shadow-xl flex flex-col">
@@ -103,8 +108,9 @@ const ManageOrders = () => {
                 </div>
               </div>
             </div>
+            </div>
 
-            <button className="flex bg-[#7D6E83] text-white gap-[38px] px-[5%] py-[22px] rounded-lg mt-[54px] mb-[10%]">
+            <button className="flex mr-[5%] bg-[#7D6E83] text-white gap-[38px] px-[5%] py-[22px] rounded-lg mt-[54px] mb-[10%]">
               <div>Swipe up to see upcoming orders</div>
               <div>
                 <svg
@@ -243,6 +249,8 @@ const ManageOrders = () => {
           </div>
         </div>
       </div>
+      </div>
+
 
       <Footer></Footer>
     </>

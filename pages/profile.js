@@ -10,7 +10,7 @@ import { logout as logoutAction } from "../redux/reducers/auth";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import user from "../assets/user.png";
-import withAuthUser from '../components/hoc/withAuthUser'
+import withAuthUser from "../components/hoc/withAuthUser";
 import { RiDoubleQuotesR } from "react-icons/ri";
 
 const Profile = () => {
@@ -18,18 +18,17 @@ const Profile = () => {
   const router = useRouter();
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
-  console.log(bio);
   useEffect(() => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
 
   const getBio = async () => {
     const { data } = await http(token).get("/profile");
     return data;
   };
-  console.log(bio)
+  console.log(bio);
 
   const upload = async (e) => {
     e.preventDefault();
@@ -43,10 +42,10 @@ const Profile = () => {
         form.append("picture", file);
         const { data } = await http(token).patch("/profile", form);
         window.alert(data.message);
-        setTimeout(()=>{
-          router.replace('/profile')
-          setpicture(false)
-        }, 3000)
+        setTimeout(() => {
+          router.replace("/profile");
+          setpicture(false);
+        }, 3000);
       } catch (err) {
         window.alert(err.response);
       }
@@ -54,7 +53,7 @@ const Profile = () => {
   };
 
   // Logout
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handlerLogout = () => {
     dispatch(logoutAction());
     router.push("/login");
@@ -64,12 +63,12 @@ const Profile = () => {
       <Navbar />
 
       <div className="bg-profile_bg bg-no-repeat bg-cover pb-[100px] ">
-        <div className="pl-32 pt-20 text-white text-2xl font-bold">
-          <p>User Profile</p>
+        <div className="pl-32 pt-5 lg:pt-20">
+          <p className="text-white text-2xl font-bold">User Profile</p>
         </div>
 
-        <div className="pl-3 pr-3 md:pr-0 md:pl-32 pt-20 md:flex gap-5 ">
-          <div className="mb-3 md:mb-0 md:w-[310px] md:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
+        <div className="pl-3 pr-3 lg:pr-0 lg:pl-32 pt-5 lg:pt-20 lg:flex gap-5 ">
+          <div className="mb-3 lg:mb-0 lg:w-[310px] lg:h-[358px] rounded-lg bg-white px-5 py-14 border-t border-l border-r border-[12px] border-[#d0b8a8]">
             <div className="flex justify-center items-end">
               {bio?.picture ? (
                 <Image
@@ -128,38 +127,38 @@ const Profile = () => {
             {/* <div className='border w-[310px] h-2 rounded-lg '></div> */}
           </div>
 
-          <div className="w-[802px] h-[358px] rounded-lg bg-white flex py-[17px] px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
-            <div className="w-[340px] mr-[36px]">
+          <div className="lg:w-[802px] lg:h-[358px] rounded-lg bg-white lg:flex py-[17px] px-3 lg:px-[30px] border-t border-l border-r border-[12px] border-[#d0b8a8]">
+            <div className="lg:w-[340px] lg:mr-[36px] mb-5 lg:mb-0">
               <div className="mb-[21px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
                   Contacts
                 </span>
               </div>
-              <div className="flex flex-col mb-[47px]">
-                <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px] ">
+              <div className="flex flex-col mb-5 lg:mb-[47px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px] ">
                   Email adress :
                 </span>
-                <span className="text-[20px] font-rubik leading-[50px]">
+                <span className="text-[18px] font-rubik leading-[50px]">
                   {bio.email}
                 </span>
                 <div className="border-2 border-[#000000]"></div>
               </div>
-              <div className="flex flex-col mb-[47px]">
-                <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
+              <div className="flex flex-col mb-5 lg:mb-[47px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px]">
                   Delivery adress :
                 </span>
-                <span className="text-[20px] font-rubik mb-[9px]">
+                <span className="text-[18px] font-rubik mb-[9px]">
                   {bio.address}
                 </span>
                 <div className="border-2 border-[#000000]"></div>
               </div>
             </div>
-            <div className="pt-[59px] w-[340px]">
+            <div className="lg:pt-[59px] lg:w-[340px]">
               <div className="flex flex-col mb-[47px]">
-                <span className="text-[#9F9F9F] text-[20px] font-[500] leading-[30px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px]">
                   Mobile number :
                 </span>
-                <span className="text-[20px] font-rubik leading-[50px]">
+                <span className="text-[18px] font-rubik leading-[50px]">
                   {bio.phoneNumber}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
@@ -173,57 +172,57 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="pl-3 pr-3 md:pr-0 pl-32 pt-3 md:pt-20 md:flex gap-10 ">
-          <div className="md:flex md:w-[744px] md:h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-[31px] pb-[40px] ">
-            <div className="w-[396px] mr-[59px]">
+        <div className="pl-3 pr-3 lg:pr-0 lg:pl-32 pt-3 lg:pt-20 lg:flex gap-10 ">
+          <div className="lg:flex lg:w-[744px] lg:h-[458px] bg-white rounded-lg border-t border-l border-r border-[12px] border-[#d0b8a8] pt-[26px] pl-3 lg:pl-[31px] lg:pb-[40px] pr-3 lg:pr-0 mb-5 lg:mb-0">
+            <div className="lg:w-[396px] lg:mr-[59px] mb-5">
               <div className="mb-[29px]">
                 <span className="text-[#4F5665] text-[25px] font-bold">
                   Details
                 </span>
               </div>
               <div className="flex flex-col mb-[25px]">
-                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                <span className="text-[#9F9F9F] text-[18px]  font-[500] leading-[30px]">
                   Display name :
                 </span>
-                <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
+                <span className="text-[#000000] text-[18px] font-rubik leading-[50px]">
                   {bio.displayName}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
               <div className="flex flex-col mb-[25px]">
-                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px]">
                   First name :
                 </span>
-                <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
+                <span className="text-[#000000] text-[18px] font-rubik leading-[50px]">
                   {bio.firstName}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px]">
                   Last name :
                 </span>
-                <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
+                <span className="text-[#000000] text-[18px] font-rubik leading-[50px]">
                   {bio.lastName}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
             </div>
-            <div className="w-[217px] pt-[67px] ">
+            <div className="lg:w-[217px] lg:pt-[67px] ">
               <div className="flex flex-col mb-[34px]">
-                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px]">
                   YYYY/MM/DD
                 </span>
-                <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
+                <span className="text-[#000000] text-[18px] font-rubik leading-[50px]">
                   {bio.birthDate}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
               </div>
               <div className="flex flex-col mb-[34px]">
-                <span className="text-[#9F9F9F] text-[20ppx] font-[500] leading-[30px]">
+                <span className="text-[#9F9F9F] text-[18px] font-[500] leading-[30px]">
                   Gender
                 </span>
-                <span className="text-[#000000] text-[20px] font-rubik leading-[50px]">
+                <span className="text-[#000000] text-[18px] font-rubik leading-[50px]">
                   {bio.gender}
                 </span>
                 <div className="border-b border-2 border-[#000000]"></div>
@@ -271,7 +270,6 @@ const Profile = () => {
             </div>
           </div>
         </div>
-
       </div>
 
       <Footer />

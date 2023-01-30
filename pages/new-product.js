@@ -85,6 +85,20 @@ const NewProduct = () => {
       setAlertError(true)
     }
   }
+
+  // Reset new product
+  const resetNewProduct = () => {
+    setPicture(null)
+    setStartHour(null)
+    setEndHour(null)
+    setStock(null)
+    setCategoryId(null)
+    setName(null)
+    setPrice(null)
+    setDescription(null)
+    setSizeId(null)
+    setDeliveryMethodId(null)
+  }
   
 
   return(
@@ -157,6 +171,7 @@ const NewProduct = () => {
                 </div>
               )}
           </ImageUploading>
+          <div>{picture?.name}</div>
           <div className='hidden md:block mt-8'>
             <label className='font-bold text-[#7D6E83]'>Delivery Hour :</label>
             <input onChange={(e) => setStartHour(e.target.value) & setAlertError(false)}  type='text' onFocus={(e) => (e.target.type = "time")}
@@ -258,7 +273,7 @@ const NewProduct = () => {
               <button type='submit' className='btn btn-lg bg-[#7D6E83] border-0'>Save Product</button>
             </div>
             <div className='hidden md:block'>
-              <button className='btn btn-lg bg-gray-400 font-bold border-0 text-gray-700'>Cancel</button>
+              <button type='button' onClick={resetNewProduct} className='btn btn-lg bg-gray-400 font-bold border-0 font-bold text-gray-700'>Cancel</button>
             </div>
           </div>
         </div>

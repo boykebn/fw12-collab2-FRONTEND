@@ -3,7 +3,6 @@ import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import cold_brew from "../../images/cold-brew.png";
 import http from "../../helpers/http";
 import jwtDecode from "jwt-decode";
 import { useSelector } from "react-redux";
@@ -28,13 +27,12 @@ const ProductDetails = () => {
       if (error) throw error;
     }
   };
-  console.log(productId);
 
   React.useEffect(() => {
     if (pid) {
       fetchProductId();
     }
-  }, [pid, sizeId]);
+  }, [pid, sizeId, fetchProductId]);
 
   const checkout = async () => {
     const data = {
@@ -73,11 +71,10 @@ const ProductDetails = () => {
 
             <div className="flex flex-col justify-center items-center mt-[40px]">
               <Image
-                src={productId?.picture ? productId?.picture : cold_brew}
-                className="rounded-full h-[300px] w-[300px] md:h-[400px] md:w-[400px]"
+                src={productId?.picture}
+                className="rounded-full h-[300px] w-[300px] md:h-[300px] md:w-[300px]"
+                width={300} height={300}
                 alt="desc"
-                width={50}
-                height={50}
               ></Image>
               <div className="text-center">
                 <div className="font-black text-[65px]">{productId?.name}</div>
@@ -96,9 +93,9 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="ml-[20%] md:ml-[10%]">
-            <div className="bg-[#FFFFFF] px-[84px] py-[10%] w-80 mr-[5%] md:w-96 rounded-lg">
-              <div>
+          <div className="w-full flex flex-col md-flex-col justify-center items-center pl-5">
+            <div className="bg-[#FFFFFF] px-[50px] md:px-[84px] py-[10%] w-[265px] md:w-70 xl:w-96 rounded-lg">
+              <div className="text center">
                 <div>Delivery only on Monday to </div>
                 <div>friday at 1 - 7 pm</div>
               </div>
@@ -108,11 +105,8 @@ const ProductDetails = () => {
 
               <div className="flex flex-col justify-center items-center gap-[42px]">
                 <div className="mt-[10%]">Choose a size</div>
-                <div className="flex gap-[57px]">
-                  <button
-                    onClick={() => setSizeId(2)}
-                    className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]"
-                  >
+                <div className="flex gap-[25px] md:gap-[40px]">
+                  <button onClick={() => setSizeId(2)} className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]">
                     R
                   </button>
                   <button
@@ -131,7 +125,7 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center items-center mt-[46px] gap-[10px] mr-[15%] md:mr-[0px] md:gap-[27px]">
+            <div className="flex flex-col md-flex-col justify-center items-center pl-6 mt-[46px] gap-[10px] mr-[15%] md:mr-[0px] md:gap-[27px]">
               <div>Choose Delivery Method</div>
               <div className="flex gap-5">
                 <button
@@ -243,7 +237,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };

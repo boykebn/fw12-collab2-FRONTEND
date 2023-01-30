@@ -27,30 +27,26 @@ import { BiSearch } from "react-icons/bi";
 import NavbarIndex from "../components/NavbarIndex";
 
 export default function Home() {
-
   return (
     <div className="font-rubik">
       {/* Navbar */}
-      <NavbarIndex/>
+      <NavbarIndex />
 
       {/* Konten */}
-      <div className="lg:bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover lg:h-[645px]">
-        <div className="flex flex-col px-5 w-full lg:px-[150px] lg:flex-row">
-          <div className="lg:pt-[78px] mr-auto">
+      <div className="bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover h-[645px]">
+        <div className="lg:flex w-full px-3 lg:px-[150px] flex-row">
+          <div className="pt-[78px] lg:mr-auto">
             <p className="block text-white text-[50px] font-bold leading-[70px] w-[570px] mb-[20px]">
               Start Your Day with Coffee and Good Meals
             </p>
-            <p className="block text-black text-5xl font-black lg:hidden">
-              A good coffee <br />
-              is a good day
-            </p>
-            <p className="hidden lg:block text-white text-[20px] font-bold leading-[30px] w-[555px] mb-[32px]">
+
+            <p className=" block text-white text-[20px] font-bold leading-[30px] w-[555px] mb-[32px]">
               We provide high quality beans, good taste, and healthy meals made
               by love just for you. Start your day with us for a bigger smile!
             </p>
             <Link
               href="#"
-              className="hidden btn text-white text-[16px] font-bold border-1 bg-[#7d6e83] rounded-[10px] lg:w-40 lg:flex border-0"
+              className="text-white text-[16px] font-bold py-[10px] bg-[#7d6e83] rounded-[10px] w-[150px] flex justify-center hover:bg-gray-800 duration-500"
             >
               Get Started
             </Link>
@@ -59,32 +55,15 @@ export default function Home() {
             <BiSearch className="absolute top-9 left-5 w-8 h-8" />
             <input
               placeholder="Search"
-              className="focus:outline-none bg-[#f8ede3] py-[17px] pl-[75px] pr-10 font-[900] rounded-[30px]"
+              className="focus:outline-none bg-[#f8ede3] py-[17px] pl-[75px] lg:pr-10 font-[900] rounded-[30px]"
             />
           </div>
         </div>
-        <div className="mb-10 lg:hidden">
-          <div className="flex text-xl w-full items-center mt-10">
-            <div className="flex w-full justify-evenly text-[#4F5665]">
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">
-                Favorite
-              </span>
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">
-                Promo
-              </span>
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">
-                Coffee
-              </span>
-              <span className="hover:border-b-[2px] border-[#D0B8A8]">
-                Non Coffee
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="px-[150px] pt-[135px] hidden lg:block">
-          <div className="pl-[90px] pr-[59px] py-[53px] border-1 bg-white  rounded-[10px] flex items-center shadow-lg mb-[103px]">
-            <div className="flex mr-[134px]">
-              <div className="mr-[36px]">
+
+        <div className="px-3 lg:px-[150px] pt-[135px] lg:block">
+          <div className="pl-3 lg:pl-[90px] pr-3 lg:pr-[59px] py-[53px] border-1 bg-white  rounded-[10px] flex items-center text-center flex-col lg:flex-row shadow-lg mb-[103px]">
+            <div className="lg:flex lg:mr-[134px]">
+              <div className="lg:mr-[36px]">
                 <div className="border-1 bg-[#7d6e83] w-[55px] h-[55px] rounded-[50%] flex items-center justify-center">
                   <FaUser className="w-[16px] h-[18px] text-white" />
                 </div>
@@ -98,9 +77,9 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <hr className="bg-[#EEEFF2] w-[2px] h-[125px] mr-[80px] " />
-            <div className="flex mr-[134px]">
-              <div className="mr-[36px]">
+            <hr className="bg-[#EEEFF2] w-[2px] h-[125px] lg:mr-[80px] " />
+            <div className="lg:flex lg:mr-[134px]">
+              <div className="lg:mr-[36px]">
                 <div className="border-1 bg-[#7d6e83] w-[55px] h-[55px] rounded-[50%] flex justify-center items-center ">
                   <MdLocationOn className="w-[22px] h-[26px] text-white" />
                 </div>
@@ -114,9 +93,9 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <hr className="bg-[#EEEFF2] w-[2px] h-[125px] mr-[80px]" />
-            <div className="flex">
-              <div className="mr-[36px]">
+            <hr className="bg-[#EEEFF2] w-[2px] h-[125px] lg:mr-[80px]" />
+            <div className="lg:flex">
+              <div className="lg:mr-[36px] flex justify-center items-center">
                 <div className="border-1 bg-[#7d6e83] w-[55px] h-[55px] rounded-[50%] flex justify-center items-center ">
                   <AiTwotoneHeart className="w-[24px] h-[28px] text-white" />
                 </div>
@@ -134,13 +113,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="hidden pt-[870px] px-[150px] lg:flex mb-[82px]">
-        <div className="mr-[139px]">
+      <div className=" pt-[770px] lg:pt-[170px] px-3 lg:px-[150px] lg:flex mb-[82px]">
+        <div className="lg:mr-[139px]">
           <Image src={layer2} alt="img-layer-2" />
         </div>
         <div>
           <div className="mb-[20px]">
-            <p className="text-[#0B132A] text-[35px] font-bold leading-[50px] w-[432px] mb-[19px]">
+            <p className="text-[#0B132A] text-[24px] lg:text-[35px] font-bold leading-[50px] w-[432px] mb-[19px]">
               We Provide Good Coffee and Healthy Meals
             </p>
             <p className="text-[#4F5665] text-[16px] leading-[30px] w-[427px]">
@@ -169,7 +148,7 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-[#f8ede3] lg:h-[1250px] w-full flex flex-col items-center">
-        <div className="hidden lg:block pt-[80px] text-center mb-[90px]">
+        <div className=" block pt-[80px] text-center mb-[90px]">
           <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[19px]">
             Here is People’s Favorite
           </p>
@@ -178,10 +157,10 @@ export default function Home() {
             yours too!
           </p>
         </div>
-        <div className="flex justify-center items-center md:px-5 md:w-full">
-          <div className="carousel carousel-center flex gap-5 lg:gap-20 w-full px-5 justify-center">
+        <div className="lg:flex justify-center items-center px-3 lg:px-5 lg:w-full">
+          <div className="lg:carousel carousel-center lg:flex gap-5 gap-20 w-full lg:px-5 justify-center">
             <div className="carousel-item">
-              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] pt-[62px] pb-[50px] mb-[30px]">
                 <div className="mb-[30px] leading-[30px]">
                   <Image
                     src={food1}
@@ -192,7 +171,7 @@ export default function Home() {
                     Hazelnut Latte
                   </p>
                 </div>
-                <div className="hidden lg:flex items-center mb-[100px] leading-[30px]">
+                <div className=" flex items-center mb-[100px] leading-[30px]">
                   <div className="">
                     <div className="flex items-center mb-[10px]">
                       <Image
@@ -232,16 +211,14 @@ export default function Home() {
                   IDR 25.000
                 </p>
                 <div className="flex justify-center">
-                    <button className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
-                  <Link href="/payment-delivery-cust">
-                    Order Now
-                  </Link>
-                    </button>
+                  <button className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                    <Link href="/payment-delivery-cust">Order Now</Link>
+                  </button>
                 </div>
               </div>
             </div>
             <div className="carousel-item">
-              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] pt-[62px] pb-[50px] mb-[30px]">
                 <div className="mb-[30px]">
                   <Image
                     src={food2}
@@ -252,7 +229,7 @@ export default function Home() {
                     Pinky Promisee
                   </p>
                 </div>
-                <div className="hidden lg:flex items-center mb-[110px]">
+                <div className=" flex items-center mb-[110px]">
                   <div className="">
                     <div className="flex items-center mb-[10px] leading-[30px]">
                       <Image
@@ -301,7 +278,10 @@ export default function Home() {
                 </p>
                 <div className="flex justify-center">
                   <div className="flex justify-center">
-                    <Link href="/payment-delivery-cust" className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                    <Link
+                      href="/payment-delivery-cust"
+                      className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]"
+                    >
                       Order Now
                     </Link>
                   </div>
@@ -309,7 +289,7 @@ export default function Home() {
               </div>
             </div>
             <div className="carousel-item">
-              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] lg:pt-[62px] lg:pb-[50px] mb-[30px]">
+              <div className="w-80 flex flex-col justify-center items-center py-5 border-2 bg-white rounded-[10px] pt-[62px] pb-[50px] mb-[30px]">
                 <div className="mb-[30px]">
                   <Image
                     src={food3}
@@ -320,7 +300,7 @@ export default function Home() {
                     Chicken Wings
                   </p>
                 </div>
-                <div className="hidden lg:flex items-center mb-[70px]">
+                <div className=" flex items-center mb-[70px]">
                   <div className="ml-5">
                     <div className="flex items-center mb-[10px] leading-[30px]">
                       <Image
@@ -377,7 +357,10 @@ export default function Home() {
                 </p>
                 <div className="flex justify-center">
                   <div className="flex justify-center">
-                    <Link href="/payment-delivery-cust" className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]">
+                    <Link
+                      href="/payment-delivery-cust"
+                      className="btn py-[10px] px-[46px] border-2 bg-white rounded-[50px] border-[#7d6e83] text-[#7d6e83]"
+                    >
                       Order Now
                     </Link>
                   </div>
@@ -387,39 +370,39 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" hidden lg:block relative bg-white">
-        <div className="mb-[155px] text-center pt-[130px]">
-          <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-[20px]  px-[480px]">
+      <div className="block relative bg-white">
+        <div className="lg:mb-[155px] text-center pt-5 lg:pt-[130px]">
+          <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold mb-7 lg:mb-[20px] px-3 lg:px-[480px]">
             Visit Our Store in the Spot on the Map Below
           </p>
-          <p className="text-[#4F5665] text-[16px] leading-[30px]  px-[442px]">
+          <p className="text-[#4F5665] text-[16px] leading-[30px] px-3 lg:px-[442px] mb-7 lg:mb-0">
             See our store in every city on the spot and spen your good day
             there. See you soon!
           </p>
         </div>
-        <div className="px-[190px] mb-[90px]">
+        <div className="px-3 lg:px-[190px] lg:mb-[90px]">
           <Image src={globe} alt="globe" />
         </div>
-        <div className=" text-center px-[150px] mb-[50px]">
+        <div className=" text-center px-3 lg:px-[150px] mb-[50px]">
           <p className="text-[35px] leading-[30px] font-bold mb-[34px]">
             Our Partner
           </p>
           <Image src={sponsored} alt="sponsored" className="" />
         </div>
         <div className="text-center mb-[60px]">
-          <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold px-[470px] mb-[20px]">
+          <p className="text-[#0B132A] text-[35px] leading-[50px] font-bold px-3 lg:px-[470px] mb-[20px]">
             Loved by Thousands of Happy Customer
           </p>
-          <p className="text-[#4F5665] text-[16px] leading-[30px] px-[420px]">
+          <p className="text-[#4F5665] text-[16px] leading-[30px] px-3 lg:px-[420px]">
             These are the stories of our customers who have visited us with
             great pleasure.
           </p>
         </div>
-        <div className="px-[40px] flex pb-[80px]">
-          <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
+        <div className="px-3 lg:px-[40px] lg:flex pb-5 lg:pb-[80px]">
+          <div className="border-2 bg-white rounded-[10px] p-3 lg:p-[30px]  items-center lg:mr-[20px] mb-5 lg:mb-0">
             <div className="flex mb-[20px]">
               <Image src={person1} alt="person1" className="mr-[21px]" />
-              <div className="mr-[108px]">
+              <div className="lg:mr-[108px] flex-1">
                 <p className="text-[#0B132A] text-[18px] font-semibold">
                   Viezh Robert
                 </p>
@@ -438,10 +421,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center mr-[20px]">
+          <div className="border-2 bg-white rounded-[10px] p-3 lg:p-[30px]  items-center lg:mr-[20px] mb-5 lg:mb-0">
             <div className="flex mb-[20px]">
               <Image src={person2} alt="person2" className="mr-[21px]" />
-              <div className="mr-[108px]">
+              <div className="lg:mr-[108px] flex-1">
                 <p className="text-[#0B132A] text-[18px] font-semibold">
                   Yessica Christy
                 </p>
@@ -459,10 +442,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="border-2 bg-white rounded-[10px] p-[30px]  items-center">
+          <div className="border-2 bg-white rounded-[10px] p-3 lg:p-[30px]  items-center">
             <div className="flex mb-[20px]">
               <Image src={person3} alt="person3" className="mr-[21px]" />
-              <div className="mr-[108px]">
+              <div className="lg:mr-[108px] flex-1">
                 <p className="text-[#0B132A] text-[18px] font-semibold">
                   Kim Young Jou
                 </p>
@@ -484,8 +467,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="px-[150px] flex mb-[150px]">
-          <div className="flex-1">
+        <div className="px-3 lg:px-[150px] flex flex-col lg:flex-row justify-center items-center mb-[150px]">
+          <div className="flex-1 mb-5 lg:mb-0">
             <button className="border-1 bg-[#7d6e83] w-[30px] h-[15px] rounded-[10px] mr-[22px]"></button>
             <button
               onClick="#"
@@ -510,9 +493,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block right-32 absolute mt-[-100px]">
-        <div className="border-1 bg-white px-[70px] py-[58px] flex items-center rounded-[10px] shadow-2xl">
-          <div className="mr-[378px]">
+      <div className=" block right-32 lg:absolute mt-[-100px]">
+        <div className="border-1 bg-white px-[70px] py-[58px] lg:flex items-center rounded-[10px] shadow-2xl">
+          <div className="lg:mr-[378px] mb-3 lg:mb-0">
             <p className="text-[#0B132A] text-[35px] font-bold leading-[40px] mb-[20px] w-[372px]">
               Check our promo today!
             </p>
@@ -529,7 +512,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className=" w-full bg-[#dfd3c3] lg:pt-[180px] ">
+      <footer className=" w-full bg-[#dfd3c3] pt-[180px] ">
         <div className="flex py-[5%] px-[10%]">
           <div className="grow">
             <div className="flex gap-[15px]">
@@ -611,4 +594,3 @@ export default function Home() {
     </div>
   );
 }
-

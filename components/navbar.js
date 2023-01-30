@@ -9,13 +9,13 @@ import user from "../assets/user.png"
 const Navbar = () => {
   console.log(process.env.DATA_BACKEND)
   const token = useSelector((state) => state?.auth?.token);
-  const [picture, setpicture] = useState(false);
+  // const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});
   useEffect(() => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
 
   const getBio = async () => {
     const { data } = await http(token).get("/profile");
@@ -108,16 +108,16 @@ const Navbar = () => {
             {bio?.picture ? (
               <Image
                 src={bio?.picture}
-                width="82"
-                height="90"
+                width={100}
+                height={100}
                 alt="picture"
                 className="rounded-full w-[20px] h-[30px]"
               />
             ) : (
               <Image
                 src={user}
-                width="82"
-                height="90"
+                width={100}
+                height={100}
                 alt="picture"
                 className="rounded-full w-[20px] h-[30px]"
               />
