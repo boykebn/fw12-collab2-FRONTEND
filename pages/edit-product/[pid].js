@@ -73,7 +73,7 @@ const EditProduct = () => {
       await http(token).delete(`/deliveryTime/${pid}`)
       const response = await http(token).delete(`/product/${pid}`)
       setMessageSuccessDelete(response?.data?.message)
-      setMessageSuccessDelete(true)
+      setShowMessageSuccessDelete(true)
       setTimeout(()=> {
         router.replace('/product-admin')
       }, 3000)
@@ -114,13 +114,13 @@ const EditProduct = () => {
 
       {/* Konten */}
       <main className='relative bg-[#F8EDE3] px-28 py-10'>
-        <div className='flex gap-0.5'>
+        <div className='flex flex-col md:flex-row gap-0.5'>
           <div>Favorite & Promo {'>'}</div>
           <div>Cold Brew {'>'}</div>
           <div>Edit Product</div>
         </div>
-        <div className='flex gap-16'>
-          <div className='flex-[45%]'>
+        <div className='flex flex-col md:flex-row gap-1'>
+          <div className='flex-[4%]'>
             <div></div>
 
             <div  className='flex flex-col justify-center items-center mt-[40px]'>
@@ -130,7 +130,7 @@ const EditProduct = () => {
                     <BiTrash clasName=" w-[18px] h-[20px]" />
                   </div>
                 </div>
-                <Image src={product?.picture} className="w-[523px]" width={523} height={790} alt="desc" ></Image>
+                <Image src={product?.picture} className="md:w-[523px]" width={300} height={300} alt="desc" ></Image>
               </div>
             </div>
             
@@ -141,14 +141,14 @@ const EditProduct = () => {
           </div>
 
 
-          <div className='flex-[55%] w-2/4'>
+          <div className='flex-[55%] w-[200px] md:w-[500px]'>
             <div className=''>
               <div className='pb-5 border-b-2 border-black'>
-                <input onChange={(e) => setName(e.target.value)} type='text' className='text-6xl font-[900] bg-transparent focus:outline-none' defaultValue={product?.name} />
+                <input onChange={(e) => setName(e.target.value)} type='text' className='text-6xl font-[900] bg-transparent focus:outline-none w-[200px] md:w-28' defaultValue={product?.name} />
               </div>
 
               <div className='pt-5 pb-5 border-b-2 border-black'>
-                <input onChange={(e) => setPrice(e.target.value)} className='text-4xl bg-transparent focus:outline-none' defaultValue={product?.price}/>
+                <input onChange={(e) => setPrice(e.target.value)} className='text-4xl bg-transparent focus:outline-none w-[200px] md:w-28' defaultValue={product?.price}/>
               </div>
 
               <div className='pt-5 pb-5 border-b-2 border-black'>
@@ -212,4 +212,5 @@ const EditProduct = () => {
   )
 }
 
-export default withAuth(EditProduct);
+// export default withAuth(EditProduct);
+export default EditProduct;

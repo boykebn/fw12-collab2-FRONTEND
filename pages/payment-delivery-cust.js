@@ -60,16 +60,16 @@ const PaymentAndDeliveryCust = () => {
       <Navbar />
       <div className="bg-[url('../assets/bg-1.png')] bg-cover bg-no-repeat font-rubik">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="pl-[15%] md:pl-[10%] pt-[5%]">
+          <div className="pl-[4%] md:pl-[10%] pt-[5%]">
             <div className="text-white font-bold text-[40px]">
               Checkout Your Item Now
             </div>
-            <div className="bg-white w-8/12 md:w-96 ml-[5%] md:ml-[0px] px-[5%] py-[5%] mt-[10%] rounded-lg">
+            <div className="bg-white w-10/12 md:w-96 ml-[5%] md:ml-[0px] px-[5%] py-[5%] mt-[10%] rounded-lg">
               <div className="text-center font-bold text-[35px] font-poppins">
                 Order Summary
               </div>
               <div className="flex flex-col gap-[19px] mt-[10%]">
-                <div className="flex gap-[33px]">
+                <div className="flex gap:[20px] md:gap-[33px]">
                   <div>
                     <Image
                       src={product?.picture}
@@ -79,7 +79,7 @@ const PaymentAndDeliveryCust = () => {
                       alt="desc"
                     ></Image>
                   </div>
-                  <div className="w-[170px] text-xl">
+                  <div className="w-[170px] text-md md:text-xl">
                     <p className="">{product.name}</p>
                     <p>x{product.quantity}</p>
                     <p>
@@ -119,18 +119,18 @@ const PaymentAndDeliveryCust = () => {
           </div>
 
           <div className="flex flex-col justify-center items-center">
-            <div className="flex text-white w-[60%] md:w-[50%] pt-[20%]">
+            <div className="flex text-white w-10/12 md:w-[50%]  pt-[20%]">
               <div className="grow">Address Details</div>
               <div>edit</div>
             </div>
-            <div className="bg-white w-[60%] md:w-[50%] rounded-lg px-[42px] py-[30px]">
+            <div className="bg-white w-10/12 md:w-[50%] rounded-lg px-[42px] py-[30px]">
               <div> {profile.address}</div>
 
               <div className="outline outline-1 outline-[#DFD3C3]"></div>
               <div>{profile.phoneNumber}</div>
             </div>
 
-            <div className="flex flex-col text-white w-[60%] md:w-[50%] pt-[10%]">
+            <div className="flex flex-col text-white w-10/12 md:w-[50%] pt-[10%]">
               <div className="grow">Payment Method</div>
               {successMessage ? (
                 <div className="alert alert-success shadow-lg my-3">
@@ -175,7 +175,7 @@ const PaymentAndDeliveryCust = () => {
               ) : null}
             </div>
 
-            <div className="bg-white w-[60%] md:w-[50%] rounded-lg px-[42px] py-[30px]">
+            <div className="bg-white w-10/12 md:w-[50%] rounded-lg px-[42px] py-[30px]">
               <div>
                 <div className="flex items-center gap-[11px]"  onClick={() => setPaymentMethodId(2)}>
                   <input type="radio" name="radio-1" className="radio"  checked={paymentMethodId === 2 ? true : false}/>
@@ -233,7 +233,7 @@ const PaymentAndDeliveryCust = () => {
                 </div>
               </div>
             </div>
-            <button onClick={pay} className="w-[60%] md:w-[50%] bg-[#DFD3C3] py-[27px] rounded-lg mt-[47px] mb-[5%]">
+            <button onClick={pay} className="w-10/12 md:w-[50%] bg-[#DFD3C3] py-[27px] rounded-lg mt-[47px] mb-[5%]">
               {" "}
               Confirm and Pay
             </button>
@@ -245,4 +245,5 @@ const PaymentAndDeliveryCust = () => {
   );
 };
 
-export default withAuthUser(PaymentAndDeliveryCust);
+// export default withAuthUser(PaymentAndDeliveryCust);
+export default PaymentAndDeliveryCust;

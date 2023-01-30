@@ -151,6 +151,7 @@ const NewPromo = () => {
                     </div>
                   )}
                 </ImageUploading>
+                <div>{picture?.name}</div>
                 <div className='hidden md:block mt-12'>
                   <label className='font-bold text-[#7D6E83]'>Enter the discount :</label>
                   <input onChange={(e) => setDiscount(e.target.value) & setAlertError(false)} type='text' name='discount' placeholder='Input discount' className='input input-bordered focus:outline-none mt-3 ' />

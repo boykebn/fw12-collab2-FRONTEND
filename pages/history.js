@@ -46,17 +46,17 @@ const History = () => {
         <div className="flex flex-col justify-center items-center pt-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {history?.map((history) => (
-              <div key={history.id} className="w-[394px] h-[126px] bg-white rounded-2xl hover:opacity-50">
+              <div key={history.id} className="w-[250px] h-[126px] md:w-[394px] h-[126px] bg-white rounded-2xl hover:opacity-50">
                 <div className="py-5 px-5 flex gap-5">
                   <Image
                     src={require("../images/tomato.png")}
-                    width="82"
-                    height="90"
+                    width="70"
+                    height="60"
                     alt="tomato"
-                    className="rounded-full"
+                    className="rounded-full md:w-[80px] h-[70px]"
                   />
-                  <div className="flex-1 text-lg">
-                    <p className="font-bold text-2xl">{history?.name}</p>
+                  <div className="flex-1 text-lg md:w-[150px] h-[150px]">
+                    <p className="font-bold md:text-2xl text-lg">{history?.name}</p>
                     <p>IDR {Number(history?.totalPrice
                       ).toLocaleString('id')}</p>
                     <p>{history?.status}</p>
@@ -73,4 +73,5 @@ const History = () => {
   );
 };
 
-export default withAuthUser(History);
+// export default withAuthUser(History);
+export default History;

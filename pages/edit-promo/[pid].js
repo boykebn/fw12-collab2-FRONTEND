@@ -107,12 +107,12 @@ const EditPromo = () => {
     <NavbarAdmin />
 
     {/* Edit promo */}
-    <section className='bg-white px-28 py-8'>
+    <section className='bg-white px-5 md:px-28 py-8'>
       <div className='flex items-center'>
         <p className='flex-1'>Favorite & Promo <span className='font-bold text-[#7D6E83]'>&gt; Edit promo</span></p>
-        <p className='font-bold text-[#7D6E83] underline cursor-pointer'>Cancel</p>
+        <Link href='/product-admin' className='font-bold text-[#7D6E83] underline cursor-pointer'>Cancel</Link>
       </div>
-      <form onSubmit={editPromo} className='flex gap-28 py-16'>
+      <form onSubmit={editPromo} className='flex flex-col md:flex-row gap-5 md:gap-28 py-16'>
         {/* Left */}
         <div className='flex-[35%]'>
           { promo?.picture ?
@@ -158,7 +158,7 @@ const EditPromo = () => {
             <input onChange={(e) => setEndDate(e.target.value) & setAlertError(false)} defaultValue={promo?.endDate} type='text' onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => (e.target.type = "text")} name='promoEndDate' placeholder='Select end date' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
-          <div className='mt-8'>
+          <div className='mt-5 md:mt-8'>
             <label className='font-bold text-[#7D6E83]'>Input coupon code :</label>
             <input onChange={(e) => setCode(e.target.value) & setAlertError(false)} defaultValue={promo?.code} type='text' name='discount' placeholder='Input stock' className='input input-bordered focus:outline-none mt-3 '/>
           </div>
@@ -298,4 +298,4 @@ const EditPromo = () => {
   )
 }
 
-export default withAuth(EditPromo)
+export default EditPromo
