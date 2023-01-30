@@ -96,7 +96,7 @@ const EditPromo = () => {
       setPromo(response?.data?.results)
     } catch (error) {
       console.log(error)
-      setMessageError('Promo edit failed.')
+      setMessageError('Promo edit failed. ' + error?.response?.data?.message)
       setAlertError(true)
     }
   }
