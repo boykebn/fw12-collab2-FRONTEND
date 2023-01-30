@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import user from "../assets/user.png"
 
 const Navbar = () => {
+  console.log(process.env.DATA_BACKEND)
   const token = useSelector((state) => state?.auth?.token);
   const [picture, setpicture] = useState(false);
   const [bio, setBio] = useState({});

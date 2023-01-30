@@ -8,22 +8,19 @@ import withAuthUser from '../components/hoc/withAuthUser'
 
 const Product = () => {
   const [product, setProduct] = React.useState([]);
-  const [category, setCategory] = React.useState("Favourite Products");
-
-  const url =
-    category === "Favourite Products"
-      ? "/product"
-      : `/product/category/${category}`;
+  const [category, setCategory] = React.useState("");
+  const [page, setPage] = React.useState(1)
+  const [limit, setLimit] = React.useState(null)
+  const [search, setSearch] = React.useState('')
 
   const getProduct = async () => {
     try {
-      const { data } = await http().get(url, {
+      const { data } = await http().get(`/product?category=${category}&page=${page}&limit=${limit}&search=${search}`, {
         headers: {
           "Content-Type": "application/json",
         },
       });
       setProduct(data.results);
-      // console.log(data.results.price)
     } catch (error) {
       if (error) throw error;
     }
@@ -31,7 +28,7 @@ const Product = () => {
 
   React.useEffect(() => {
     getProduct();
-  }, [category]);
+  }, [category, page, search]);
   return (
     <>
       {/* Navbar */}
@@ -92,6 +89,11 @@ const Product = () => {
         </div>
 
         <div className="grow pt-[29px] md:w-96 lg:w-full">
+          <div className="flex justify-end mr-[3%]">
+            <div>
+              <input name='category' className="py-3 pl-3 sm:pr-5 text-xs rounded-xl mb-5 bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE] justify-end" placeholder='Search...' onChange={(e) => setSearch(e.target.value)}/>
+            </div>
+          </div>
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
             <button
               onClick={(e) => setCategory(e.target.innerText)}
@@ -152,6 +154,16 @@ const Product = () => {
                 </Link>
               </div>
             ))}
+          </div>
+
+          <div className='flex justify-center gap-3'>
+            <div onClick={() => setPage(prev => prev === 1 ? prev : prev - 1)}>
+              <button className='bg-[#7D6E83] px-5 py-3 rounded text-white'>Prev</button>
+            </div>
+            <div className='bg-[#7D6E83] px-3 py-3 rounded text-white'>{page}</div>
+            <div onClick={() => setPage(prev => prev + 1)}>
+               <button className='bg-[#7D6E83] px-5 py-3 rounded text-white'>Next</button>
+            </div>
           </div>
         </div>
       </div>

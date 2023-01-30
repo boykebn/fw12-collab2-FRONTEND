@@ -249,4 +249,4 @@ const ManageOrders = () => {
   );
 };
 
-export default withAuth(ManageOrders);
+export default ManageOrders;
