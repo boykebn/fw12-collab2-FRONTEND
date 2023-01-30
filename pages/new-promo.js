@@ -62,7 +62,7 @@ const NewPromo = () => {
       setTimeout(() => {setAlertSuccess(false)}, 5000)
     } catch (error) {
       console.log(error)
-      setMessageError('Promo created failed.')
+      setMessageError('Create new promo failed. ' + error?.response?.data?.message)
       setAlertError(true)
     }
   }
