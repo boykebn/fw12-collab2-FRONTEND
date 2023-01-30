@@ -8,6 +8,7 @@ const http = (token) => {
   const instance = axios.create({
     // baseURL: 'http://localhost:8888',
     baseURL: process.env.NEXT_PUBLIC_DATA_BACKEND,
+
     headers,
     keepAlive: true,
   });
@@ -15,3 +16,4 @@ const http = (token) => {
 };
 
 export default http;
+
