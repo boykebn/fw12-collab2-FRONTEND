@@ -6,11 +6,11 @@ const http = (token) => {
     headers.authorization = "Bearer " + token;
   }
   const instance = axios.create({
-    baseURL: process.env.DATA_BACKEND || 'https://fw12-collab2-backend.vercel.app',
+    baseURL: process.env.DATA_BACKEND || "http://localhost:8888",
     headers,
+    keepAlive: true,
   });
   return instance;
 };
 
 export default http;
-

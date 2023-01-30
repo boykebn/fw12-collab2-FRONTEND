@@ -6,16 +6,16 @@ import Footer from "../components/footer";
 import { RiCheckDoubleFill } from "react-icons/ri";
 import camera from "../assets/camera.png";
 import Navbar from "../components/navbar";
-import withAuth from '../components/hoc/withAuth'
+// import withAuth from '../components/hoc/withAuth'
 
 const RoomChatAdmin = () => {
   return (
     <>
       <Navbar />
       <div className=" font-poppins">
-        <div className="md:bg-[url('../assets/background-chat.png')] bg-cover bg-no-repeat pb-[89px]">
-          <div className="md:pt-[84px] md:px-[200px] md:flex ">
-            <div className=" py-[60px] px-3 md:px-[50px]  bg-[#d0b8a8] md:rounded-l-[20px]">
+        <div className="lg:bg-[url('../assets/background-chat.png')] bg-cover bg-no-repeat pb-[89px]">
+          <div className="lg:pt-[84px] lg:px-[200px] lg:flex ">
+            <div className=" py-[60px] px-3 lg:px-[50px]  bg-[#d0b8a8] lg:rounded-l-[20px]">
               <div className="border-1 flex items-center bg-white py-[18px] pl-[35px] pr-[40px] rounded-[30px] mb-[43px]">
                 <Image src={search} alt="search" className="mr-[14px]" />
                 <input
@@ -48,7 +48,7 @@ const RoomChatAdmin = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-white px-[36px] py-[28px] md:w-[1133px] rounded-r-[20px] h-[1100px]">
+            <div className="bg-white px-[36px] py-[28px] lg:w-[1133px] rounded-r-[20px] h-[1100px]">
               <div className="mb-[100px]">
                 <p className="text-[#4F5665] text-[30px] font-bold leading-[45px] mb-[70px]">
                   Cust-1
@@ -111,4 +111,4 @@ const RoomChatAdmin = () => {
   );
 };
 
-export default withAuth(RoomChatAdmin);
+export default RoomChatAdmin;
