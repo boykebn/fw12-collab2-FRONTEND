@@ -71,8 +71,9 @@ const ProductDetails = () => {
 
             <div className="flex flex-col justify-center items-center mt-[40px]">
               <Image
-                src={cold_brew}
-                className="rounded-full h-[300px] w-[300px] md:h-[400px] md:w-[400px]"
+                src={productId?.picture}
+                className="rounded-full h-[300px] w-[300px] md:h-[300px] md:w-[300px]"
+                width={300} height={300}
                 alt="desc"
               ></Image>
               <div className="text-center">
