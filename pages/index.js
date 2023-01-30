@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "../assets/logoOurCoffee.png";
+import { useSelector } from "react-redux";
 import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
@@ -25,12 +26,14 @@ import star from "../assets/star.png";
 
 import { BiSearch } from "react-icons/bi";
 import NavbarIndex from "../components/NavbarIndex";
+import Navbar from "../components/navbar";
 
 export default function Home() {
+  const token = useSelector((state) => state.auth.token);
   return (
     <div className="font-rubik">
       {/* Navbar */}
-      <NavbarIndex />
+      {token ? <Navbar /> : <NavbarIndex />}
 
       {/* Konten */}
       <div className="bg-[url('../assets/background-home.png')] bg-no-repeat bg-cover h-[645px]">
