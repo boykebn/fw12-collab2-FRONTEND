@@ -3,6 +3,8 @@ import Link from "next/link";
 import logo from "../assets/logoOurCoffee.png";
 
 const NavbarIndex = () => {
+  console.log(process.env.DATA_BACKEND)
+
   return(
     <>
     <div className="px-5 lg:px-12 py-[45px] flex items-center">

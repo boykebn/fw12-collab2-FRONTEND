@@ -32,16 +32,12 @@ const EditPromo = () => {
   const [messageError, setMessageError] = React.useState('')
   const [alertError, setAlertError] = React.useState(false)
 
-  // const dataNewPromo = {
-  //   picture, name, discount, price, description, startDate, endDate, code, sizeId, deliveryMethodId
-  // }
-
   // Get promo by id
   React.useEffect(() => {
     if (pid) {
       getPromo()
     }
-  }, [pid])
+  }, [pid, getPromo])
   const getPromo = async () => {
     try {
       const response = await http(token).get('/promo/'+pid)
@@ -96,7 +92,7 @@ const EditPromo = () => {
       setPromo(response?.data?.results)
     } catch (error) {
       console.log(error)
-      setMessageError('Promo edit failed.')
+      setMessageError('Promo edit failed. ' + error?.response?.data?.message)
       setAlertError(true)
     }
   }

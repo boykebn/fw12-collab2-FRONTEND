@@ -19,12 +19,11 @@ const Profile = () => {
   const [picture, setpicture] = useState(false);
   const [alertSize, setAlertSize] = useState(false);
   const [bio, setBio] = useState({});
-  console.log(bio);
   useEffect(() => {
     getBio().then((data) => {
       setBio(data?.results);
     });
-  }, []);
+  }, [getBio]);
 
   const getBio = async () => {
     const { data } = await http(token).get("/profile");

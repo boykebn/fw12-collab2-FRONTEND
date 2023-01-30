@@ -15,7 +15,7 @@ const ManageOrders = () => {
     http(token)
       .get("/transaction/confirm")
       .then((res) => setOrder(res.data.results));
-  }, []);
+  }, [token]);
 
   const confirmTransaction = async () => {
     try {
@@ -257,4 +257,4 @@ const ManageOrders = () => {
   );
 };
 
-export default withAuth(ManageOrders);
+export default ManageOrders;

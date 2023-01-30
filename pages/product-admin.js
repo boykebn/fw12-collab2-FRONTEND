@@ -6,29 +6,29 @@ import Footer from "../components/footer";
 import NavbarAdmin from "../components/NavbarAdmin";
 import http from "../helpers/http";
 import { useSelector } from "react-redux";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-import withAuth from '../components/hoc/withAuth'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import withAuth from "../components/hoc/withAuth";
 
 const Product = () => {
-  const token = useSelector((state) => state?.auth?.token) 
+  const token = useSelector((state) => state?.auth?.token);
   const [product, setProduct] = React.useState([]);
-  const [category, setCategory] = React.useState("Favourite Products");
-
-  const url =
-    category === "Favourite Products"
-      ? "/product"
-      : `/product/category/${category}`;
+  const [category, setCategory] = React.useState("");
+  const [page, setPage] = React.useState(1);
+  const [limit, setLimit] = React.useState(null);
+  const [search, setSearch] = React.useState("");
 
   const getProduct = async () => {
     try {
-      const { data } = await http().get(url, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const { data } = await http().get(
+        `/product?category=${category}&page=${page}&limit=${limit}&search=${search}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setProduct(data.results);
-      // console.log(data.results.price)
     } catch (error) {
       if (error) throw error;
     }
@@ -36,7 +36,7 @@ const Product = () => {
 
   React.useEffect(() => {
     getProduct();
-  }, [category]);
+  }, [category, page, search, getProduct]);
 
   // Get promo
   const promoId = 53
@@ -45,19 +45,33 @@ const Product = () => {
     getPromo().then((response)=>{
       setPromo(response?.data?.results)
     })
-  }, [])
+  }, [getPromo])
+
   const getPromo = async () => {
-    const response = await http(token).get('promo/'+promoId)
-    return response
-  }
-  console.log(promo)
+    const response = await http(token).get("promo/" + promoId);
+    return response;
+  };
+  console.log(promo);
   // Format date
   const currentMonth = new Date(promo?.endDate);
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const month = (months[currentMonth.getMonth()]);
-  const date = new Date(promo?.endDate).getDate()
-  const year = new Date(promo?.endDate).getFullYear()
-  const expiredDate = `${month} ${date}th ${year}`
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const month = months[currentMonth.getMonth()];
+  const date = new Date(promo?.endDate).getDate();
+  const year = new Date(promo?.endDate).getFullYear();
+  const expiredDate = `${month} ${date}th ${year}`;
 
   return (
     <>
@@ -77,11 +91,11 @@ const Product = () => {
           <div className="pl-[10%] flex">
             <div className="mt-20">
               <div className="relative bg-[#7D6E83] w-[284px] h-[338px] rounded-lg">
-                  <div className="relative border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[250px]">
-                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
-                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
-                    </div>
+                <div className="relative border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[250px]">
+                  <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                    <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
                   </div>
+                </div>
                 <div className="absolute bg-[#D0B8A8] w-[284px] h-[400px] rounded-lg right-4 top-[-10%]">
                   <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[250px] mt-[10px]">
                     <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
@@ -89,13 +103,13 @@ const Product = () => {
                     </div>
                   </div>
                   <div className="absolute bg-[#DFD3C3] w-[284px] h-[472px] rounded-lg right-4 top-[-10%] flex flex-col items-center">
-                  <Link href={'/edit-promo/'+promoId}>
-                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
-                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
-                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
-                    </div>
-                  </div>
-                </Link>
+                    <Link href={"/edit-promo/" + promoId}>
+                      <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#7D6E83] flex justify-center items-center ml-[100px] mt-[10px]">
+                        <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                          <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+                        </div>
+                      </div>
+                    </Link>
                     <Image
                       src={promo?.picture}
                       width={100}
@@ -153,14 +167,25 @@ const Product = () => {
             <div>4. Should make member card to apply coupon</div>
           </div>
 
-        <Link href='/new-promo' className="w-full">
-          <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
+          <Link href="/new-promo" className="w-full">
+            <button className="bg-[#7D6E83] mb-[115px] py-5 w-full mr-[10%] rounded-lg text-white font-bold">
               Add new promo
-          </button>
-        </Link>
+            </button>
+          </Link>
         </div>
 
+
         <div className="grow pt-[29px] md:w-96 lg:w-full">
+          <div className="flex justify-end mr-[3%]">
+            <div>
+              <input
+                name="category"
+                className="py-3 pl-3 sm:pr-5 text-xs rounded-xl mb-5 bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE] justify-end"
+                placeholder="Search..."
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+          </div>
           <div className="flex text-sm overflow-x-auto ml-[3%] gap-[35px] md:gap-[68px] md:ml-[10%] md:text-base">
             <button
               onClick={(e) => setCategory(e.target.innerText)}
@@ -194,76 +219,73 @@ const Product = () => {
             </button>
           </div>
 
-          {/* Select Option */}
-          <div className="flex ml-[3%] mt-5 md:ml-[10%] md:mt-4">
-
-            <div className="grow">
-              <select className="select select-bordered w-48 max-w-xs">
-                <option disabled selected>Sort</option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
-              </select>
-            </div>
-
-            <input type="text" placeholder="Search" className="input input-bordered w-24 max-w-xs pr-3" />
-          </div>
-
-          <div className="grid grid-cols-2 md:ml-[3%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-2 lg:grid-cols-4">
-            {product?.map((product, i) => (
-              product ?
-              <div
-                key={i}
-                className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
-              >
-                <Link href={"/admin-product-details/" + product?.id}>
-                  {product?.picture ?(
-                    <Image
-                      src={product?.picture}
-                      width={100}
-                      height={100}
-                      className="rounded-full"
-                      alt="desc"
-                    ></Image>):(
-                    <Image
-                      src={require("../images/food_vegie.png")}
-                      width={100}
-                      height={100}
-                      className="rounded-full"
-                      alt="desc"
-                    ></Image>
-                  )}
-                  <div className="w-[117px] flex justify-center items-center">
-                    <div className="text-center font-bold text-xl">{product?.name}</div>
-                  </div>
-                  <div className="flex justify-center items-center font-semibold">IDR {Number(product?.price).toLocaleString("id")}</div>
-                </Link>
-                <Link href={'edit-product/' + product?.id}>
-                  <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[50px]">
-                    <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
-                      <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+          <div className="grid grid-cols-2 ml-[5%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-4">
+            {product?.map((product, i) =>
+              product ? (
+                <div
+                  key={i}
+                  className="bg-[#FFFFFF] rounded-lg drop-shadow-xl w-[156px] h-[212px] flex flex-col justify-center items-center"
+                >
+                  <Link href={"/admin-product-details/" + product?.id}>
+                    {product?.picture ? (
+                      <Image
+                        src={product?.picture}
+                        width={100}
+                        height={100}
+                        className="rounded-full"
+                        alt="desc"
+                      ></Image>
+                    ) : (
+                      <Image
+                        src={require("../images/food_vegie.png")}
+                        width={100}
+                        height={100}
+                        className="rounded-full"
+                        alt="desc"
+                      ></Image>
+                    )}
+                    <div className="w-[117px] flex justify-center items-center">
+                      <div className="text-center font-bold text-xl">
+                        {product?.name}
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </div> : <Skeleton className='h-[500px]' key={''}/>
-            ))} 
-          </div> 
+                    <div className="flex justify-center items-center font-semibold">
+                      IDR {Number(product?.price).toLocaleString("id")}
+                    </div>
+                  </Link>
+                  <Link href={"edit-product/" + product?.id}>
+                    <div className="absolute border-1 w-[30px] h-[30px] rounded-full bg-[#DFD3C3] flex justify-center items-center ml-[50px]">
+                      <div className=" w-[20px] h-[20px] rounded-full flex items-center justify-center">
+                        <MdOutlineModeEdit clasName=" w-[20px] h-[20px]" />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ) : (
+                // eslint-disable-next-line react/jsx-key
+                <Skeleton className="h-[500px]" />
+              )
+            )}
+          </div>
 
-          <div className="mb-6">
-            <div className="flex justify-center">
-            <div className="btn-group grid grid-cols-2 gap-3">
-              <button className="btn btn-outline">Previous page</button>
-              <button className="btn btn-outline">Next</button>
+          <div className='flex justify-center gap-3 mb-5'>
+            <div onClick={() => setPage(prev => prev === 1 ? prev : prev - 1)}>
+              <button className='bg-[#7D6E83] px-5 py-3 rounded text-white'>Prev</button>
             </div>
+            <div className='bg-[#7D6E83] px-3 py-3 rounded text-white'>{page}</div>
+            <div onClick={() => setPage(prev => prev + 1)}>
+               <button className='bg-[#7D6E83] px-5 py-3 rounded text-white'>Next</button>
             </div>
           </div>
-          
-          <Link href='/new-product'>
-            <div className="flex justify-center items-center pl-12 md:pl-0 mb-5">
+
+          <Link href="/new-product">
+            <div className="flex justify-center items-center">
               <button className="bg-[#7D6E83] mt-[45px] py-5 w-[729px] mr-[10%] rounded-lg text-white font-bold">
                 Add new product
               </button>
             </div>
           </Link>
+
         </div>
       </div>
 

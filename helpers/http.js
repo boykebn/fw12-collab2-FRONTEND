@@ -6,8 +6,8 @@ const http = (token) => {
     headers.authorization = "Bearer " + token;
   }
   const instance = axios.create({
-    baseURL:
-      process.env.DATA_BACKEND || "https://fw12-collab2-backend.vercel.app",
+    // baseURL: 'http://localhost:8888',
+    baseURL: process.env.NEXT_PUBLIC_DATA_BACKEND,
 
     headers,
     keepAlive: true,
