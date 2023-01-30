@@ -160,7 +160,7 @@ const Product = () => {
             <input type="text" placeholder="Search" className="input input-bordered w-24 max-w-xs pr-3" />
           </div>
 
-          <div className="grid grid-cols-2 md:ml-[3%] justify-items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 md:ml-[3%] justify-center items-center content-center mt-[5%] mb-[10%] gap-[30px] md:grid-cols-2 lg:grid-cols-4">
             {product?.map((product, i) => (
               <div
                 key={i}
@@ -174,7 +174,7 @@ const Product = () => {
                         height={175}
                         src={product?.picture}
                         alt="desc"
-                        className="rounded-full mt-[-15%]"
+                        className="rounded-full mt-[-15%] w-[100px] h-[100px]"
                       ></Image> :
                       <Image
                         width={100}

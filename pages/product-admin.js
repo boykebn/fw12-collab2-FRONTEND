@@ -221,7 +221,7 @@ const Product = () => {
                       src={product?.picture}
                       width={100}
                       height={100}
-                      className="rounded-full"
+                      className="rounded-full w-[100px] h-[100px]"
                       alt="desc"
                     ></Image>):(
                     <Image
