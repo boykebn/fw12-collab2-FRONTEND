@@ -116,6 +116,8 @@ const DashboardAdmin = () => {
                 <Image
                   src={ChartDailyAvg}
                   alt="Chart"
+                  width={100}
+                  height={100}
                   className="w-4/4 py-10"
                 />
               </div>
@@ -129,6 +131,9 @@ const DashboardAdmin = () => {
                   <Image
                     src={require("../images/profile2.png")}
                     alt="profile"
+                    width={100}
+                    height={100}
+  
                     className="rounded-full w-full"
                   />
                 </div>
@@ -190,6 +195,9 @@ const DashboardAdmin = () => {
             <Image
               src={require("../images/logoOurCoffee.png")}
               alt="Logo"
+              width={100}
+              height={100}
+
               className="w-8 h-8"
             />
             <p className="font-bold text-lg">Our Coffee</p>

@@ -14,6 +14,9 @@ const ProductDetails = () => {
   const [sizeId, setSizeId] = useState(2);
   const [deliveryMethodId, setDeliveryMethodId] = useState(null);
   const [time, setTime] = useState(null);
+  const [errorTime, setErrorTime] = useState(false);
+  const [errorQuantity, setErrorQuantity] = useState(false);
+  const [errorDeliveryMethod, setErrorDeliveryMethod] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const token = useSelector((state) => state.auth.token);
 
@@ -32,7 +35,7 @@ const ProductDetails = () => {
     if (pid) {
       fetchProductId();
     }
-  }, [pid, sizeId, fetchProductId]);
+  }, [pid, sizeId]);
 
   const checkout = async () => {
     const data = {
@@ -45,14 +48,29 @@ const ProductDetails = () => {
     };
 
     try {
-      const result = await http(token).post("/transaction", data);
-
-      router.push("/payment-delivery-cust");
+      if (!time) {
+        setErrorTime("Please select your time");
+        setTimeout(() => {
+          setErrorTime(false);
+        }, 3000);
+      } else if (!quantity) {
+        setErrorQuantity("Please add your quantity");
+        setTimeout(() => {
+          setErrorQuantity(false);
+        }, 3000);
+      } else if (!deliveryMethodId) {
+        setErrorDeliveryMethod("Please select delivery method");
+        setTimeout(() => {
+          setErrorDeliveryMethod(false);
+        }, 3000);
+      } else {
+        await http(token).post("/transaction", data);
+        router.push("/payment-delivery-cust");
+      }
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <div>
       {/* Navbar */}
@@ -73,7 +91,8 @@ const ProductDetails = () => {
               <Image
                 src={productId?.picture}
                 className="rounded-full h-[300px] w-[300px] md:h-[300px] md:w-[300px]"
-                width={300} height={300}
+                width={300}
+                height={300}
                 alt="desc"
               ></Image>
               <div className="text-center">
@@ -106,18 +125,21 @@ const ProductDetails = () => {
               <div className="flex flex-col justify-center items-center gap-[42px]">
                 <div className="mt-[10%]">Choose a size</div>
                 <div className="flex gap-[25px] md:gap-[40px]">
-                  <button onClick={() => setSizeId(2)} className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]">
+                  <button
+                    onClick={() => setSizeId(2)}
+                    className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] text-white rounded-full flex justify-center items-center font-bold text-[20px]"
+                  >
                     R
                   </button>
                   <button
                     onClick={() => setSizeId(1)}
-                    className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]"
+                    className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] text-white rounded-full flex justify-center items-center font-bold text-[20px]"
                   >
                     L
                   </button>
                   <button
                     onClick={() => setSizeId(3)}
-                    className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] rounded-full flex justify-center items-center font-bold text-[20px]"
+                    className="bg-[#7D6E83] hover:bg-[#DFD3C3] focus:bg-[#DFD3C3] w-[50px] h-[50px] text-white rounded-full flex justify-center items-center font-bold text-[20px]"
                   >
                     XL
                   </button>
@@ -181,33 +203,13 @@ const ProductDetails = () => {
               </div>
               <div className="flex justify-center items-center gap-[10px]">
                 <button
-                  onClick={() => setQuantity((prev) => prev + 1)}
-                  className="bg-[#7D6E83] flex justify-center items-center rounded-full"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </button>
-                <div>{quantity}</div>
-                <button
                   onClick={() =>
                     setQuantity((prev) => (prev === 0 ? prev : prev - 1))
                   }
                   className="bg-[#7D6E83] flex justify-center items-center rounded-full"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-6 h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -221,19 +223,55 @@ const ProductDetails = () => {
                     />
                   </svg>
                 </button>
+
+                <div>{quantity}</div>
+                <button
+                  onClick={() => setQuantity((prev) => prev + 1)}
+                  className="bg-[#7D6E83] flex justify-center items-center rounded-full"
+                >
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
         </div>
 
         {/* Button 2 */}
-        <div>
+        <div className="flex flex-col">
           <button
             onClick={checkout}
-            className="w-80 md:w-96 bg-[#7D6E83] py-[5%] px-[5%] rounded-lg"
+            className="w-80 md:w-96 bg-[#7D6E83] py-[5%] px-[5%] rounded-lg text-white font-bold"
           >
             Checkout
           </button>
+          {errorTime && (
+            <div className="text-red-500 font-bold text-center text-lg">
+              {errorTime}
+            </div>
+          )}
+          {errorQuantity && (
+            <div className="text-red-500 font-bold text-center text-lg">
+              {errorQuantity}
+            </div>
+          )}
+          {errorDeliveryMethod && (
+            <div className="text-red-500 font-bold text-center text-lg">
+              {errorDeliveryMethod}
+            </div>
+          )}
         </div>
       </div>
 

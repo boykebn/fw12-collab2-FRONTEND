@@ -9,7 +9,7 @@ import http from "../helpers/http";
 import { TbTruckDelivery } from "react-icons/tb";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import withAuthUser from '../components/hoc/withAuthUser'
+import withAuthUser from "../components/hoc/withAuthUser";
 
 const PaymentAndDeliveryCust = () => {
   const [profile, setProfile] = useState({});
@@ -29,6 +29,7 @@ const PaymentAndDeliveryCust = () => {
       .then((res) => setProduct(res.data.results));
   }, [token]);
 
+  console.log(product);
   const subTotal = product.price * product.quantity;
   const tax = (subTotal * 10) / 100;
   const shipping = 10000;
@@ -91,7 +92,7 @@ const PaymentAndDeliveryCust = () => {
                     </p>
                   </div>
                   <p className="text-xl flex items-center">
-                    IDR {product.price}
+                    IDR {Number(product.price).toLocaleString("id")}
                   </p>
                 </div>
               </div>
@@ -100,20 +101,27 @@ const PaymentAndDeliveryCust = () => {
               <div className="flex flex-col gap-3 mt-[5%]">
                 <div className="flex">
                   <div className="grow">SUB TOTAL</div>
-                  <p>IDR {subTotal}</p>
+                  <p>
+                    IDR{" "}
+                    {Number(product.price * product.quantity).toLocaleString(
+                      "id"
+                    )}
+                  </p>
                 </div>
                 <div className="flex">
                   <div className="grow">TAX & FEES</div>
-                  <div>IDR {tax}</div>
+                  <div>
+                    IDR {Number((subTotal * 10) / 100).toLocaleString("id")}
+                  </div>
                 </div>
                 <div className="flex">
                   <div className="grow">SHIPPING</div>
-                  <div>IDR {shipping}</div>
+                  <div>IDR {Number(10000).toLocaleString("id")}</div>
                 </div>
               </div>
               <div className="flex mt-[5%]">
                 <div className="grow">TOTAL</div>
-                <div>IDR {totalPrice}</div>
+                <div>IDR {Number(totalPrice).toLocaleString("id")}</div>
               </div>
             </div>
           </div>
@@ -177,8 +185,16 @@ const PaymentAndDeliveryCust = () => {
 
             <div className="bg-white w-10/12 md:w-[50%] rounded-lg px-[42px] py-[30px]">
               <div>
-                <div className="flex items-center gap-[11px]"  onClick={() => setPaymentMethodId(2)}>
-                  <input type="radio" name="radio-1" className="radio"  checked={paymentMethodId === 2 ? true : false}/>
+                <div
+                  className="flex items-center gap-[11px]"
+                  onClick={() => setPaymentMethodId(2)}
+                >
+                  <input
+                    type="radio"
+                    name="radio-1"
+                    className="radio"
+                    checked={paymentMethodId === 2 ? true : false}
+                  />
                   <div className="h-10 w-10 bg-[#F47B0A] flex justify-center items-center rounded-lg">
                     <svg
                       className="w-6 h-6 text-white"
@@ -199,8 +215,16 @@ const PaymentAndDeliveryCust = () => {
                 </div>
                 <div className="outline outline-1 outline-black mt-[17px]"></div>
 
-                <div className="flex items-center gap-[11px] pt-[17px]"  onClick={() => setPaymentMethodId(3)}>
-                  <input type="radio" name="radio-1" className="radio"  checked={paymentMethodId === 3 ? true : false}/>
+                <div
+                  className="flex items-center gap-[11px] pt-[17px]"
+                  onClick={() => setPaymentMethodId(3)}
+                >
+                  <input
+                    type="radio"
+                    name="radio-1"
+                    className="radio"
+                    checked={paymentMethodId === 3 ? true : false}
+                  />
                   <div className="h-10 w-10 bg-[#895537] flex justify-center items-center rounded-lg">
                     <Image
                       src={require("../images/acc.png")}
@@ -211,8 +235,16 @@ const PaymentAndDeliveryCust = () => {
                 </div>
                 <div className="outline outline-1 outline-black mt-[17px]"></div>
 
-                <div className="flex items-center gap-[11px] pt-[17px]"  onClick={() => setPaymentMethodId(4)}>
-                  <input type="radio" name="radio-1" className="radio"  checked={paymentMethodId === 4 ? true : false}/>
+                <div
+                  className="flex items-center gap-[11px] pt-[17px]"
+                  onClick={() => setPaymentMethodId(4)}
+                >
+                  <input
+                    type="radio"
+                    name="radio-1"
+                    className="radio"
+                    checked={paymentMethodId === 4 ? true : false}
+                  />
                   <div className="h-10 w-10 bg-[#FFBA33] flex justify-center items-center rounded-lg">
                     <svg
                       className="w-6 h-6 text-white"
@@ -233,7 +265,10 @@ const PaymentAndDeliveryCust = () => {
                 </div>
               </div>
             </div>
-            <button onClick={pay} className="w-10/12 md:w-[50%] bg-[#DFD3C3] py-[27px] rounded-lg mt-[47px] mb-[5%]">
+            <button
+              onClick={pay}
+              className="w-10/12 md:w-[50%] bg-[#DFD3C3] py-[27px] rounded-lg mt-[47px] mb-[5%] font-bold text-lg"
+            >
               {" "}
               Confirm and Pay
             </button>

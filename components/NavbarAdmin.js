@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { logout as logoutAction } from "../redux/reducers/auth";
 import Link from "next/link";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import user from "../assets/user.png";
 import React, { useEffect, useState } from "react";
 import http from "../helpers/http";
@@ -20,14 +20,14 @@ const NavbarAdmin = () => {
       setBio(data?.results);
     });
   }, [getBio]);
-  const token = useSelector((state) => state?.auth?.token)
+  const token = useSelector((state) => state?.auth?.token);
 
   const getBio = async () => {
     try {
       const { data } = await http(token).get("/profile");
-    return data;
-    } catch(error) {
-      console.log(error)
+      return data;
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -40,6 +40,8 @@ const NavbarAdmin = () => {
               <Image
                 src={require("../images/logoOurCoffee.png")}
                 alt="Logo"
+                width={100}
+                height={100}
                 className="w-8 h-8"
               />
               <h1 className="font-bold text-xl">Our Coffee</h1>
@@ -65,18 +67,27 @@ const NavbarAdmin = () => {
           </div>
           <div className="flex gap-8 items-center">
             <Search className="w-4/4 cursor-pointer" />
-            <Link href='/roomchat-admin'>
-              <Image src={require("../images/chat.png")}
-              alt="chatIcon"
-              className="w-4/4 cursor-pointer"/>
+            <Link href="/roomchat-admin">
+              <Image
+                src={require("../images/chat.png")}
+                alt="chatIcon"
+                width={20}
+                height={20}
+                className="w-4/4 cursor-pointer"
+              />
             </Link>
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="avatar">
                 <div className="w-10 rounded-full">
                   {bio?.picture ? (
-                    <Image src={bio?.picture} alt="profile"/>
+                    <Image
+                      src={bio?.picture}
+                      width={100}
+                      height={100}
+                      alt="profile"
+                    />
                   ) : (
-                    <Image src={user} alt="profile"/>
+                    <Image src={user} width={100} height={100} alt="profile" />
                   )}
                 </div>
               </label>
